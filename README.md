@@ -5,6 +5,12 @@ Centralize log
 * Powered by fdark
 * Postgres database
 
+Sample
+
+```shell
+curl -s localhost:9000/hello | jq
+```
+
 ## Contributions
 
 Feel free to contribute to this project.
