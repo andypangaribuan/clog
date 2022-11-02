@@ -1,0 +1,6 @@
+# Dictionary for special name on this project
+clog
+fdation
+fdark
+hotreloader
+omitempty

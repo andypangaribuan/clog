@@ -1,0 +1,52 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "afterDelay",
+  "debug.toolBarLocation": "docked",
+  "breadcrumbs.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.formatOnPaste": true,
+  "errorLens.enabled": true,
+  "errorLens.enabledInMergeConflict": true,
+  "errorLens.enableOnDiffView": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+  "errorLens.severityText": ["ERROR", "WARNING", "INFO", "HINT"],
+  "errorLens.messageBackgroundMode": "line",
+  "dart.lineLength": 180,
+  "[dart]": {
+    "editor.rulers": [180],
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "Dart-Code.dart-code"
+  },
+  "editor.rulers": [180],
+  "fileHeaderComment.parameter": {
+    "*": {
+      "author": "Andy Pangaribuan",
+      "license": [
+        "Copyright (c) ${year}.",
+        " Created by ${author}. All Rights Reserved.",
+        "",
+        " This product is protected by copyright and distributed under",
+        " licenses restricting copying, distribution and decompilation."
+      ]
+    }
+  },
+  "fileHeaderComment.template": {
+    "andypangaribuan": [
+      "${commentbegin}",
+      "${commentprefix} ${license}",
+      "${commentend}"
+    ]
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": ["pangaribuan", "apangaribuan", "decompilation"],
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+  "merge-conflict.diffViewPosition": "Current",
+  "git.mergeEditor": true
+}
