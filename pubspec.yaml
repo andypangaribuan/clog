@@ -9,12 +9,14 @@ environment:
 
 dependencies:
   args: ^2.0.0
+  grpc: ^3.1.0
+  protobuf: ^2.1.0
   
-  fdation: ^1.0.1
+  fdation: ^1.0.6
   # fdation:
   #   path: /Users/apangaribuan/repo/github/fdation
   
-  fdark: ^1.0.1
+  fdark: ^1.0.5
   # fdark:
   #   path: /Users/apangaribuan/repo/github/fdark
 

@@ -6,14 +6,12 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-library server_ctrl;
-
-import 'package:clog/server.dart';
+import 'package:clog/app/src/abs.dart';
 import 'package:fdark/fdark.dart';
 import 'package:fdation/fdation.dart';
 
-part 'server_get_time_handler.dart';
-
-class ServerController {
-  FFuseHandler get getTime => () => _GetTimeHandler();
+abstract class AbsApp {
+  late final AbsAppEnv env;
+  late final FDB db;
+  late final Net net;
 }

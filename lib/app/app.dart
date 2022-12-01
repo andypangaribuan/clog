@@ -6,11 +6,20 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-part of auth_ctrl;
+library app_lib;
 
-class _DoUserHandler extends FuseAuthHandler {
-  @override
-  Future<FuseAuthResponse> handler(FuseAuthContext ctx) async {
-    return ctx.ok('auth-user');
+import 'package:fdation/fdation.dart';
+
+import 'abs.dart';
+import 'src/abs.dart';
+
+part 'src/env.dart';
+
+final app = _App();
+
+class _App extends AbsApp {
+  _App() {
+    env = _AppEnv();
+    net = Net();
   }
 }

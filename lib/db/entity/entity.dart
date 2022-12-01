@@ -6,12 +6,4 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-import 'auth/auth.dart';
-import 'server/server.dart';
-
-final ctrl = _Controller();
-
-class _Controller {
-  late final auth = AuthController();
-  late final server = ServerController();
-}
+export 'src/info_log_entity.dart';

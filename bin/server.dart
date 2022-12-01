@@ -6,43 +6,49 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-import 'package:clog/server.dart';
+import 'package:clog/app.dart';
+import 'package:clog/controller.dart';
+import 'package:clog/grpc/clog_service.dart';
+import 'package:clog/proto/clog.pbgrpc.dart';
 import 'package:fdark/fdark.dart';
 import 'package:fdation/fdation.dart';
 
-import 'controller/controller.dart';
-
 Future<void> main(List<String> args) async {
   await fd.env.load(args);
-  initAPI();
   initDB();
-}
+  initAPI();
 
-void initAPI() {
-  final restPort = fd.env.get<int>('REST_PORT', defaultValue: 9000)!;
-  FuseAPI(restPort: restPort).serve(routes: _routes);
-  print('rest api listening on port $restPort');
+  final req = RequestServiceLog();
+  req.hasSvcName();
 }
 
 void initDB() {
-  db.initialize(
-    host: fd.env.get('DB_HOST'),
-    port: fd.env.get<int>('DB_PORT')!,
-    name: fd.env.get('DB_NAME'),
-    scheme: fd.env.get('DB_SCHEME'),
-    user: fd.env.get('DB_USERNAME'),
-    password: fd.env.get('DB_PASSWORD'),
+  app.db = FPostgresDB(
+    host: app.env.db.host,
+    port: app.env.db.port,
+    name: app.env.db.name,
+    user: app.env.db.user,
+    password: app.env.db.pass,
+    scheme: app.env.db.scheme,
     settings: FConnectionSettings(
-      maxIdle: fd.env.get<int>('DB_MAX_IDLE')!,
-      maxOpen: fd.env.get<int>('DB_MAX_OPEN')!,
-      idleLifetime: Duration(minutes: fd.env.get<int>('DB_IDLE_LIFETIME')!),
-      openLifetime: Duration(minutes: fd.env.get<int>('DB_OPEN_LIFETIME')!),
+      maxIdle: app.env.db.maxIdle,
+      maxOpen: app.env.db.maxOpen,
+      idleLifetime: app.env.db.idleLifetime,
+      openLifetime: app.env.db.openLifetime,
     ),
   );
 }
 
-void _routes(FuseRouter router) {
-  router.setHandlerAuthX(ctrl.auth.user);
+void initAPI() {
+  final api = FuseAPI(restPort: app.env.appRestPort, grpcPort: app.env.appGrpcPort);
+  api.restfulService(routes: _routes);
+  print('rest api listening on port ${app.env.appRestPort}');
 
-  router.add("get: /hello", ctrl.server.getTime, withAuthX: true);
+  api.grpcServices(services: [CLogService()]);
+  print('grpc api listening on port ${app.env.appGrpcPort}');
+}
+
+void _routes(FuseRouter router) {
+  router.add("get: /private/app-name", ctrl.private.getAppName);
+  router.add("get: /private/server-time", ctrl.private.getServerTime);
 }

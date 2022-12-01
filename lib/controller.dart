@@ -6,12 +6,12 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-library auth_ctrl;
+import 'package:clog/controller/private.dart';
 
-import 'package:fdark/fdark.dart';
+final ctrl = _Controller();
 
-part 'auth_user_handler.dart';
+class _Controller {
+  _Controller();
 
-class AuthController {
-  FFuseAuthHandler get user => () => _DoUserHandler();
+  PrivateController get private => PrivateController.instance;
 }

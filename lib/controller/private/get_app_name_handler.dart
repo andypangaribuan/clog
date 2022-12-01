@@ -6,4 +6,11 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-export 'src/db.dart';
+part of private_ctrl;
+
+class _GetAppNameHandler extends FuseHandler {
+  @override
+  Future<FuseResponse> handler(FuseContext ctx) async {
+    return ctx.ok(app.env.appName);
+  }
+}

@@ -10,7 +10,7 @@
       "type": "dart",
       "program": "${workspaceFolder}/bin/server_debug.dart",
       "showMemoryUsage": true,
-      "args": ["${workspaceFolder}/res/envs/local.env"]
+      "args": ["${workspaceFolder}/local.env"]
     }
   ]
 }

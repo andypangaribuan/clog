@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  clog:
+    container_name: taodev-clog
+    image: taodev:clog-1.0.0
+    restart: always
+    ports:
+      - "8087:8087"
+      - "8077:8077"
+    networks:
+      - taodev-net
+    env_file: local.env
+
+networks:
+  taodev-net:
+    external: true

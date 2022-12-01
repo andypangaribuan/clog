@@ -13,6 +13,3 @@ pubspec.lock
 .vscode/*
 !.vscode/launch.json
 !.vscode/settings.json
-
-res/envs/*
-!res/envs/sample.env
