@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS service_log (
   svc_parent VARCHAR(50) NULL,
   message VARCHAR(100) NULL,
   severity VARCHAR(10) NOT NULL,
+  path VARCHAR(1000) NOT NULL,
+  function VARCHAR(100) NOT NULL,
   req_header TEXT NULL,
   req_body TEXT NULL,
   req_par TEXT NULL,
@@ -39,6 +41,8 @@ CREATE TABLE IF NOT EXISTS info_log (
   svc_parent VARCHAR(50) NULL,
   message VARCHAR(100) NOT NULL,
   severity VARCHAR(10) NOT NULL,
+  path VARCHAR(1000) NOT NULL,
+  function VARCHAR(100) NOT NULL,
   data TEXT NULL,
   created_at TIMESTAMP(0) WITH TIME ZONE NOT NULL,
   PRIMARY KEY (id, svc_name));

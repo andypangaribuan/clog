@@ -40,17 +40,19 @@ message RequestServiceLog {
   google.protobuf.StringValue svcParent = 3;
   google.protobuf.StringValue message = 4;
   string severity = 5;
-  google.protobuf.StringValue reqHeader = 6;
-  google.protobuf.StringValue reqBody = 7;
-  google.protobuf.StringValue reqPar = 8;
-  google.protobuf.StringValue resData = 9;
-  google.protobuf.Int32Value resCode = 10;
-  google.protobuf.StringValue data = 11;
-  google.protobuf.StringValue error = 12;
-  google.protobuf.StringValue stackTrace = 13;
-  string startAt = 14; // RFC3339 MilliSecond
-  string finishAt = 15; // RFC3339 MilliSecond
-  string createdAt = 16; // RFC3339 MilliSecond
+  string path = 6;
+  string function = 7;
+  google.protobuf.StringValue reqHeader = 8;
+  google.protobuf.StringValue reqBody = 9;
+  google.protobuf.StringValue reqPar = 10;
+  google.protobuf.StringValue resData = 11;
+  google.protobuf.Int32Value resCode = 12;
+  google.protobuf.StringValue data = 13;
+  google.protobuf.StringValue error = 14;
+  google.protobuf.StringValue stackTrace = 15;
+  string startAt = 16; // RFC3339 MilliSecond
+  string finishAt = 17; // RFC3339 MilliSecond
+  string createdAt = 18; // RFC3339 MilliSecond
 }
 
 
@@ -60,6 +62,8 @@ message RequestInfoLog {
   google.protobuf.StringValue svcParent = 3;
   string message = 4;
   string severity = 5;
-  google.protobuf.StringValue data = 6;
-  string createdAt = 7; // RFC3339 MilliSecond
+  string path = 6;
+  string function = 7;
+  google.protobuf.StringValue data = 8;
+  string createdAt = 9; // RFC3339 MilliSecond
 }

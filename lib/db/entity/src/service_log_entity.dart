@@ -12,6 +12,8 @@ class ServiceLogEntity {
   String? svcParent;
   String? message;
   String severity; // types: info, warning, error
+  String path;
+  String function;
   String? reqHeader;
   String? reqBody;
   String? reqPar;
@@ -31,6 +33,8 @@ class ServiceLogEntity {
     this.svcParent,
     this.message,
     required this. severity,
+    required this.path,
+    required this.function,
     this.reqHeader,
     this.reqBody,
     this.reqPar,

@@ -12,6 +12,8 @@ class InfoLogEntity {
   String? svcParent;
   String message;
   String severity; // types: info, warning, error
+  String path;
+  String function;
   String? data;
   DateTime createdAt;
 
@@ -21,6 +23,8 @@ class InfoLogEntity {
     this.svcParent,
     required this.message,
     required this.severity,
+    required this.path,
+    required this.function,
     required this.data,
     required this.createdAt,
   });

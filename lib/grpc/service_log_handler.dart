@@ -27,6 +27,8 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
     svcParent: req.svcParent.val,
     message: req.message.val,
     severity: req.severity.isEmpty ? 'undefined' : req.severity,
+    path: req.path,
+    function: req.function,
     reqHeader: req.reqHeader.val,
     reqBody: req.reqBody.val,
     reqPar: req.reqPar.val,

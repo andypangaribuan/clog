@@ -28,22 +28,24 @@ const RequestServiceLog$json = const {
     const {'1': 'svcParent', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'svcParent'},
     const {'1': 'message', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'message'},
     const {'1': 'severity', '3': 5, '4': 1, '5': 9, '10': 'severity'},
-    const {'1': 'reqHeader', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'reqHeader'},
-    const {'1': 'reqBody', '3': 7, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'reqBody'},
-    const {'1': 'reqPar', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'reqPar'},
-    const {'1': 'resData', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'resData'},
-    const {'1': 'resCode', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Int32Value', '10': 'resCode'},
-    const {'1': 'data', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'data'},
-    const {'1': 'error', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'error'},
-    const {'1': 'stackTrace', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'stackTrace'},
-    const {'1': 'startAt', '3': 14, '4': 1, '5': 9, '10': 'startAt'},
-    const {'1': 'finishAt', '3': 15, '4': 1, '5': 9, '10': 'finishAt'},
-    const {'1': 'createdAt', '3': 16, '4': 1, '5': 9, '10': 'createdAt'},
+    const {'1': 'path', '3': 6, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'function', '3': 7, '4': 1, '5': 9, '10': 'function'},
+    const {'1': 'reqHeader', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'reqHeader'},
+    const {'1': 'reqBody', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'reqBody'},
+    const {'1': 'reqPar', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'reqPar'},
+    const {'1': 'resData', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'resData'},
+    const {'1': 'resCode', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Int32Value', '10': 'resCode'},
+    const {'1': 'data', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'data'},
+    const {'1': 'error', '3': 14, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'error'},
+    const {'1': 'stackTrace', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'stackTrace'},
+    const {'1': 'startAt', '3': 16, '4': 1, '5': 9, '10': 'startAt'},
+    const {'1': 'finishAt', '3': 17, '4': 1, '5': 9, '10': 'finishAt'},
+    const {'1': 'createdAt', '3': 18, '4': 1, '5': 9, '10': 'createdAt'},
   ],
 };
 
 /// Descriptor for `RequestServiceLog`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List requestServiceLogDescriptor = $convert.base64Decode('ChFSZXF1ZXN0U2VydmljZUxvZxIOCgJpZBgBIAEoCVICaWQSGAoHc3ZjTmFtZRgCIAEoCVIHc3ZjTmFtZRI6CglzdmNQYXJlbnQYAyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCXN2Y1BhcmVudBI2CgdtZXNzYWdlGAQgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgdtZXNzYWdlEhoKCHNldmVyaXR5GAUgASgJUghzZXZlcml0eRI6CglyZXFIZWFkZXIYBiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCXJlcUhlYWRlchI2CgdyZXFCb2R5GAcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgdyZXFCb2R5EjQKBnJlcVBhchgIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZVIGcmVxUGFyEjYKB3Jlc0RhdGEYCSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSB3Jlc0RhdGESNQoHcmVzQ29kZRgKIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlUgdyZXNDb2RlEjAKBGRhdGEYCyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSBGRhdGESMgoFZXJyb3IYDCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSBWVycm9yEjwKCnN0YWNrVHJhY2UYDSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCnN0YWNrVHJhY2USGAoHc3RhcnRBdBgOIAEoCVIHc3RhcnRBdBIaCghmaW5pc2hBdBgPIAEoCVIIZmluaXNoQXQSHAoJY3JlYXRlZEF0GBAgASgJUgljcmVhdGVkQXQ=');
+final $typed_data.Uint8List requestServiceLogDescriptor = $convert.base64Decode('ChFSZXF1ZXN0U2VydmljZUxvZxIOCgJpZBgBIAEoCVICaWQSGAoHc3ZjTmFtZRgCIAEoCVIHc3ZjTmFtZRI6CglzdmNQYXJlbnQYAyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCXN2Y1BhcmVudBI2CgdtZXNzYWdlGAQgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgdtZXNzYWdlEhoKCHNldmVyaXR5GAUgASgJUghzZXZlcml0eRISCgRwYXRoGAYgASgJUgRwYXRoEhoKCGZ1bmN0aW9uGAcgASgJUghmdW5jdGlvbhI6CglyZXFIZWFkZXIYCCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCXJlcUhlYWRlchI2CgdyZXFCb2R5GAkgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgdyZXFCb2R5EjQKBnJlcVBhchgKIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZVIGcmVxUGFyEjYKB3Jlc0RhdGEYCyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSB3Jlc0RhdGESNQoHcmVzQ29kZRgMIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlUgdyZXNDb2RlEjAKBGRhdGEYDSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSBGRhdGESMgoFZXJyb3IYDiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSBWVycm9yEjwKCnN0YWNrVHJhY2UYDyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCnN0YWNrVHJhY2USGAoHc3RhcnRBdBgQIAEoCVIHc3RhcnRBdBIaCghmaW5pc2hBdBgRIAEoCVIIZmluaXNoQXQSHAoJY3JlYXRlZEF0GBIgASgJUgljcmVhdGVkQXQ=');
 @$core.Deprecated('Use requestInfoLogDescriptor instead')
 const RequestInfoLog$json = const {
   '1': 'RequestInfoLog',
@@ -53,10 +55,12 @@ const RequestInfoLog$json = const {
     const {'1': 'svcParent', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'svcParent'},
     const {'1': 'message', '3': 4, '4': 1, '5': 9, '10': 'message'},
     const {'1': 'severity', '3': 5, '4': 1, '5': 9, '10': 'severity'},
-    const {'1': 'data', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'data'},
-    const {'1': 'createdAt', '3': 7, '4': 1, '5': 9, '10': 'createdAt'},
+    const {'1': 'path', '3': 6, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'function', '3': 7, '4': 1, '5': 9, '10': 'function'},
+    const {'1': 'data', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'data'},
+    const {'1': 'createdAt', '3': 9, '4': 1, '5': 9, '10': 'createdAt'},
   ],
 };
 
 /// Descriptor for `RequestInfoLog`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List requestInfoLogDescriptor = $convert.base64Decode('Cg5SZXF1ZXN0SW5mb0xvZxIOCgJpZBgBIAEoCVICaWQSGAoHc3ZjTmFtZRgCIAEoCVIHc3ZjTmFtZRI6CglzdmNQYXJlbnQYAyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCXN2Y1BhcmVudBIYCgdtZXNzYWdlGAQgASgJUgdtZXNzYWdlEhoKCHNldmVyaXR5GAUgASgJUghzZXZlcml0eRIwCgRkYXRhGAYgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgRkYXRhEhwKCWNyZWF0ZWRBdBgHIAEoCVIJY3JlYXRlZEF0');
+final $typed_data.Uint8List requestInfoLogDescriptor = $convert.base64Decode('Cg5SZXF1ZXN0SW5mb0xvZxIOCgJpZBgBIAEoCVICaWQSGAoHc3ZjTmFtZRgCIAEoCVIHc3ZjTmFtZRI6CglzdmNQYXJlbnQYAyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWVSCXN2Y1BhcmVudBIYCgdtZXNzYWdlGAQgASgJUgdtZXNzYWdlEhoKCHNldmVyaXR5GAUgASgJUghzZXZlcml0eRISCgRwYXRoGAYgASgJUgRwYXRoEhoKCGZ1bmN0aW9uGAcgASgJUghmdW5jdGlvbhIwCgRkYXRhGAggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlUgRkYXRhEhwKCWNyZWF0ZWRBdBgJIAEoCVIJY3JlYXRlZEF0');

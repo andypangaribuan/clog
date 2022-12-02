@@ -13,14 +13,14 @@ class _ServiceLogRepo {
     final sql = '''
 INSERT INTO service_log
   (id, svc_name, svc_parent, message, severity,
-   req_header, req_body, req_par, res_data, res_code,
-   data, error, stack_trace, duration_ms, start_at,
-   finish_at, created_at)
+   path, function, req_header, req_body, req_par,
+   res_data, res_code, data, error, stack_trace,
+   duration_ms, start_at, finish_at, created_at)
 VALUES
   (@id, @svc_name, @svc_parent, @message, @severity,
-   @req_header, @req_body, @req_par, @res_data, @res_code,
-   @data, @error, @stack_trace, @duration_ms, @start_at,
-   @finish_at, @created_at)
+   @path, @function, @req_header, @req_body, @req_par,
+   @res_data, @res_code, @data, @error, @stack_trace,
+   @duration_ms, @start_at, @finish_at, @created_at)
 ''';
 
     final pars = {
@@ -29,6 +29,8 @@ VALUES
       'svc_parent': e.svcParent,
       'message': e.message,
       'severity': e.severity,
+      'path': e.path,
+      'function': e.function,
       'req_header': e.reqHeader,
       'req_body': e.reqBody,
       'req_par': e.reqPar,

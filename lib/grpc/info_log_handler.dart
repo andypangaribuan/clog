@@ -22,7 +22,9 @@ Future<Response> infoLogHandler(RequestInfoLog req) async {
     svcName: req.svcName,
     svcParent: req.svcParent.val,
     message: req.message,
-    severity: req.severity,
+    severity: req.severity.isEmpty ? 'undefined' : req.severity,
+    path: req.path,
+    function: req.function,
     data: req.data.val,
     createdAt: createdAt,
   );
