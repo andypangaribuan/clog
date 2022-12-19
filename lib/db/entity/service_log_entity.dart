@@ -34,7 +34,7 @@ class ServiceLogEntity {
     required this.svcName,
     this.svcParent,
     this.message,
-    required this. severity,
+    required this.severity,
     required this.path,
     required this.function,
     this.reqHeader,

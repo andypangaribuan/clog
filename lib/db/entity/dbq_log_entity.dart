@@ -6,28 +6,39 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-class InfoLogEntity {
+class DbqLogEntity {
   String id;
   String uid;
   String svcName;
   String? svcParent;
-  String message;
-  String severity; // types: info, warning, error
+  String sqlQuery;
+  String? sqlPars;
+  String severity;
   String path;
   String function;
-  String? data;
+  String? error;
+  String? stackTrace;
+  late int durationMs;
+  DateTime startAt;
+  DateTime finishAt;
   DateTime createdAt;
 
-  InfoLogEntity({
+  DbqLogEntity({
     required this.id,
     required this.uid,
     required this.svcName,
     this.svcParent,
-    required this.message,
+    required this.sqlQuery,
+    this.sqlPars,
     required this.severity,
     required this.path,
     required this.function,
-    required this.data,
+    this.error,
+    this.stackTrace,
+    required this.startAt,
+    required this.finishAt,
     required this.createdAt,
-  });
+  }) {
+    durationMs = finishAt.difference(startAt).inMilliseconds;
+  }
 }

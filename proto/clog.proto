@@ -25,6 +25,7 @@ import "google/protobuf/wrappers.proto";
 service CLogService {
   rpc ServiceLog(RequestServiceLog) returns (Response);
   rpc InfoLog(RequestInfoLog) returns (Response);
+  rpc DbqLog(RequestDbqLog) returns (Response);
 }
 
 
@@ -66,4 +67,21 @@ message RequestInfoLog {
   string function = 7;
   google.protobuf.StringValue data = 8;
   string createdAt = 9; // RFC3339 MilliSecond
+}
+
+
+message RequestDbqLog {
+  string uid = 1;
+  string svcName = 2;
+  google.protobuf.StringValue svcParent = 3;
+  string sqlQuery = 4;
+  google.protobuf.StringValue sqlPars = 5;
+  string severity = 6;
+  string path = 7;
+  string function = 8;
+  google.protobuf.StringValue error = 9;
+  google.protobuf.StringValue stackTrace = 10;
+  string startAt = 11; // RFC3339 MilliSecond
+  string finishAt = 12; // RFC3339 MilliSecond
+  string createdAt = 13; // RFC3339 MilliSecond
 }

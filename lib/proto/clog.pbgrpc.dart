@@ -16,12 +16,16 @@ export 'clog.pb.dart';
 class CLogServiceClient extends $grpc.Client {
   static final _$serviceLog =
       $grpc.ClientMethod<$0.RequestServiceLog, $0.Response>(
-          '/clog.CLogService/ServiceLog',
+          '/clog_svc.CLogService/ServiceLog',
           ($0.RequestServiceLog value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
   static final _$infoLog = $grpc.ClientMethod<$0.RequestInfoLog, $0.Response>(
-      '/clog.CLogService/InfoLog',
+      '/clog_svc.CLogService/InfoLog',
       ($0.RequestInfoLog value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
+  static final _$dbqLog = $grpc.ClientMethod<$0.RequestDbqLog, $0.Response>(
+      '/clog_svc.CLogService/DbqLog',
+      ($0.RequestDbqLog value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
 
   CLogServiceClient($grpc.ClientChannel channel,
@@ -38,10 +42,15 @@ class CLogServiceClient extends $grpc.Client {
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$infoLog, request, options: options);
   }
+
+  $grpc.ResponseFuture<$0.Response> dbqLog($0.RequestDbqLog request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$dbqLog, request, options: options);
+  }
 }
 
 abstract class CLogServiceBase extends $grpc.Service {
-  $core.String get $name => 'clog.CLogService';
+  $core.String get $name => 'clog_svc.CLogService';
 
   CLogServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.RequestServiceLog, $0.Response>(
@@ -58,6 +67,13 @@ abstract class CLogServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.RequestInfoLog.fromBuffer(value),
         ($0.Response value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.RequestDbqLog, $0.Response>(
+        'DbqLog',
+        dbqLog_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.RequestDbqLog.fromBuffer(value),
+        ($0.Response value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Response> serviceLog_Pre($grpc.ServiceCall call,
@@ -70,8 +86,15 @@ abstract class CLogServiceBase extends $grpc.Service {
     return infoLog(call, await request);
   }
 
+  $async.Future<$0.Response> dbqLog_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.RequestDbqLog> request) async {
+    return dbqLog(call, await request);
+  }
+
   $async.Future<$0.Response> serviceLog(
       $grpc.ServiceCall call, $0.RequestServiceLog request);
   $async.Future<$0.Response> infoLog(
       $grpc.ServiceCall call, $0.RequestInfoLog request);
+  $async.Future<$0.Response> dbqLog(
+      $grpc.ServiceCall call, $0.RequestDbqLog request);
 }

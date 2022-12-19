@@ -23,7 +23,6 @@ generate-proto-golang:
 	@protoc --go_out=. --go-grpc_out=. ./proto/*.proto
 
 docker-build:
-	@taodev:clog-1.0.0 || true
 	@docker build --no-cache -f Dockerfile -t taodev:clog-1.0.0 .
 
 clean:
