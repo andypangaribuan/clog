@@ -12,7 +12,7 @@ dependencies:
   grpc: ^3.1.0
   protobuf: ^2.1.0
   
-  fdation: ^1.0.6
+  fdation: ^1.0.7
   # fdation:
   #   path: /Users/apangaribuan/repo/github/fdation
   

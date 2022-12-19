@@ -17,8 +17,11 @@ Future<Response> infoLogHandler(RequestInfoLog req) async {
     return Response(status: 'failed', message: 'found error | $err');
   }
 
+  final id = fd.func.generateUniqueId();
+
   final entity = InfoLogEntity(
-    id: req.id,
+    id: id,
+    uid: req.uid,
     svcName: req.svcName,
     svcParent: req.svcParent.val,
     message: req.message,

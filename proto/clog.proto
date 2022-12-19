@@ -8,14 +8,14 @@
 
 syntax = "proto3";
 
-package clog;
+package clog_svc;
 
 option java_multiple_files = true;
 option java_package = "io.grpc.examples.helloworld";
 option java_outer_classname = "HelloWorldProto";
 option objc_class_prefix = "HLW";
 
-option go_package = "proto/generated/clog";
+option go_package = "proto/generated/clog-svc";
 
 // import "google/protobuf/struct.proto";
 import "google/protobuf/wrappers.proto";
@@ -35,7 +35,7 @@ message Response {
 
 
 message RequestServiceLog {
-  string id = 1;
+  string uid = 1;
   string svcName = 2;
   google.protobuf.StringValue svcParent = 3;
   google.protobuf.StringValue message = 4;
@@ -44,7 +44,7 @@ message RequestServiceLog {
   string function = 7;
   google.protobuf.StringValue reqHeader = 8;
   google.protobuf.StringValue reqBody = 9;
-  google.protobuf.StringValue reqPar = 10;
+  google.protobuf.StringValue reqParam = 10;
   google.protobuf.StringValue resData = 11;
   google.protobuf.Int32Value resCode = 12;
   google.protobuf.StringValue data = 13;
@@ -57,7 +57,7 @@ message RequestServiceLog {
 
 
 message RequestInfoLog {
-  string id = 1;
+  string uid = 1;
   string svcName = 2;
   google.protobuf.StringValue svcParent = 3;
   string message = 4;

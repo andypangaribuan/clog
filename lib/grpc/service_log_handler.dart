@@ -21,8 +21,11 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
     return Response(status: 'failed', message: 'found error | $err');
   }
 
+  final id = fd.func.generateUniqueId();
+
   final entity = ServiceLogEntity(
-    id: req.id,
+    id: id,
+    uid: req.uid,
     svcName: req.svcName,
     svcParent: req.svcParent.val,
     message: req.message.val,
@@ -31,7 +34,7 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
     function: req.function,
     reqHeader: req.reqHeader.val,
     reqBody: req.reqBody.val,
-    reqPar: req.reqPar.val,
+    reqPar: req.reqParam.val,
     resData: req.resData.val,
     resCode: req.resCode.val,
     data: req.data.val,

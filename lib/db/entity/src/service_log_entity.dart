@@ -8,6 +8,7 @@
 
 class ServiceLogEntity {
   String id;
+  String uid;
   String svcName;
   String? svcParent;
   String? message;
@@ -29,6 +30,7 @@ class ServiceLogEntity {
 
   ServiceLogEntity({
     required this.id,
+    required this.uid,
     required this.svcName,
     this.svcParent,
     this.message,

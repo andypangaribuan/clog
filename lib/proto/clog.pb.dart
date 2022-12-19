@@ -74,7 +74,7 @@ class Response extends $pb.GeneratedMessage {
 
 class RequestServiceLog extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestServiceLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'clog'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
     ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
     ..aOM<$1.StringValue>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $1.StringValue.create)
@@ -83,7 +83,7 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
     ..aOM<$1.StringValue>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqHeader', protoName: 'reqHeader', subBuilder: $1.StringValue.create)
     ..aOM<$1.StringValue>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqBody', protoName: 'reqBody', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqPar', protoName: 'reqPar', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqParam', protoName: 'reqParam', subBuilder: $1.StringValue.create)
     ..aOM<$1.StringValue>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resData', protoName: 'resData', subBuilder: $1.StringValue.create)
     ..aOM<$1.Int32Value>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resCode', protoName: 'resCode', subBuilder: $1.Int32Value.create)
     ..aOM<$1.StringValue>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', subBuilder: $1.StringValue.create)
@@ -97,7 +97,7 @@ class RequestServiceLog extends $pb.GeneratedMessage {
 
   RequestServiceLog._() : super();
   factory RequestServiceLog({
-    $core.String? id,
+    $core.String? uid,
     $core.String? svcName,
     $1.StringValue? svcParent,
     $1.StringValue? message,
@@ -106,7 +106,7 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     $core.String? function,
     $1.StringValue? reqHeader,
     $1.StringValue? reqBody,
-    $1.StringValue? reqPar,
+    $1.StringValue? reqParam,
     $1.StringValue? resData,
     $1.Int32Value? resCode,
     $1.StringValue? data,
@@ -117,8 +117,8 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     $core.String? createdAt,
   }) {
     final _result = create();
-    if (id != null) {
-      _result.id = id;
+    if (uid != null) {
+      _result.uid = uid;
     }
     if (svcName != null) {
       _result.svcName = svcName;
@@ -144,8 +144,8 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     if (reqBody != null) {
       _result.reqBody = reqBody;
     }
-    if (reqPar != null) {
-      _result.reqPar = reqPar;
+    if (reqParam != null) {
+      _result.reqParam = reqParam;
     }
     if (resData != null) {
       _result.resData = resData;
@@ -195,13 +195,13 @@ class RequestServiceLog extends $pb.GeneratedMessage {
   static RequestServiceLog? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get uid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set uid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasUid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get svcName => $_getSZ(1);
@@ -284,15 +284,15 @@ class RequestServiceLog extends $pb.GeneratedMessage {
   $1.StringValue ensureReqBody() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $1.StringValue get reqPar => $_getN(9);
+  $1.StringValue get reqParam => $_getN(9);
   @$pb.TagNumber(10)
-  set reqPar($1.StringValue v) { setField(10, v); }
+  set reqParam($1.StringValue v) { setField(10, v); }
   @$pb.TagNumber(10)
-  $core.bool hasReqPar() => $_has(9);
+  $core.bool hasReqParam() => $_has(9);
   @$pb.TagNumber(10)
-  void clearReqPar() => clearField(10);
+  void clearReqParam() => clearField(10);
   @$pb.TagNumber(10)
-  $1.StringValue ensureReqPar() => $_ensure(9);
+  $1.StringValue ensureReqParam() => $_ensure(9);
 
   @$pb.TagNumber(11)
   $1.StringValue get resData => $_getN(10);
@@ -379,7 +379,7 @@ class RequestServiceLog extends $pb.GeneratedMessage {
 
 class RequestInfoLog extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestInfoLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'clog'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
     ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
@@ -393,7 +393,7 @@ class RequestInfoLog extends $pb.GeneratedMessage {
 
   RequestInfoLog._() : super();
   factory RequestInfoLog({
-    $core.String? id,
+    $core.String? uid,
     $core.String? svcName,
     $1.StringValue? svcParent,
     $core.String? message,
@@ -404,8 +404,8 @@ class RequestInfoLog extends $pb.GeneratedMessage {
     $core.String? createdAt,
   }) {
     final _result = create();
-    if (id != null) {
-      _result.id = id;
+    if (uid != null) {
+      _result.uid = uid;
     }
     if (svcName != null) {
       _result.svcName = svcName;
@@ -455,13 +455,13 @@ class RequestInfoLog extends $pb.GeneratedMessage {
   static RequestInfoLog? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get uid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set uid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasUid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get svcName => $_getSZ(1);

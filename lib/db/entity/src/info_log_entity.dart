@@ -8,6 +8,7 @@
 
 class InfoLogEntity {
   String id;
+  String uid;
   String svcName;
   String? svcParent;
   String message;
@@ -19,6 +20,7 @@ class InfoLogEntity {
 
   InfoLogEntity({
     required this.id,
+    required this.uid,
     required this.svcName,
     this.svcParent,
     required this.message,

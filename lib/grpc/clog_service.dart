@@ -13,6 +13,7 @@ import 'package:clog/db/entity/src/service_log_entity.dart';
 import 'package:clog/db/repo/repo.dart';
 import 'package:clog/proto/clog.pbgrpc.dart';
 import 'package:clog/proto/extension.dart';
+import 'package:fdation/fdation.dart';
 import 'package:grpc/grpc.dart' as grpc;
 
 part 'info_log_handler.dart';
