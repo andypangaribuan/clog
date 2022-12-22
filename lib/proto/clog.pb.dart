@@ -89,9 +89,10 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     ..aOM<$1.StringValue>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', subBuilder: $1.StringValue.create)
     ..aOM<$1.StringValue>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: $1.StringValue.create)
     ..aOM<$1.StringValue>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stackTrace', protoName: 'stackTrace', subBuilder: $1.StringValue.create)
-    ..aOS(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startAt', protoName: 'startAt')
-    ..aOS(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishAt', protoName: 'finishAt')
-    ..aOS(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
+    ..aOS(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientIP', protoName: 'clientIP')
+    ..aOS(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startAt', protoName: 'startAt')
+    ..aOS(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishAt', protoName: 'finishAt')
+    ..aOS(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..hasRequiredFields = false
   ;
 
@@ -112,6 +113,7 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     $1.StringValue? data,
     $1.StringValue? error,
     $1.StringValue? stackTrace,
+    $core.String? clientIP,
     $core.String? startAt,
     $core.String? finishAt,
     $core.String? createdAt,
@@ -161,6 +163,9 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     }
     if (stackTrace != null) {
       _result.stackTrace = stackTrace;
+    }
+    if (clientIP != null) {
+      _result.clientIP = clientIP;
     }
     if (startAt != null) {
       _result.startAt = startAt;
@@ -350,31 +355,40 @@ class RequestServiceLog extends $pb.GeneratedMessage {
   $1.StringValue ensureStackTrace() => $_ensure(14);
 
   @$pb.TagNumber(16)
-  $core.String get startAt => $_getSZ(15);
+  $core.String get clientIP => $_getSZ(15);
   @$pb.TagNumber(16)
-  set startAt($core.String v) { $_setString(15, v); }
+  set clientIP($core.String v) { $_setString(15, v); }
   @$pb.TagNumber(16)
-  $core.bool hasStartAt() => $_has(15);
+  $core.bool hasClientIP() => $_has(15);
   @$pb.TagNumber(16)
-  void clearStartAt() => clearField(16);
+  void clearClientIP() => clearField(16);
 
   @$pb.TagNumber(17)
-  $core.String get finishAt => $_getSZ(16);
+  $core.String get startAt => $_getSZ(16);
   @$pb.TagNumber(17)
-  set finishAt($core.String v) { $_setString(16, v); }
+  set startAt($core.String v) { $_setString(16, v); }
   @$pb.TagNumber(17)
-  $core.bool hasFinishAt() => $_has(16);
+  $core.bool hasStartAt() => $_has(16);
   @$pb.TagNumber(17)
-  void clearFinishAt() => clearField(17);
+  void clearStartAt() => clearField(17);
 
   @$pb.TagNumber(18)
-  $core.String get createdAt => $_getSZ(17);
+  $core.String get finishAt => $_getSZ(17);
   @$pb.TagNumber(18)
-  set createdAt($core.String v) { $_setString(17, v); }
+  set finishAt($core.String v) { $_setString(17, v); }
   @$pb.TagNumber(18)
-  $core.bool hasCreatedAt() => $_has(17);
+  $core.bool hasFinishAt() => $_has(17);
   @$pb.TagNumber(18)
-  void clearCreatedAt() => clearField(18);
+  void clearFinishAt() => clearField(18);
+
+  @$pb.TagNumber(19)
+  $core.String get createdAt => $_getSZ(18);
+  @$pb.TagNumber(19)
+  set createdAt($core.String v) { $_setString(18, v); }
+  @$pb.TagNumber(19)
+  $core.bool hasCreatedAt() => $_has(18);
+  @$pb.TagNumber(19)
+  void clearCreatedAt() => clearField(19);
 }
 
 class RequestInfoLog extends $pb.GeneratedMessage {

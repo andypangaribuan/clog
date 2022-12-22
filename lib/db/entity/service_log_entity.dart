@@ -23,6 +23,7 @@ class ServiceLogEntity {
   String? data;
   String? error;
   String? stackTrace;
+  String clientIP;
   late int durationMs;
   DateTime startAt;
   DateTime finishAt;
@@ -45,6 +46,7 @@ class ServiceLogEntity {
     this.data,
     this.error,
     this.stackTrace,
+    required this.clientIP,
     required this.startAt,
     required this.finishAt,
     required this.createdAt,

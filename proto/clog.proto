@@ -51,9 +51,10 @@ message RequestServiceLog {
   google.protobuf.StringValue data = 13;
   google.protobuf.StringValue error = 14;
   google.protobuf.StringValue stackTrace = 15;
-  string startAt = 16; // RFC3339 MilliSecond
-  string finishAt = 17; // RFC3339 MilliSecond
-  string createdAt = 18; // RFC3339 MilliSecond
+  string clientIP = 16;
+  string startAt = 17; // RFC3339 MilliSecond
+  string finishAt = 18; // RFC3339 MilliSecond
+  string createdAt = 19; // RFC3339 MilliSecond
 }
 
 

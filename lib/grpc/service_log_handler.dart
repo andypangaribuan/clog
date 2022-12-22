@@ -40,6 +40,7 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
     data: req.data.val,
     error: req.error.val,
     stackTrace: req.stackTrace.val,
+    clientIP: req.clientIP,
     startAt: startAt,
     finishAt: finishAt,
     createdAt: createdAt,
