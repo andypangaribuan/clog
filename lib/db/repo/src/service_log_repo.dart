@@ -15,35 +15,37 @@ INSERT INTO service_log
   (id, uid, svc_name, svc_parent, message,
    severity, path, function, req_header, req_body,
    req_par, res_data, res_code, data, error,
-   stack_trace, duration_ms, start_at, finish_at, created_at)
+   stack_trace, client_ip, duration_ms, start_at, finish_at, created_at)
 VALUES
-  (@id, @uid, @svc_name, @svc_parent, @message,
-   @severity, @path, @function, @req_header, @req_body,
-   @req_par, @res_data, @res_code, @data, @error,
-   @stack_trace, @duration_ms, @start_at, @finish_at, @created_at)
+  (@id, @uid, @svcName, @svcParent, @message,
+   @severity, @path, @function, @reqHeader, @reqBody,
+   @reqPar, @resData, @resCode, @data, @error,
+   @stackTrace, @clientIP, @durationMs, @startAt, @finishAt,
+   @createdAt)
 ''';
 
     final pars = {
       'id': e.id,
       'uid': e.uid,
-      'svc_name': e.svcName,
-      'svc_parent': e.svcParent,
+      'svcName': e.svcName,
+      'svcParent': e.svcParent,
       'message': e.message,
       'severity': e.severity,
       'path': e.path,
       'function': e.function,
-      'req_header': e.reqHeader,
-      'req_body': e.reqBody,
-      'req_par': e.reqPar,
-      'res_data': e.resData,
-      'res_code': e.resCode,
+      'reqHeader': e.reqHeader,
+      'reqBody': e.reqBody,
+      'reqPar': e.reqPar,
+      'resData': e.resData,
+      'resCode': e.resCode,
       'data': e.data,
       'error': e.error,
-      'stack_trace': e.stackTrace,
-      'duration_ms': e.durationMs,
-      'start_at': e.startAt,
-      'finish_at': e.finishAt,
-      'created_at': e.createdAt,
+      'stackTrace': e.stackTrace,
+      'clientIP': e.clientIP,
+      'durationMs': e.durationMs,
+      'startAt': e.startAt,
+      'finishAt': e.finishAt,
+      'createdAt': e.createdAt,
     };
 
     return await app.db.execute(sql: sql, pars: pars);
