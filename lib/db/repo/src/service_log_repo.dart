@@ -12,16 +12,17 @@ class _ServiceLogRepo {
   Future<FError> insert(ServiceLogEntity e) async {
     final sql = '''
 INSERT INTO service_log
-  (id, uid, svc_name, svc_parent, message,
-   severity, path, function, req_header, req_body,
-   req_par, res_data, res_code, data, error,
-   stack_trace, client_ip, duration_ms, start_at, finish_at, created_at)
+  (id, uid, svc_name, svc_parent, endpoint,
+   message, severity, path, function, req_header,
+   req_body, req_par, res_data, res_code, data,
+   error, stack_trace, client_ip, duration_ms, start_at,
+   finish_at, created_at)
 VALUES
-  (@id, @uid, @svcName, @svcParent, @message,
-   @severity, @path, @function, @reqHeader, @reqBody,
-   @reqPar, @resData, @resCode, @data, @error,
-   @stackTrace, @clientIP, @durationMs, @startAt, @finishAt,
-   @createdAt)
+  (@id, @uid, @svcName, @svcParent, @endpoint,
+   @message, @severity, @path, @function, @reqHeader,
+   @reqBody, @reqPar, @resData, @resCode, @data,
+   @error, @stackTrace, @clientIP, @durationMs, @startAt,
+   @finishAt, @createdAt)
 ''';
 
     final pars = {
@@ -29,6 +30,7 @@ VALUES
       'uid': e.uid,
       'svcName': e.svcName,
       'svcParent': e.svcParent,
+      'endpoint': e.endpoint,
       'message': e.message,
       'severity': e.severity,
       'path': e.path,

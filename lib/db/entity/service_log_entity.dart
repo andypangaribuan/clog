@@ -11,6 +11,7 @@ class ServiceLogEntity {
   String uid;
   String svcName;
   String? svcParent;
+  String endpoint;
   String? message;
   String severity; // types: info, warning, error
   String path;
@@ -34,6 +35,7 @@ class ServiceLogEntity {
     required this.uid,
     required this.svcName,
     this.svcParent,
+    required this.endpoint,
     this.message,
     required this.severity,
     required this.path,
