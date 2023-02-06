@@ -9,9 +9,13 @@
 class ServiceLogEntity {
   String id;
   String uid;
+  String? userId;
+  String? partnerId;
+  String? xid;
   String svcName;
   String? svcParent;
   String endpoint;
+  String version;
   String? message;
   String severity; // types: info, warning, error
   String path;
@@ -33,9 +37,13 @@ class ServiceLogEntity {
   ServiceLogEntity({
     required this.id,
     required this.uid,
+    this.userId,
+    this.partnerId,
+    this.xid,
     required this.svcName,
     this.svcParent,
     required this.endpoint,
+    required this.version,
     this.message,
     required this.severity,
     required this.path,

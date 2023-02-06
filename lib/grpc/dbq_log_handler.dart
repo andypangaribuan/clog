@@ -26,6 +26,9 @@ Future<Response> dbqLogHandler(RequestDbqLog req) async {
   final entity = DbqLogEntity(
     id: id,
     uid: req.uid,
+    userId: req.userId.val,
+    partnerId: req.partnerId.val,
+    xid: req.xid.val,
     svcName: req.svcName,
     svcParent: req.svcParent.val,
     sqlQuery: req.sqlQuery,

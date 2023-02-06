@@ -12,31 +12,36 @@ class _DbqLogRepo {
   Future<FError> insert(DbqLogEntity e) async {
     final sql = '''
 INSERT INTO dbq_log
-  (id, uid, svc_name, svc_parent, sql_query,
-   sql_pars, severity, path, function, error,
-   stack_trace, duration_ms, start_at, finish_at, created_at)
+  (id, uid, user_id, partner_id, xid,
+   svc_name, svc_parent, sql_query, sql_pars, severity,
+   path, function, error, stack_trace, duration_ms,
+   start_at, finish_at, created_at)
 VALUES
-  (@id, @uid, @svcName, @svcParent, @sqlQuery,
-   @sqlPars, @severity, @path, @function, @error,
-   @stackTrace, @durationMs, @startAt, @finishAt, @createdAt)
+  (@id, @uid, @user_id, @partner_id, @xid,
+   @svc_name, @svc_parent, @sql_query, @sql_pars, @severity,
+   @path, @function, @error, @stack_trace, @duration_ms,
+   @start_at, @finish_at, @created_at)
 ''';
 
     final pars = {
       'id': e.id,
       'uid': e.uid,
-      'svcName': e.svcName,
-      'svcParent': e.svcParent,
-      'sqlQuery': e.sqlQuery,
-      'sqlPars': e.sqlPars,
+      'user_id': e.userId,
+      'partner_id': e.partnerId,
+      'xid': e.xid,
+      'svc_name': e.svcName,
+      'svc_parent': e.svcParent,
+      'sql_query': e.sqlQuery,
+      'sql_pars': e.sqlPars,
       'severity': e.severity,
       'path': e.path,
       'function': e.function,
       'error': e.error,
-      'stackTrace': e.stackTrace,
-      'durationMs': e.durationMs,
-      'startAt': e.startAt,
-      'finishAt': e.finishAt,
-      'createdAt': e.createdAt,
+      'stack_trace': e.stackTrace,
+      'duration_ms': e.durationMs,
+      'start_at': e.startAt,
+      'finish_at': e.finishAt,
+      'created_at': e.createdAt,
     };
 
     return await app.db.execute(sql: sql, pars: pars);

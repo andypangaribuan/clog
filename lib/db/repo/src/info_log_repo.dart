@@ -12,16 +12,21 @@ class _InfoLogRepo {
   Future<FError> insert(InfoLogEntity e) async {
     final sql = '''
 INSERT INTO info_log
-  (id, uid, svc_name, svc_parent, message,
-   severity, path, function, data, created_at)
+  (id, uid, user_id, partner_id, xid,
+   svc_name, svc_parent, message, severity, path,
+   function, data, created_at)
 VALUES
-  (@id, @uid, @svc_name, @svc_parent, @message,
-   @severity, @path, @function, @data, @created_at)
+  (@id, @uid, @user_id, @partner_id, @xid,
+   @svc_name, @svc_parent, @message, @severity, @path, 
+   @function, @data, @created_at)
 ''';
 
     final pars = {
       'id': e.id,
       'uid': e.uid,
+      'user_id': e.userId,
+      'partner_id': e.partnerId,
+      'xid': e.xid,
       'svc_name': e.svcName,
       'svc_parent': e.svcParent,
       'message': e.message,

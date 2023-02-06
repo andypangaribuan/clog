@@ -22,6 +22,9 @@ Future<Response> infoLogHandler(RequestInfoLog req) async {
   final entity = InfoLogEntity(
     id: id,
     uid: req.uid,
+    userId: req.userId.val,
+    partnerId: req.partnerId.val,
+    xid: req.xid.val,
     svcName: req.svcName,
     svcParent: req.svcParent.val,
     message: req.message,

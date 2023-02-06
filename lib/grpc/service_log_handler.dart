@@ -26,9 +26,13 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
   final entity = ServiceLogEntity(
     id: id,
     uid: req.uid,
+    userId: req.userId.val,
+    partnerId: req.partnerId.val,
+    xid: req.xid.val,
     svcName: req.svcName,
     svcParent: req.svcParent.val,
     endpoint: req.endpoint,
+    version: req.version,
     message: req.message.val,
     severity: req.severity.isEmpty ? 'undefined' : req.severity,
     path: req.path,

@@ -75,34 +75,42 @@ class Response extends $pb.GeneratedMessage {
 class RequestServiceLog extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestServiceLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'clog_svc'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
-    ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endpoint')
-    ..aOM<$1.StringValue>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $1.StringValue.create)
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'severity')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
-    ..aOM<$1.StringValue>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqHeader', protoName: 'reqHeader', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqBody', protoName: 'reqBody', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqParam', protoName: 'reqParam', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resData', protoName: 'resData', subBuilder: $1.StringValue.create)
-    ..aOM<$1.Int32Value>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resCode', protoName: 'resCode', subBuilder: $1.Int32Value.create)
-    ..aOM<$1.StringValue>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stackTrace', protoName: 'stackTrace', subBuilder: $1.StringValue.create)
-    ..aOS(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientIP', protoName: 'clientIP')
-    ..aOS(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startAt', protoName: 'startAt')
-    ..aOS(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishAt', protoName: 'finishAt')
-    ..aOS(20, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
+    ..aOM<$1.StringValue>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'partnerId', protoName: 'partnerId', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'xid', subBuilder: $1.StringValue.create)
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
+    ..aOM<$1.StringValue>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endpoint')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
+    ..aOM<$1.StringValue>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $1.StringValue.create)
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'severity')
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
+    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
+    ..aOM<$1.StringValue>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqHeader', protoName: 'reqHeader', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqBody', protoName: 'reqBody', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reqParam', protoName: 'reqParam', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resData', protoName: 'resData', subBuilder: $1.StringValue.create)
+    ..aOM<$1.Int32Value>(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'resCode', protoName: 'resCode', subBuilder: $1.Int32Value.create)
+    ..aOM<$1.StringValue>(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(20, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stackTrace', protoName: 'stackTrace', subBuilder: $1.StringValue.create)
+    ..aOS(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clientIP', protoName: 'clientIP')
+    ..aOS(22, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startAt', protoName: 'startAt')
+    ..aOS(23, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishAt', protoName: 'finishAt')
+    ..aOS(24, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..hasRequiredFields = false
   ;
 
   RequestServiceLog._() : super();
   factory RequestServiceLog({
     $core.String? uid,
+    $1.StringValue? userId,
+    $1.StringValue? partnerId,
+    $1.StringValue? xid,
     $core.String? svcName,
     $1.StringValue? svcParent,
     $core.String? endpoint,
+    $core.String? version,
     $1.StringValue? message,
     $core.String? severity,
     $core.String? path,
@@ -124,6 +132,15 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     if (uid != null) {
       _result.uid = uid;
     }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (partnerId != null) {
+      _result.partnerId = partnerId;
+    }
+    if (xid != null) {
+      _result.xid = xid;
+    }
     if (svcName != null) {
       _result.svcName = svcName;
     }
@@ -132,6 +149,9 @@ class RequestServiceLog extends $pb.GeneratedMessage {
     }
     if (endpoint != null) {
       _result.endpoint = endpoint;
+    }
+    if (version != null) {
+      _result.version = version;
     }
     if (message != null) {
       _result.message = message;
@@ -214,214 +234,262 @@ class RequestServiceLog extends $pb.GeneratedMessage {
   void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get svcName => $_getSZ(1);
+  $1.StringValue get userId => $_getN(1);
   @$pb.TagNumber(2)
-  set svcName($core.String v) { $_setString(1, v); }
+  set userId($1.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSvcName() => $_has(1);
+  $core.bool hasUserId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSvcName() => clearField(2);
+  void clearUserId() => clearField(2);
+  @$pb.TagNumber(2)
+  $1.StringValue ensureUserId() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.StringValue get svcParent => $_getN(2);
+  $1.StringValue get partnerId => $_getN(2);
   @$pb.TagNumber(3)
-  set svcParent($1.StringValue v) { setField(3, v); }
+  set partnerId($1.StringValue v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSvcParent() => $_has(2);
+  $core.bool hasPartnerId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSvcParent() => clearField(3);
+  void clearPartnerId() => clearField(3);
   @$pb.TagNumber(3)
-  $1.StringValue ensureSvcParent() => $_ensure(2);
+  $1.StringValue ensurePartnerId() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $core.String get endpoint => $_getSZ(3);
+  $1.StringValue get xid => $_getN(3);
   @$pb.TagNumber(4)
-  set endpoint($core.String v) { $_setString(3, v); }
+  set xid($1.StringValue v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasEndpoint() => $_has(3);
+  $core.bool hasXid() => $_has(3);
   @$pb.TagNumber(4)
-  void clearEndpoint() => clearField(4);
+  void clearXid() => clearField(4);
+  @$pb.TagNumber(4)
+  $1.StringValue ensureXid() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $1.StringValue get message => $_getN(4);
+  $core.String get svcName => $_getSZ(4);
   @$pb.TagNumber(5)
-  set message($1.StringValue v) { setField(5, v); }
+  set svcName($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasMessage() => $_has(4);
+  $core.bool hasSvcName() => $_has(4);
   @$pb.TagNumber(5)
-  void clearMessage() => clearField(5);
-  @$pb.TagNumber(5)
-  $1.StringValue ensureMessage() => $_ensure(4);
+  void clearSvcName() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get severity => $_getSZ(5);
+  $1.StringValue get svcParent => $_getN(5);
   @$pb.TagNumber(6)
-  set severity($core.String v) { $_setString(5, v); }
+  set svcParent($1.StringValue v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasSeverity() => $_has(5);
+  $core.bool hasSvcParent() => $_has(5);
   @$pb.TagNumber(6)
-  void clearSeverity() => clearField(6);
+  void clearSvcParent() => clearField(6);
+  @$pb.TagNumber(6)
+  $1.StringValue ensureSvcParent() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $core.String get path => $_getSZ(6);
+  $core.String get endpoint => $_getSZ(6);
   @$pb.TagNumber(7)
-  set path($core.String v) { $_setString(6, v); }
+  set endpoint($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasPath() => $_has(6);
+  $core.bool hasEndpoint() => $_has(6);
   @$pb.TagNumber(7)
-  void clearPath() => clearField(7);
+  void clearEndpoint() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.String get function => $_getSZ(7);
+  $core.String get version => $_getSZ(7);
   @$pb.TagNumber(8)
-  set function($core.String v) { $_setString(7, v); }
+  set version($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasFunction() => $_has(7);
+  $core.bool hasVersion() => $_has(7);
   @$pb.TagNumber(8)
-  void clearFunction() => clearField(8);
+  void clearVersion() => clearField(8);
 
   @$pb.TagNumber(9)
-  $1.StringValue get reqHeader => $_getN(8);
+  $1.StringValue get message => $_getN(8);
   @$pb.TagNumber(9)
-  set reqHeader($1.StringValue v) { setField(9, v); }
+  set message($1.StringValue v) { setField(9, v); }
   @$pb.TagNumber(9)
-  $core.bool hasReqHeader() => $_has(8);
+  $core.bool hasMessage() => $_has(8);
   @$pb.TagNumber(9)
-  void clearReqHeader() => clearField(9);
+  void clearMessage() => clearField(9);
   @$pb.TagNumber(9)
-  $1.StringValue ensureReqHeader() => $_ensure(8);
+  $1.StringValue ensureMessage() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $1.StringValue get reqBody => $_getN(9);
+  $core.String get severity => $_getSZ(9);
   @$pb.TagNumber(10)
-  set reqBody($1.StringValue v) { setField(10, v); }
+  set severity($core.String v) { $_setString(9, v); }
   @$pb.TagNumber(10)
-  $core.bool hasReqBody() => $_has(9);
+  $core.bool hasSeverity() => $_has(9);
   @$pb.TagNumber(10)
-  void clearReqBody() => clearField(10);
-  @$pb.TagNumber(10)
-  $1.StringValue ensureReqBody() => $_ensure(9);
+  void clearSeverity() => clearField(10);
 
   @$pb.TagNumber(11)
-  $1.StringValue get reqParam => $_getN(10);
+  $core.String get path => $_getSZ(10);
   @$pb.TagNumber(11)
-  set reqParam($1.StringValue v) { setField(11, v); }
+  set path($core.String v) { $_setString(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasReqParam() => $_has(10);
+  $core.bool hasPath() => $_has(10);
   @$pb.TagNumber(11)
-  void clearReqParam() => clearField(11);
-  @$pb.TagNumber(11)
-  $1.StringValue ensureReqParam() => $_ensure(10);
+  void clearPath() => clearField(11);
 
   @$pb.TagNumber(12)
-  $1.StringValue get resData => $_getN(11);
+  $core.String get function => $_getSZ(11);
   @$pb.TagNumber(12)
-  set resData($1.StringValue v) { setField(12, v); }
+  set function($core.String v) { $_setString(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasResData() => $_has(11);
+  $core.bool hasFunction() => $_has(11);
   @$pb.TagNumber(12)
-  void clearResData() => clearField(12);
-  @$pb.TagNumber(12)
-  $1.StringValue ensureResData() => $_ensure(11);
+  void clearFunction() => clearField(12);
 
   @$pb.TagNumber(13)
-  $1.Int32Value get resCode => $_getN(12);
+  $1.StringValue get reqHeader => $_getN(12);
   @$pb.TagNumber(13)
-  set resCode($1.Int32Value v) { setField(13, v); }
+  set reqHeader($1.StringValue v) { setField(13, v); }
   @$pb.TagNumber(13)
-  $core.bool hasResCode() => $_has(12);
+  $core.bool hasReqHeader() => $_has(12);
   @$pb.TagNumber(13)
-  void clearResCode() => clearField(13);
+  void clearReqHeader() => clearField(13);
   @$pb.TagNumber(13)
-  $1.Int32Value ensureResCode() => $_ensure(12);
+  $1.StringValue ensureReqHeader() => $_ensure(12);
 
   @$pb.TagNumber(14)
-  $1.StringValue get data => $_getN(13);
+  $1.StringValue get reqBody => $_getN(13);
   @$pb.TagNumber(14)
-  set data($1.StringValue v) { setField(14, v); }
+  set reqBody($1.StringValue v) { setField(14, v); }
   @$pb.TagNumber(14)
-  $core.bool hasData() => $_has(13);
+  $core.bool hasReqBody() => $_has(13);
   @$pb.TagNumber(14)
-  void clearData() => clearField(14);
+  void clearReqBody() => clearField(14);
   @$pb.TagNumber(14)
-  $1.StringValue ensureData() => $_ensure(13);
+  $1.StringValue ensureReqBody() => $_ensure(13);
 
   @$pb.TagNumber(15)
-  $1.StringValue get error => $_getN(14);
+  $1.StringValue get reqParam => $_getN(14);
   @$pb.TagNumber(15)
-  set error($1.StringValue v) { setField(15, v); }
+  set reqParam($1.StringValue v) { setField(15, v); }
   @$pb.TagNumber(15)
-  $core.bool hasError() => $_has(14);
+  $core.bool hasReqParam() => $_has(14);
   @$pb.TagNumber(15)
-  void clearError() => clearField(15);
+  void clearReqParam() => clearField(15);
   @$pb.TagNumber(15)
-  $1.StringValue ensureError() => $_ensure(14);
+  $1.StringValue ensureReqParam() => $_ensure(14);
 
   @$pb.TagNumber(16)
-  $1.StringValue get stackTrace => $_getN(15);
+  $1.StringValue get resData => $_getN(15);
   @$pb.TagNumber(16)
-  set stackTrace($1.StringValue v) { setField(16, v); }
+  set resData($1.StringValue v) { setField(16, v); }
   @$pb.TagNumber(16)
-  $core.bool hasStackTrace() => $_has(15);
+  $core.bool hasResData() => $_has(15);
   @$pb.TagNumber(16)
-  void clearStackTrace() => clearField(16);
+  void clearResData() => clearField(16);
   @$pb.TagNumber(16)
-  $1.StringValue ensureStackTrace() => $_ensure(15);
+  $1.StringValue ensureResData() => $_ensure(15);
 
   @$pb.TagNumber(17)
-  $core.String get clientIP => $_getSZ(16);
+  $1.Int32Value get resCode => $_getN(16);
   @$pb.TagNumber(17)
-  set clientIP($core.String v) { $_setString(16, v); }
+  set resCode($1.Int32Value v) { setField(17, v); }
   @$pb.TagNumber(17)
-  $core.bool hasClientIP() => $_has(16);
+  $core.bool hasResCode() => $_has(16);
   @$pb.TagNumber(17)
-  void clearClientIP() => clearField(17);
+  void clearResCode() => clearField(17);
+  @$pb.TagNumber(17)
+  $1.Int32Value ensureResCode() => $_ensure(16);
 
   @$pb.TagNumber(18)
-  $core.String get startAt => $_getSZ(17);
+  $1.StringValue get data => $_getN(17);
   @$pb.TagNumber(18)
-  set startAt($core.String v) { $_setString(17, v); }
+  set data($1.StringValue v) { setField(18, v); }
   @$pb.TagNumber(18)
-  $core.bool hasStartAt() => $_has(17);
+  $core.bool hasData() => $_has(17);
   @$pb.TagNumber(18)
-  void clearStartAt() => clearField(18);
+  void clearData() => clearField(18);
+  @$pb.TagNumber(18)
+  $1.StringValue ensureData() => $_ensure(17);
 
   @$pb.TagNumber(19)
-  $core.String get finishAt => $_getSZ(18);
+  $1.StringValue get error => $_getN(18);
   @$pb.TagNumber(19)
-  set finishAt($core.String v) { $_setString(18, v); }
+  set error($1.StringValue v) { setField(19, v); }
   @$pb.TagNumber(19)
-  $core.bool hasFinishAt() => $_has(18);
+  $core.bool hasError() => $_has(18);
   @$pb.TagNumber(19)
-  void clearFinishAt() => clearField(19);
+  void clearError() => clearField(19);
+  @$pb.TagNumber(19)
+  $1.StringValue ensureError() => $_ensure(18);
 
   @$pb.TagNumber(20)
-  $core.String get createdAt => $_getSZ(19);
+  $1.StringValue get stackTrace => $_getN(19);
   @$pb.TagNumber(20)
-  set createdAt($core.String v) { $_setString(19, v); }
+  set stackTrace($1.StringValue v) { setField(20, v); }
   @$pb.TagNumber(20)
-  $core.bool hasCreatedAt() => $_has(19);
+  $core.bool hasStackTrace() => $_has(19);
   @$pb.TagNumber(20)
-  void clearCreatedAt() => clearField(20);
+  void clearStackTrace() => clearField(20);
+  @$pb.TagNumber(20)
+  $1.StringValue ensureStackTrace() => $_ensure(19);
+
+  @$pb.TagNumber(21)
+  $core.String get clientIP => $_getSZ(20);
+  @$pb.TagNumber(21)
+  set clientIP($core.String v) { $_setString(20, v); }
+  @$pb.TagNumber(21)
+  $core.bool hasClientIP() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearClientIP() => clearField(21);
+
+  @$pb.TagNumber(22)
+  $core.String get startAt => $_getSZ(21);
+  @$pb.TagNumber(22)
+  set startAt($core.String v) { $_setString(21, v); }
+  @$pb.TagNumber(22)
+  $core.bool hasStartAt() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearStartAt() => clearField(22);
+
+  @$pb.TagNumber(23)
+  $core.String get finishAt => $_getSZ(22);
+  @$pb.TagNumber(23)
+  set finishAt($core.String v) { $_setString(22, v); }
+  @$pb.TagNumber(23)
+  $core.bool hasFinishAt() => $_has(22);
+  @$pb.TagNumber(23)
+  void clearFinishAt() => clearField(23);
+
+  @$pb.TagNumber(24)
+  $core.String get createdAt => $_getSZ(23);
+  @$pb.TagNumber(24)
+  set createdAt($core.String v) { $_setString(23, v); }
+  @$pb.TagNumber(24)
+  $core.bool hasCreatedAt() => $_has(23);
+  @$pb.TagNumber(24)
+  void clearCreatedAt() => clearField(24);
 }
 
 class RequestInfoLog extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestInfoLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'clog_svc'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
-    ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'severity')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
-    ..aOM<$1.StringValue>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', subBuilder: $1.StringValue.create)
-    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
+    ..aOM<$1.StringValue>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'partnerId', protoName: 'partnerId', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'xid', subBuilder: $1.StringValue.create)
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
+    ..aOM<$1.StringValue>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'severity')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
+    ..aOM<$1.StringValue>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', subBuilder: $1.StringValue.create)
+    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..hasRequiredFields = false
   ;
 
   RequestInfoLog._() : super();
   factory RequestInfoLog({
     $core.String? uid,
+    $1.StringValue? userId,
+    $1.StringValue? partnerId,
+    $1.StringValue? xid,
     $core.String? svcName,
     $1.StringValue? svcParent,
     $core.String? message,
@@ -434,6 +502,15 @@ class RequestInfoLog extends $pb.GeneratedMessage {
     final _result = create();
     if (uid != null) {
       _result.uid = uid;
+    }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (partnerId != null) {
+      _result.partnerId = partnerId;
+    }
+    if (xid != null) {
+      _result.xid = xid;
     }
     if (svcName != null) {
       _result.svcName = svcName;
@@ -492,103 +569,142 @@ class RequestInfoLog extends $pb.GeneratedMessage {
   void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get svcName => $_getSZ(1);
+  $1.StringValue get userId => $_getN(1);
   @$pb.TagNumber(2)
-  set svcName($core.String v) { $_setString(1, v); }
+  set userId($1.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSvcName() => $_has(1);
+  $core.bool hasUserId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSvcName() => clearField(2);
+  void clearUserId() => clearField(2);
+  @$pb.TagNumber(2)
+  $1.StringValue ensureUserId() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.StringValue get svcParent => $_getN(2);
+  $1.StringValue get partnerId => $_getN(2);
   @$pb.TagNumber(3)
-  set svcParent($1.StringValue v) { setField(3, v); }
+  set partnerId($1.StringValue v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSvcParent() => $_has(2);
+  $core.bool hasPartnerId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSvcParent() => clearField(3);
+  void clearPartnerId() => clearField(3);
   @$pb.TagNumber(3)
-  $1.StringValue ensureSvcParent() => $_ensure(2);
+  $1.StringValue ensurePartnerId() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $core.String get message => $_getSZ(3);
+  $1.StringValue get xid => $_getN(3);
   @$pb.TagNumber(4)
-  set message($core.String v) { $_setString(3, v); }
+  set xid($1.StringValue v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasMessage() => $_has(3);
+  $core.bool hasXid() => $_has(3);
   @$pb.TagNumber(4)
-  void clearMessage() => clearField(4);
+  void clearXid() => clearField(4);
+  @$pb.TagNumber(4)
+  $1.StringValue ensureXid() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $core.String get severity => $_getSZ(4);
+  $core.String get svcName => $_getSZ(4);
   @$pb.TagNumber(5)
-  set severity($core.String v) { $_setString(4, v); }
+  set svcName($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasSeverity() => $_has(4);
+  $core.bool hasSvcName() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSeverity() => clearField(5);
+  void clearSvcName() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get path => $_getSZ(5);
+  $1.StringValue get svcParent => $_getN(5);
   @$pb.TagNumber(6)
-  set path($core.String v) { $_setString(5, v); }
+  set svcParent($1.StringValue v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasPath() => $_has(5);
+  $core.bool hasSvcParent() => $_has(5);
   @$pb.TagNumber(6)
-  void clearPath() => clearField(6);
+  void clearSvcParent() => clearField(6);
+  @$pb.TagNumber(6)
+  $1.StringValue ensureSvcParent() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $core.String get function => $_getSZ(6);
+  $core.String get message => $_getSZ(6);
   @$pb.TagNumber(7)
-  set function($core.String v) { $_setString(6, v); }
+  set message($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasFunction() => $_has(6);
+  $core.bool hasMessage() => $_has(6);
   @$pb.TagNumber(7)
-  void clearFunction() => clearField(7);
+  void clearMessage() => clearField(7);
 
   @$pb.TagNumber(8)
-  $1.StringValue get data => $_getN(7);
+  $core.String get severity => $_getSZ(7);
   @$pb.TagNumber(8)
-  set data($1.StringValue v) { setField(8, v); }
+  set severity($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasData() => $_has(7);
+  $core.bool hasSeverity() => $_has(7);
   @$pb.TagNumber(8)
-  void clearData() => clearField(8);
-  @$pb.TagNumber(8)
-  $1.StringValue ensureData() => $_ensure(7);
+  void clearSeverity() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get createdAt => $_getSZ(8);
+  $core.String get path => $_getSZ(8);
   @$pb.TagNumber(9)
-  set createdAt($core.String v) { $_setString(8, v); }
+  set path($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasCreatedAt() => $_has(8);
+  $core.bool hasPath() => $_has(8);
   @$pb.TagNumber(9)
-  void clearCreatedAt() => clearField(9);
+  void clearPath() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get function => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set function($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasFunction() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearFunction() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $1.StringValue get data => $_getN(10);
+  @$pb.TagNumber(11)
+  set data($1.StringValue v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasData() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearData() => clearField(11);
+  @$pb.TagNumber(11)
+  $1.StringValue ensureData() => $_ensure(10);
+
+  @$pb.TagNumber(12)
+  $core.String get createdAt => $_getSZ(11);
+  @$pb.TagNumber(12)
+  set createdAt($core.String v) { $_setString(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasCreatedAt() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearCreatedAt() => clearField(12);
 }
 
 class RequestDbqLog extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestDbqLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'clog_svc'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
-    ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sqlQuery', protoName: 'sqlQuery')
-    ..aOM<$1.StringValue>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sqlPars', protoName: 'sqlPars', subBuilder: $1.StringValue.create)
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'severity')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
-    ..aOM<$1.StringValue>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: $1.StringValue.create)
-    ..aOM<$1.StringValue>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stackTrace', protoName: 'stackTrace', subBuilder: $1.StringValue.create)
-    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startAt', protoName: 'startAt')
-    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishAt', protoName: 'finishAt')
-    ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
+    ..aOM<$1.StringValue>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'partnerId', protoName: 'partnerId', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'xid', subBuilder: $1.StringValue.create)
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcName', protoName: 'svcName')
+    ..aOM<$1.StringValue>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'svcParent', protoName: 'svcParent', subBuilder: $1.StringValue.create)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sqlQuery', protoName: 'sqlQuery')
+    ..aOM<$1.StringValue>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sqlPars', protoName: 'sqlPars', subBuilder: $1.StringValue.create)
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'severity')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'function')
+    ..aOM<$1.StringValue>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: $1.StringValue.create)
+    ..aOM<$1.StringValue>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stackTrace', protoName: 'stackTrace', subBuilder: $1.StringValue.create)
+    ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startAt', protoName: 'startAt')
+    ..aOS(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'finishAt', protoName: 'finishAt')
+    ..aOS(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..hasRequiredFields = false
   ;
 
   RequestDbqLog._() : super();
   factory RequestDbqLog({
     $core.String? uid,
+    $1.StringValue? userId,
+    $1.StringValue? partnerId,
+    $1.StringValue? xid,
     $core.String? svcName,
     $1.StringValue? svcParent,
     $core.String? sqlQuery,
@@ -605,6 +721,15 @@ class RequestDbqLog extends $pb.GeneratedMessage {
     final _result = create();
     if (uid != null) {
       _result.uid = uid;
+    }
+    if (userId != null) {
+      _result.userId = userId;
+    }
+    if (partnerId != null) {
+      _result.partnerId = partnerId;
+    }
+    if (xid != null) {
+      _result.xid = xid;
     }
     if (svcName != null) {
       _result.svcName = svcName;
@@ -675,119 +800,152 @@ class RequestDbqLog extends $pb.GeneratedMessage {
   void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get svcName => $_getSZ(1);
+  $1.StringValue get userId => $_getN(1);
   @$pb.TagNumber(2)
-  set svcName($core.String v) { $_setString(1, v); }
+  set userId($1.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSvcName() => $_has(1);
+  $core.bool hasUserId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSvcName() => clearField(2);
+  void clearUserId() => clearField(2);
+  @$pb.TagNumber(2)
+  $1.StringValue ensureUserId() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.StringValue get svcParent => $_getN(2);
+  $1.StringValue get partnerId => $_getN(2);
   @$pb.TagNumber(3)
-  set svcParent($1.StringValue v) { setField(3, v); }
+  set partnerId($1.StringValue v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSvcParent() => $_has(2);
+  $core.bool hasPartnerId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSvcParent() => clearField(3);
+  void clearPartnerId() => clearField(3);
   @$pb.TagNumber(3)
-  $1.StringValue ensureSvcParent() => $_ensure(2);
+  $1.StringValue ensurePartnerId() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $core.String get sqlQuery => $_getSZ(3);
+  $1.StringValue get xid => $_getN(3);
   @$pb.TagNumber(4)
-  set sqlQuery($core.String v) { $_setString(3, v); }
+  set xid($1.StringValue v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasSqlQuery() => $_has(3);
+  $core.bool hasXid() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSqlQuery() => clearField(4);
+  void clearXid() => clearField(4);
+  @$pb.TagNumber(4)
+  $1.StringValue ensureXid() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $1.StringValue get sqlPars => $_getN(4);
+  $core.String get svcName => $_getSZ(4);
   @$pb.TagNumber(5)
-  set sqlPars($1.StringValue v) { setField(5, v); }
+  set svcName($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasSqlPars() => $_has(4);
+  $core.bool hasSvcName() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSqlPars() => clearField(5);
-  @$pb.TagNumber(5)
-  $1.StringValue ensureSqlPars() => $_ensure(4);
+  void clearSvcName() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get severity => $_getSZ(5);
+  $1.StringValue get svcParent => $_getN(5);
   @$pb.TagNumber(6)
-  set severity($core.String v) { $_setString(5, v); }
+  set svcParent($1.StringValue v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasSeverity() => $_has(5);
+  $core.bool hasSvcParent() => $_has(5);
   @$pb.TagNumber(6)
-  void clearSeverity() => clearField(6);
+  void clearSvcParent() => clearField(6);
+  @$pb.TagNumber(6)
+  $1.StringValue ensureSvcParent() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $core.String get path => $_getSZ(6);
+  $core.String get sqlQuery => $_getSZ(6);
   @$pb.TagNumber(7)
-  set path($core.String v) { $_setString(6, v); }
+  set sqlQuery($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasPath() => $_has(6);
+  $core.bool hasSqlQuery() => $_has(6);
   @$pb.TagNumber(7)
-  void clearPath() => clearField(7);
+  void clearSqlQuery() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.String get function => $_getSZ(7);
+  $1.StringValue get sqlPars => $_getN(7);
   @$pb.TagNumber(8)
-  set function($core.String v) { $_setString(7, v); }
+  set sqlPars($1.StringValue v) { setField(8, v); }
   @$pb.TagNumber(8)
-  $core.bool hasFunction() => $_has(7);
+  $core.bool hasSqlPars() => $_has(7);
   @$pb.TagNumber(8)
-  void clearFunction() => clearField(8);
+  void clearSqlPars() => clearField(8);
+  @$pb.TagNumber(8)
+  $1.StringValue ensureSqlPars() => $_ensure(7);
 
   @$pb.TagNumber(9)
-  $1.StringValue get error => $_getN(8);
+  $core.String get severity => $_getSZ(8);
   @$pb.TagNumber(9)
-  set error($1.StringValue v) { setField(9, v); }
+  set severity($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasError() => $_has(8);
+  $core.bool hasSeverity() => $_has(8);
   @$pb.TagNumber(9)
-  void clearError() => clearField(9);
-  @$pb.TagNumber(9)
-  $1.StringValue ensureError() => $_ensure(8);
+  void clearSeverity() => clearField(9);
 
   @$pb.TagNumber(10)
-  $1.StringValue get stackTrace => $_getN(9);
+  $core.String get path => $_getSZ(9);
   @$pb.TagNumber(10)
-  set stackTrace($1.StringValue v) { setField(10, v); }
+  set path($core.String v) { $_setString(9, v); }
   @$pb.TagNumber(10)
-  $core.bool hasStackTrace() => $_has(9);
+  $core.bool hasPath() => $_has(9);
   @$pb.TagNumber(10)
-  void clearStackTrace() => clearField(10);
-  @$pb.TagNumber(10)
-  $1.StringValue ensureStackTrace() => $_ensure(9);
+  void clearPath() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.String get startAt => $_getSZ(10);
+  $core.String get function => $_getSZ(10);
   @$pb.TagNumber(11)
-  set startAt($core.String v) { $_setString(10, v); }
+  set function($core.String v) { $_setString(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasStartAt() => $_has(10);
+  $core.bool hasFunction() => $_has(10);
   @$pb.TagNumber(11)
-  void clearStartAt() => clearField(11);
+  void clearFunction() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.String get finishAt => $_getSZ(11);
+  $1.StringValue get error => $_getN(11);
   @$pb.TagNumber(12)
-  set finishAt($core.String v) { $_setString(11, v); }
+  set error($1.StringValue v) { setField(12, v); }
   @$pb.TagNumber(12)
-  $core.bool hasFinishAt() => $_has(11);
+  $core.bool hasError() => $_has(11);
   @$pb.TagNumber(12)
-  void clearFinishAt() => clearField(12);
+  void clearError() => clearField(12);
+  @$pb.TagNumber(12)
+  $1.StringValue ensureError() => $_ensure(11);
 
   @$pb.TagNumber(13)
-  $core.String get createdAt => $_getSZ(12);
+  $1.StringValue get stackTrace => $_getN(12);
   @$pb.TagNumber(13)
-  set createdAt($core.String v) { $_setString(12, v); }
+  set stackTrace($1.StringValue v) { setField(13, v); }
   @$pb.TagNumber(13)
-  $core.bool hasCreatedAt() => $_has(12);
+  $core.bool hasStackTrace() => $_has(12);
   @$pb.TagNumber(13)
-  void clearCreatedAt() => clearField(13);
+  void clearStackTrace() => clearField(13);
+  @$pb.TagNumber(13)
+  $1.StringValue ensureStackTrace() => $_ensure(12);
+
+  @$pb.TagNumber(14)
+  $core.String get startAt => $_getSZ(13);
+  @$pb.TagNumber(14)
+  set startAt($core.String v) { $_setString(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasStartAt() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearStartAt() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.String get finishAt => $_getSZ(14);
+  @$pb.TagNumber(15)
+  set finishAt($core.String v) { $_setString(14, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasFinishAt() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearFinishAt() => clearField(15);
+
+  @$pb.TagNumber(16)
+  $core.String get createdAt => $_getSZ(15);
+  @$pb.TagNumber(16)
+  set createdAt($core.String v) { $_setString(15, v); }
+  @$pb.TagNumber(16)
+  $core.bool hasCreatedAt() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearCreatedAt() => clearField(16);
 }
 
