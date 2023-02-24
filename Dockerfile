@@ -18,6 +18,9 @@ FROM alpine:3.17.0
 RUN apk add --no-cache tzdata
 ENV TZ=Asia/Jakarta
 
+ARG APP_VERSION=latest
+ENV APP_VERSION=${APP_VERSION}
+
 COPY --from=build /runtime/ /
 COPY --from=build /app/bin/server /app/bin/
 

@@ -2,16 +2,16 @@ version: '3.8'
 
 services:
   clog:
-    container_name: taodev-clog
-    image: taodev:clog-1.0.0
+    container_name: clog
+    image: gcd:clog-1.0.6
     restart: always
     ports:
       - "8087:8087"
       - "8077:8077"
     networks:
-      - taodev-net
+      - gcd-net
     env_file: local.env
 
 networks:
-  taodev-net:
+  gcd-net:
     external: true

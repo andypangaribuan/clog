@@ -11,6 +11,7 @@ part of app_lib;
 class _AppEnv extends AbsAppEnv {
   _AppEnv() {
     appName = 'clog';
+    appVersion = fd.env.get<String>('APP_VERSION', defaultValue: 'unknown')!;
     appRestPort = fd.env.get<int>('APP_REST_PORT')!;
     appGrpcPort = fd.env.get<int>('APP_GRPC_PORT')!;
 

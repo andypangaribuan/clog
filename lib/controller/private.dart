@@ -13,6 +13,7 @@ import 'package:fdark/fdark.dart';
 import 'package:fdation/fdation.dart';
 
 part 'private/get_app_name_handler.dart';
+part 'private/get_app_version_handler.dart';
 part 'private/get_server_time_handler.dart';
 
 class PrivateController {
@@ -21,5 +22,6 @@ class PrivateController {
   PrivateController._();
 
   FFuseHandler get getAppName => () => _GetAppNameHandler();
+  FFuseHandler get getAppVersion => () => _GetAppVersionHandler();
   FFuseHandler get getServerTime => () => _GetServerTimeHandler();
 }

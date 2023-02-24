@@ -1,3 +1,5 @@
+APP_VERSION=$(shell cat app-version)
+
 all: help
 
 help:
@@ -23,9 +25,12 @@ generate-proto-golang:
 	@protoc --go_out=. --go-grpc_out=. ./proto/*.proto
 
 docker-build:
-	@docker build --no-cache -f Dockerfile -t taodev:clog-1.0.0 .
+	@docker build --no-cache \
+		-f Dockerfile \
+		--build-arg APP_VERSION=${APP_VERSION} \
+		-t gcd:clog-${APP_VERSION} .
 
 clean:
-	@docker stop taodev-clog || true
-	@docker rm taodev-clog || true
-	@docker rmi taodev:clog-1.0.0 || true
+	@docker stop clog || true
+	@docker rm clog || true
+	@docker rmi gcd:clog-${APP_VERSION} || true

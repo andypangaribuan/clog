@@ -8,6 +8,7 @@
 
 abstract class AbsAppEnv {
   late final String appName;
+  late final String appVersion;
   late final int appRestPort;
   late final int appGrpcPort;
 
