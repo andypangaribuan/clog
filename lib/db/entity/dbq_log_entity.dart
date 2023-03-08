@@ -13,6 +13,7 @@ class DbqLogEntity {
   String? partnerId;
   String? xid;
   String svcName;
+  String svcVersion;
   String? svcParent;
   String sqlQuery;
   String? sqlPars;
@@ -33,6 +34,7 @@ class DbqLogEntity {
     this.partnerId,
     this.xid,
     required this.svcName,
+    required this.svcVersion,
     this.svcParent,
     required this.sqlQuery,
     this.sqlPars,

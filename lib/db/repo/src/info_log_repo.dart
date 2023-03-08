@@ -13,12 +13,12 @@ class _InfoLogRepo {
     final sql = '''
 INSERT INTO info_log
   (id, uid, user_id, partner_id, xid,
-   svc_name, svc_parent, message, severity, path,
-   function, data, created_at)
+   svc_name, svc_version, svc_parent, message, severity,
+   path, function, data, created_at)
 VALUES
   (@id, @uid, @user_id, @partner_id, @xid,
-   @svc_name, @svc_parent, @message, @severity, @path, 
-   @function, @data, @created_at)
+   @svc_name, @svc_version, @svc_parent, @message, @severity,
+   @path, @function, @data, @created_at)
 ''';
 
     final pars = {
@@ -28,6 +28,7 @@ VALUES
       'partner_id': e.partnerId,
       'xid': e.xid,
       'svc_name': e.svcName,
+      'svc_version': e.svcVersion,
       'svc_parent': e.svcParent,
       'message': e.message,
       'severity': e.severity,

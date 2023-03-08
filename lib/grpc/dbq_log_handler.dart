@@ -30,6 +30,7 @@ Future<Response> dbqLogHandler(RequestDbqLog req) async {
     partnerId: req.partnerId.val,
     xid: req.xid.val,
     svcName: req.svcName,
+    svcVersion: req.svcVersion,
     svcParent: req.svcParent.val,
     sqlQuery: req.sqlQuery,
     sqlPars: req.sqlPars.val,

@@ -30,6 +30,7 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
     partnerId: req.partnerId.val,
     xid: req.xid.val,
     svcName: req.svcName,
+    svcVersion: req.svcVersion,
     svcParent: req.svcParent.val,
     endpoint: req.endpoint,
     version: req.version,

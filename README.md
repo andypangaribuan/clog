@@ -11,6 +11,19 @@ Sample
 curl -s localhost:8087/private/server-time | jq
 ```
 
+Build docker image
+
+```sh
+VER=1.0.7 \
+rm -rf clog && \
+docker rmi gcd:clog-$VER || true && \
+git clone --depth 1 --branch v$VER https://github.com/andypangaribuan/clog.git && \
+cd clog && \
+make docker-build && \
+cd .. && \
+rm -rf clog
+```
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/treasuryid/service/connect/-/tags).

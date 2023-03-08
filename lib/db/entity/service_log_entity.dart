@@ -13,6 +13,7 @@ class ServiceLogEntity {
   String? partnerId;
   String? xid;
   String svcName;
+  String svcVersion;
   String? svcParent;
   String endpoint;
   String version;
@@ -41,6 +42,7 @@ class ServiceLogEntity {
     this.partnerId,
     this.xid,
     required this.svcName,
+    required this.svcVersion,
     this.svcParent,
     required this.endpoint,
     required this.version,

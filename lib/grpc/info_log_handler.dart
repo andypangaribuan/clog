@@ -26,6 +26,7 @@ Future<Response> infoLogHandler(RequestInfoLog req) async {
     partnerId: req.partnerId.val,
     xid: req.xid.val,
     svcName: req.svcName,
+    svcVersion: req.svcVersion,
     svcParent: req.svcParent.val,
     message: req.message,
     severity: req.severity.isEmpty ? 'undefined' : req.severity,

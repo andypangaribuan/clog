@@ -13,14 +13,14 @@ class _DbqLogRepo {
     final sql = '''
 INSERT INTO dbq_log
   (id, uid, user_id, partner_id, xid,
-   svc_name, svc_parent, sql_query, sql_pars, severity,
-   path, function, error, stack_trace, duration_ms,
-   start_at, finish_at, created_at)
+   svc_name, svc_version, svc_parent, sql_query, sql_pars,
+   severity, path, function, error, stack_trace,
+   duration_ms, start_at, finish_at, created_at)
 VALUES
   (@id, @uid, @user_id, @partner_id, @xid,
-   @svc_name, @svc_parent, @sql_query, @sql_pars, @severity,
-   @path, @function, @error, @stack_trace, @duration_ms,
-   @start_at, @finish_at, @created_at)
+   @svc_name, @svc_version, @svc_parent, @sql_query, @sql_pars,
+   @severity, @path, @function, @error, @stack_trace,
+   @duration_ms, @start_at, @finish_at, @created_at)
 ''';
 
     final pars = {
@@ -30,6 +30,7 @@ VALUES
       'partner_id': e.partnerId,
       'xid': e.xid,
       'svc_name': e.svcName,
+      'svc_version': e.svcVersion,
       'svc_parent': e.svcParent,
       'sql_query': e.sqlQuery,
       'sql_pars': e.sqlPars,

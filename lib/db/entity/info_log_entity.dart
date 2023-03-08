@@ -13,6 +13,7 @@ class InfoLogEntity {
   String? partnerId;
   String? xid;
   String svcName;
+  String svcVersion;
   String? svcParent;
   String message;
   String severity; // types: info, warning, error
@@ -28,6 +29,7 @@ class InfoLogEntity {
     this.partnerId,
     this.xid,
     required this.svcName,
+    required this.svcVersion,
     this.svcParent,
     required this.message,
     required this.severity,
