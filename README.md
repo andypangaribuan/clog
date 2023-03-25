@@ -14,7 +14,7 @@ curl -s localhost:8087/private/server-time | jq
 Build docker image
 
 ```sh
-VER=1.0.7 \
+VER=1.0.8 \
 rm -rf clog && \
 docker rmi gcd:clog-$VER || true && \
 git clone --depth 1 --branch v$VER https://github.com/andypangaribuan/clog.git && \

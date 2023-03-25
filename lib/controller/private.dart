@@ -15,6 +15,7 @@ import 'package:fdation/fdation.dart';
 part 'private/get_app_name_handler.dart';
 part 'private/get_app_version_handler.dart';
 part 'private/get_server_time_handler.dart';
+part 'private/service_check.dart';
 
 class PrivateController {
   static final instance = PrivateController._();
@@ -24,4 +25,5 @@ class PrivateController {
   FFuseHandler get getAppName => () => _GetAppNameHandler();
   FFuseHandler get getAppVersion => () => _GetAppVersionHandler();
   FFuseHandler get getServerTime => () => _GetServerTimeHandler();
+  FFuseHandler get serviceCheck => () => _ServiceCheckHandler();
 }

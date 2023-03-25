@@ -1,0 +1,103 @@
+#!/bin/bash
+
+# Copyright (c) 2022.
+# Created by Andy Pangaribuan. All Rights Reserved.
+#
+# This product is protected by copyright and distributed under
+# licenses restricting copying, distribution and decompilation.
+
+# make executable: $ chmod +x .taskfile
+# make alias:
+# - $ subl ~/.zshrc
+# - add line: alias task="./.taskfile"
+# run with $ task
+
+function help {
+    cat .taskfile | \
+    sed 's/#: space/&\nfunction space {/g' | \
+    grep -B1 -E '^[[:space:]]*([[:alnum:]_]+[[:space:]]*\(\)|function[[:space:]]+[[:alnum:]_]+)' | \
+    sed '/function help {/d' | \
+    sed -r 's/function //' | \
+    sed -r 's/ \{/:/' | \
+    grep -v -- -- | \
+    sed '/^\s*$/d' | \
+    sed 'N;s/\n/###/' | \
+    sed -n 's/^#: \(.*\)###\(.*\):.*/\2###→ \1/p' | \
+    column -t -s '###' | \
+    sed 's/.*→ space.*//g'
+}
+
+appVersion=$(cat app-version)
+
+
+#: update project dependencies
+function pub-get {
+    dart pub get
+}
+
+#: analyzing the project
+function analyze {
+    dart analyze
+}
+
+#: space
+
+#: dart, golang
+function generate-proto {
+    cmds="
+        dart | → | generate proto files for dart\n
+        golang | → | generate proto files for golang"
+
+    case $1 in
+        "") _printTable $cmds ;;
+
+        "dart")
+            protoc --dart_out=grpc:lib/proto -Iproto proto/google/protobuf/wrappers.proto
+            protoc --dart_out=grpc:lib/proto -Iproto proto/clog.proto
+            ;;
+
+        "golang")
+            rm -rf ./proto/generated
+            protoc --go_out=. --go-grpc_out=. ./proto/*.proto
+            ;;
+
+        *) _printTable $cmds ;;
+    esac
+}
+
+#: space
+
+#: build docker image
+function build {
+    docker build --no-cache \
+        -f Dockerfile \
+        --build-arg APP_VERSION=$appVersion \
+        -t gcd:clog-$appVersion .
+}
+
+#: docker cleansing
+function clean {
+    docker stop clog || true
+    docker rm clog || true
+    docker rmi gcd:clog-$appVersion || true
+}
+
+#: space
+
+
+function _printTable {
+    v=""
+    for i in "$*"; do v="$v$i"; done;
+
+    echo -e $v | \
+    sed -e 's/^[[:space:]]*//' | \
+    sed 's/ | /###/g' | \
+    column -t -s '###'
+}
+
+
+# ___ do not change ___
+case $1 in
+"") help ;;
+*) "$@" ;;
+esac

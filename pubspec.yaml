@@ -16,7 +16,7 @@ dependencies:
   # fdation:
   #   path: /Users/apangaribuan/repo/github/fdation
   
-  fdark: ^1.0.5
+  fdark: ^1.0.6
   # fdark:
   #   path: /Users/apangaribuan/repo/github/fdark
 
