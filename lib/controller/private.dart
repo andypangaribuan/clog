@@ -8,6 +8,8 @@
 
 library private_ctrl;
 
+import 'dart:convert';
+
 import 'package:clog/app/app.dart';
 import 'package:fdark/fdark.dart';
 import 'package:fdation/fdation.dart';
@@ -15,7 +17,8 @@ import 'package:fdation/fdation.dart';
 part 'private/get_app_name_handler.dart';
 part 'private/get_app_version_handler.dart';
 part 'private/get_server_time_handler.dart';
-part 'private/service_check.dart';
+part 'private/do_service_check_handler.dart';
+part 'private/get_db_ip_handler.dart';
 
 class PrivateController {
   static final instance = PrivateController._();
@@ -25,5 +28,6 @@ class PrivateController {
   FFuseHandler get getAppName => () => _GetAppNameHandler();
   FFuseHandler get getAppVersion => () => _GetAppVersionHandler();
   FFuseHandler get getServerTime => () => _GetServerTimeHandler();
-  FFuseHandler get serviceCheck => () => _ServiceCheckHandler();
+  FFuseHandler get doServiceCheck => () => _ServiceCheckHandler();
+  FFuseHandler get getDbIp => () => _GetDbIpHandler();
 }

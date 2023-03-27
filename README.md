@@ -24,6 +24,12 @@ cd .. && \
 rm -rf clog
 ```
 
+Use pre-build image from ghcr.io
+
+```text
+docker pull ghcr.io/andypangaribuan/clog:1.0.9
+```
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/treasuryid/service/connect/-/tags).

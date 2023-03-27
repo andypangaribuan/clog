@@ -52,5 +52,6 @@ void _routes(FuseRouter router) {
   router.add("get: /private/app-name", ctrl.private.getAppName);
   router.add("get: /private/app-version", ctrl.private.getAppVersion);
   router.add("get: /private/server-time", ctrl.private.getServerTime);
-  router.add("get: /private/service-check", ctrl.private.serviceCheck);
+  router.add("get: /private/service-check", ctrl.private.doServiceCheck);
+  router.add("get: /private/db-ip", ctrl.private.getDbIp);
 }

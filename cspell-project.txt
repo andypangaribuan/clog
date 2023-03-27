@@ -1,4 +1,5 @@
 # Dictionary for special name on this project
+andypangaribuan
 clog
 fdation
 fdark
@@ -7,3 +8,4 @@ omitempty
 proto
 pbgrpc
 protobuf
+inet
