@@ -56,7 +56,16 @@ Future<Response> serviceLogHandler(RequestServiceLog req) async {
   if (res.isError) {
     final err = res.err == null ? '-' : res.err!.toString();
     final stackTrace = res.stackTrace == null ? '-' : res.stackTrace!.toString();
-    return Response(status: 'failed', message: ':: $err\n:: $stackTrace');
+
+    if (res.err != null) {
+      print(res.err);
+    }
+
+    if (res.stackTrace != null) {
+      print(res.stackTrace);
+    }
+
+    return Response(status: 'failed', message: 'svc :: $err\n:: $stackTrace');
   }
 
   return Response(status: 'success');
