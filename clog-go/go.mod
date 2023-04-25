@@ -3,7 +3,7 @@ module clog
 go 1.19
 
 require (
-	github.com/andypangaribuan/project9 v1.1.36
+	github.com/andypangaribuan/project9 v1.1.37
 	github.com/lib/pq v1.10.5
 	google.golang.org/grpc v1.54.0
 )
@@ -35,4 +35,4 @@ require (
 	google.golang.org/protobuf v1.30.0 // indirect
 )
 
-replace github.com/andypangaribuan/project9 => /Users/apangaribuan/gcd/repo/project9
+// replace github.com/andypangaribuan/project9 => /Users/apangaribuan/gcd/repo/project9

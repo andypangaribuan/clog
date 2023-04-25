@@ -20,7 +20,7 @@ import (
 )
 
 func (slf *CLogCtrl) InfoLog(ctx context.Context, req *clog_svc.RequestInfoLog) (*clog_svc.Response, error) {
-	createdAt, err := p9.Conv.Time.ToTimeRFC333MilliSecond(req.CreatedAt)
+	createdAt, err := p9.Conv.Time.ToTimeRFC3339MilliSecond(req.CreatedAt)
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("failed to convert created_at value as RFC3339 Millisecond time format, req data: %v", req.CreatedAt))
 	}

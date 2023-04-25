@@ -20,17 +20,17 @@ import (
 )
 
 func (slf *CLogCtrl) DbqLog(ctx context.Context, req *clog_svc.RequestDbqLog) (*clog_svc.Response, error) {
-	startAt, err := p9.Conv.Time.ToTimeRFC333MilliSecond(req.StartAt)
+	startAt, err := p9.Conv.Time.ToTimeRFC3339MilliSecond(req.StartAt)
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("failed to convert start_at value as RFC3339 Millisecond time format, req data: %v", req.StartAt))
 	}
 
-	finishAt, err := p9.Conv.Time.ToTimeRFC333MilliSecond(req.FinishAt)
+	finishAt, err := p9.Conv.Time.ToTimeRFC3339MilliSecond(req.FinishAt)
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("failed to convert finish_at value as RFC3339 Millisecond time format, req data: %v", req.FinishAt))
 	}
 
-	createdAt, err := p9.Conv.Time.ToTimeRFC333MilliSecond(req.CreatedAt)
+	createdAt, err := p9.Conv.Time.ToTimeRFC3339MilliSecond(req.CreatedAt)
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("failed to convert created_at value as RFC3339 Millisecond time format, req data: %v", req.CreatedAt))
 	}
