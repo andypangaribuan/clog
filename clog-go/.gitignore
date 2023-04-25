@@ -20,6 +20,8 @@
 # Dependency directories (remove the comment below to include it)
 vendor/
 
+res/
+
 # VS Code IDE
 .vscode/*
 !.vscode/launch.json
