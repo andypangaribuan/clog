@@ -1,0 +1,11 @@
+# from project9
+actenv
+clog
+logc
+psvc
+shopspring
+conv
+datas
+
+
+# Dictionary for special name on this project

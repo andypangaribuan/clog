@@ -1,0 +1,96 @@
+/*
+ * Copyright (c) 2022.
+ * Created by Andy Pangaribuan. All Rights Reserved.
+ *
+ * This product is protected by copyright and distributed under
+ * licenses restricting copying, distribution and decompilation.
+ */
+
+syntax = "proto3";
+
+package clog_svc;
+
+option go_package = "files/proto/generated/clog-svc";
+
+import "google/protobuf/wrappers.proto";
+
+
+
+service CLogService {
+  rpc ServiceLog(RequestServiceLog) returns (Response);
+  rpc InfoLog(RequestInfoLog) returns (Response);
+  rpc DbqLog(RequestDbqLog) returns (Response);
+}
+
+
+message Response {
+  string status = 1;
+  string message = 2;
+}
+
+
+message RequestServiceLog {
+  string uid = 1;
+  google.protobuf.StringValue userId = 2;
+  google.protobuf.StringValue partnerId = 3;
+  google.protobuf.StringValue xid = 4;
+  string svcName = 5;
+  string svcVersion = 6;
+  google.protobuf.StringValue svcParent = 7;
+  string endpoint = 8;
+  string version = 9;
+  google.protobuf.StringValue message = 10;
+  string severity = 11;
+  string path = 12;
+  string function = 13;
+  google.protobuf.StringValue reqHeader = 14;
+  google.protobuf.StringValue reqBody = 15;
+  google.protobuf.StringValue reqParam = 16;
+  google.protobuf.StringValue resData = 17;
+  google.protobuf.Int32Value resCode = 18;
+  google.protobuf.StringValue data = 19;
+  google.protobuf.StringValue error = 20;
+  google.protobuf.StringValue stackTrace = 21;
+  string clientIP = 22;
+  string startAt = 23;   // RFC3339 MilliSecond
+  string finishAt = 24;  // RFC3339 MilliSecond
+  string createdAt = 25; // RFC3339 MilliSecond
+}
+
+
+message RequestInfoLog {
+  string uid = 1;
+  google.protobuf.StringValue userId = 2;
+  google.protobuf.StringValue partnerId = 3;
+  google.protobuf.StringValue xid = 4;
+  string svcName = 5;
+  string svcVersion = 6;
+  google.protobuf.StringValue svcParent = 7;
+  string message = 8;
+  string severity = 9;
+  string path = 10;
+  string function = 11;
+  google.protobuf.StringValue data = 12;
+  string createdAt = 13; // RFC3339 MilliSecond
+}
+
+
+message RequestDbqLog {
+  string uid = 1;
+  google.protobuf.StringValue userId = 2;
+  google.protobuf.StringValue partnerId = 3;
+  google.protobuf.StringValue xid = 4;
+  string svcName = 5;
+  string svcVersion = 6;
+  google.protobuf.StringValue svcParent = 7;
+  string sqlQuery = 8;
+  google.protobuf.StringValue sqlPars = 9;
+  string severity = 10;
+  string path = 11;
+  string function = 12;
+  google.protobuf.StringValue error = 13;
+  google.protobuf.StringValue stackTrace = 14;
+  string startAt = 15;   // RFC3339 MilliSecond
+  string finishAt = 16;  // RFC3339 MilliSecond
+  string createdAt = 17; // RFC3339 MilliSecond
+}

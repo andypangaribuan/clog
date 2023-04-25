@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# Copyright (c) 2022.
+# Created by Andy Pangaribuan. All Rights Reserved.
+#
+# This product is protected by copyright and distributed under
+# licenses restricting copying, distribution and decompilation.
+
+# make executable: $ chmod +x .taskfile
+# make alias:
+# - $ subl ~/.zshrc
+# - add line: alias task="./.taskfile"
+# run with $ task
+
+function help {
+    cat .taskfile | \
+    sed 's/#: space/&\nfunction space {/g' | \
+    grep -B1 -E '^[[:space:]]*([[:alnum:]_]+[[:space:]]*\(\)|function[[:space:]]+[[:alnum:]_]+)' | \
+    sed '/function help {/d' | \
+    sed -r 's/function //' | \
+    sed -r 's/ \{/:/' | \
+    grep -v -- -- | \
+    sed '/^\s*$/d' | \
+    sed 'N;s/\n/###/' | \
+    sed -n 's/^#: \(.*\)###\(.*\):.*/\2###→ \1/p' | \
+    column -t -s '###' | \
+    sed 's/.*→ space.*//g'
+}
+
+
+
+#: generate proto: golang, dart
+function generate-proto {
+    cmds="
+        golang | → | generate proto for golang\n
+        dart | → | generate proto for dart"
+
+    case $1 in
+        "") _printTable $cmds ;;
+
+        "golang")
+            rm -rf $(pwd)/files/proto/generated
+            protoc --go_out=. --go-grpc_out=. ./files/proto/*.proto
+            ;;
+
+        "dart")
+            protoc --dart_out=grpc:lib/proto -Iproto files/proto/google/protobuf/wrappers.proto
+            protoc --dart_out=grpc:lib/proto -Iproto files/proto/clog.proto
+            ;;
+
+        *) _printTable $cmds ;;
+    esac
+}
+
+
+#: space
+
+
+function _printTable {
+    v=""
+    for i in "$*"; do v="$v$i"; done;
+
+    echo -e $v | \
+    sed -e 's/^[[:space:]]*//' | \
+    sed 's/ | /###/g' | \
+    column -t -s '###'
+}
+
+
+# ___ do not change ___
+case $1 in
+"") help ;;
+*) "$@" ;;
+esac

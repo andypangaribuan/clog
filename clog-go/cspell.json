@@ -1,0 +1,23 @@
+// Extension: Code Spell Checker
+{
+    "version": "0.2",
+    "language": "en",
+    "ignorePaths": ["action/languages/languages.go"],
+    "dictionaryDefinitions": [
+      {
+        "name": "project",
+        "path": "./cspell-project.txt",
+        "addWords": true,
+        "scope": ["workspace"]
+      }
+    ],
+    "dictionaries": ["project"],
+    "words": ["treasuryid", "logam", "pratama"],
+    "languageSettings": [
+      {
+        "languageId": "go",
+        "allowCompoundWords": false,
+        "ignoreRegExpList": ["string"]
+      }
+    ]
+}

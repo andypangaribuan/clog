@@ -1,0 +1,72 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.associations": {
+    "action": "stack",
+    "ctrl": "core",
+    "entity": "class",
+    "repo": "pipe",
+    "inmodel": "docs",
+    "resmodel": "meta",
+    "msg": "messages",
+    "files": "scripts"
+  },
+  "files.autoSave": "afterDelay",
+  "debug.toolBarLocation": "docked",
+  "breadcrumbs.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.formatOnPaste": true,
+  "editor.foldingStrategy": "indentation",
+  "errorLens.enabled": true,
+  "errorLens.enabledInMergeConflict": true,
+  "errorLens.enableOnDiffView": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+  "errorLens.severityText": ["ERROR", "WARNING", "INFO", "HINT"],
+  "errorLens.messageBackgroundMode": "line",
+  "dart.lineLength": 120,
+  "[dart]": {
+    "editor.rulers": [120],
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "Dart-Code.dart-code"
+  },
+  "editor.rulers": [120],
+  "fileHeaderComment.parameter": {
+    "*": {
+      "author": "Andy Pangaribuan",
+      "license": [
+        "Copyright (c) ${year}.",
+        " Created by ${author}. All Rights Reserved.",
+        "",
+        " This product is protected by copyright and distributed under",
+        " licenses restricting copying, distribution and decompilation."
+      ]
+    }
+  },
+  "fileHeaderComment.template": {
+    "andypangaribuan": [
+      "${commentbegin}",
+      "${commentprefix} ${license}",
+      "${commentend}"
+    ]
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "apangaribuan",
+    "pangaribuan",
+    "andypangaribuan",
+    "decompilation"
+  ],
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+  "merge-conflict.diffViewPosition": "Current",
+  "git.mergeEditor": true,
+  "rest-client.enableTelemetry": false,
+  "rest-client.previewOption": "full",
+  "rest-client.previewColumn": "beside",
+  "workbench.editor.openSideBySideDirection": "down"
+}
