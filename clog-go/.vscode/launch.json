@@ -10,7 +10,7 @@
             "request": "launch",
             "mode": "debug",
             "program": "main.go",
-            "envFile": "${workspaceFolder}/res/local-prod.env"
+            "envFile": "${workspaceFolder}/res/local-stg.env"
         }
     ]
 }

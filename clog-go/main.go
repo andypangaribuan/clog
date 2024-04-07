@@ -11,7 +11,6 @@ package main
 import (
 	"clog/app"
 	"clog/ctrl"
-	// clog_svcx "clog/files/proto/generated/clog-svcx"
 
 	clog_svc "github.com/andypangaribuan/project9/proto/clog-svc"
 	"github.com/andypangaribuan/project9/server"
@@ -33,5 +32,4 @@ func routes(router server.FuseRouter) {
 
 func register(server *grpc.Server) {
 	clog_svc.RegisterCLogServiceServer(server, ctrl.CLogSvc)
-	// clog_svcx.RegisterCLogServiceServer(server, ctrl.CLogSvc)
 }
