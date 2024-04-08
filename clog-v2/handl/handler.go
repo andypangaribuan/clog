@@ -19,5 +19,5 @@ var (
 )
 
 func init() {
-	Clog = clog.GRPC()
+	Clog = clog.ServiceServer()
 }

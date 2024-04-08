@@ -14,6 +14,6 @@ import (
 	"context"
 )
 
-func (slf *stuClog) InfoLog(context.Context, *sclog.RequestInfoLog) (*sclog.Response, error) {
-	return nil, nil
+func (slf *stuClog) InfoLog(ctx context.Context, req *sclog.RequestInfoLog) (*sclog.Response, error) {
+	return slf.send(nil)
 }

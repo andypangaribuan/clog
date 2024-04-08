@@ -12,5 +12,5 @@ package clog
 import "clog/res/proto/generated/sclog"
 
 type stuClog struct{
-	sclog.UnsafeCLogServiceServer
+	sclog.CLogServiceServer
 }

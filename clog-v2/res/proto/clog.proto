@@ -24,7 +24,7 @@ service CLogService {
 
 
 /*
- * status: enum [ok, error]
+ * status: enum [ok, !ok]
  */
 message Response {
   string status = 1;

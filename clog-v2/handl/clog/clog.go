@@ -9,6 +9,6 @@
 
 package clog
 
-func GRPC() *stuClog {
+func ServiceServer() *stuClog {
 	return new(stuClog)
 }
