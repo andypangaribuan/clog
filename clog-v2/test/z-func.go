@@ -10,15 +10,15 @@
 package test
 
 import (
-	"fmt"
-	"log"
 	"testing"
+
+	"github.com/andypangaribuan/gmod/gm"
 )
 
-func printf(t *testing.T, format string, args ...interface{}) {
-	message := fmt.Sprintf(format, args...)
-	if t != nil {
-		t.Logf(message)
-	}
-	log.Print(message)
+func start(t *testing.T, fn func(t *testing.T)) {
+	gm.Test.Start(t, fn)
+}
+
+func printf(t *testing.T, format string, args ...any) {
+	gm.Test.Printf(t, format, args...)
 }

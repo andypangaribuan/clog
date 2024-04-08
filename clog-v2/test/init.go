@@ -9,8 +9,12 @@
 
 package test
 
-import _ "github.com/andypangaribuan/gmod"
+import (
+	_ "github.com/andypangaribuan/gmod"
+	"github.com/andypangaribuan/gmod/gm"
+)
 
 func init() {
 	loadEnv()
+	gm.Conf.SetTimeZone(env.AppTimezone)
 }

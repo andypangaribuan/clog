@@ -10,7 +10,8 @@
 package test
 
 type stuEnv struct {
-	AppName string
+	AppName     string
+	AppTimezone string
 
 	DbHost string
 	DbPort int

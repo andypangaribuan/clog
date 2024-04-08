@@ -15,17 +15,18 @@ import (
 	"github.com/andypangaribuan/gmod/mol"
 )
 
-func db() {
+func initDb() {
 	conn := mol.DbConnection{
-		AppName:  gm.Util.Env.GetString("APP_NAME"),
-		Host:     gm.Util.Env.GetString("DBW_HOST"),
-		Port:     gm.Util.Env.GetInt("DBW_PORT"),
-		Name:     gm.Util.Env.GetString("DBW_NAME"),
-		Username: gm.Util.Env.GetString("DBW_USER"),
-		Password: gm.Util.Env.GetString("DBW_PASS"),
+		AppName: gm.Util.Env.GetString("APP_NAME"),
+
+		Host:     gm.Util.Env.GetString("DB_HOST"),
+		Port:     gm.Util.Env.GetInt("DB_PORT"),
+		Name:     gm.Util.Env.GetString("DB_NAME"),
+		Username: gm.Util.Env.GetString("DB_USER"),
+		Password: gm.Util.Env.GetString("DB_PASS"),
 
 		PrintSql: fm.Ptr(gm.Util.Env.GetBool("DB_PRINT_SQL")),
 	}
 
-	_ = gm.Db.Postgres(conn)
+	dbi = gm.Db.Postgres(conn)
 }
