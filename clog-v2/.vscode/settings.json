@@ -55,6 +55,6 @@
   "merge-conflict.diffViewPosition": "Current",
   "git.mergeEditor": true,
   "go.testFlags": ["-v"],
-  "go.testEnvFile": "${workspaceFolder}/test/.env",
+  "go.testEnvFile": "${workspaceFolder}/test/z-local.env",
   "terminal.integrated.scrollback": 1000000,
 }

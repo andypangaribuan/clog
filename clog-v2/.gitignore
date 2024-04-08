@@ -22,3 +22,4 @@ go.work
 
 # miscellaneous
 .DS_Store
+pgdata/
