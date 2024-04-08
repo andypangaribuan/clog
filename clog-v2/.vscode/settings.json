@@ -1,0 +1,60 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.associations": {
+    "abs": "stack",
+    "act": "core",
+    "entity": "class",
+    "repo": "pipe",
+    "inmodel": "docs",
+    "resmodel": "meta",
+    "msg": "messages",
+    "files": "scripts"
+  },
+  "files.autoSave": "afterDelay",
+  "debug.toolBarLocation": "docked",
+  "breadcrumbs.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.formatOnPaste": true,
+  "errorLens.enabled": true,
+  "errorLens.enabledInMergeConflict": true,
+  "errorLens.enableOnDiffView": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+  "errorLens.severityText": ["ERROR", "WARNING", "INFO", "HINT"],
+  "errorLens.messageBackgroundMode": "line",
+  "editor.rulers": [120],
+  "editor.foldingStrategy": "indentation",
+  "fileHeaderComment.parameter": {
+    "*": {
+      "author": "Andy Pangaribuan",
+      "github": "https://github.com/apangaribuan",
+      "license": [
+        "Copyright (c) ${year}.",
+        " Created by ${author} <${github}>.",
+        "",
+        " This product is protected by copyright and distributed under",
+        " licenses restricting copying, distribution and decompilation.",
+        " All Rights Reserved.",
+      ]
+    }
+  },
+  "fileHeaderComment.template": {
+    "*": ["${commentbegin}", "${commentprefix} ${license}", "${commentend}"]
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "apangaribuan",
+    "pangaribuan",
+    "andypangaribuan",
+    "decompilation"
+  ],
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+  "merge-conflict.diffViewPosition": "Current",
+  "git.mergeEditor": true,
+  "go.testFlags": ["-v"],
+  "go.testEnvFile": "${workspaceFolder}/test/.env",
+  "terminal.integrated.scrollback": 1000000,
+}

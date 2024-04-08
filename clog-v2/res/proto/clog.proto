@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2024.
+ * Created by Andy Pangaribuan <https://github.com/apangaribuan>.
+ *
+ * This product is protected by copyright and distributed under
+ * licenses restricting copying, distribution and decompilation.
+ * All Rights Reserved.
+ */
+
+
+syntax = "proto3";
+
+package sclog;
+
+option go_package = "res/proto/generated/sclog";
+
+import "google/protobuf/wrappers.proto";
+
+
+
+service CLogService {
+  rpc InfoLog(RequestInfoLog) returns (Response);
+}
+
+
+/*
+ * status: enum [ok, error]
+ */
+message Response {
+  string status = 1;
+  string message = 2;
+}
+
+
+/*
+ *
+ */
+message RequestInfoLog {
+  string uid = 1;
+  google.protobuf.StringValue userId = 2;
+  google.protobuf.StringValue partnerId = 3;
+  google.protobuf.StringValue xid = 4;
+  string svcName = 5;
+  string svcVersion = 6;
+  google.protobuf.StringValue svcParent = 7;
+  string message = 8;
+  string severity = 9;
+  string path = 10;
+  string function = 11;
+  google.protobuf.StringValue data = 12;
+  string createdAt = 13; // RFC3339 MilliSecond
+}
+

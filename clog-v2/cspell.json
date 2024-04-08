@@ -1,0 +1,14 @@
+// Extension: Code Spell Checker
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaryDefinitions": [
+    {
+      "name": "project",
+      "path": "./cspell-project.txt",
+      "addWords": true,
+      "scope": ["workspace"]
+    }
+  ],
+  "dictionaries": ["project"]
+}
