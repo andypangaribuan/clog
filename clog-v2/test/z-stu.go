@@ -18,4 +18,6 @@ type stuEnv struct {
 	DbName string
 	DbUser string
 	DbPass string
+
+	ClogGrpcAddress string
 }

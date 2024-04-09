@@ -28,5 +28,7 @@ func loadEnv() {
 		DbName: gm.Util.Env.GetString("DB_NAME"),
 		DbUser: gm.Util.Env.GetString("DB_USER"),
 		DbPass: gm.Util.Env.GetString("DB_PASS"),
+
+		ClogGrpcAddress: gm.Util.Env.GetString("CLOG_GRPC_ADDRESS"),
 	}
 }
