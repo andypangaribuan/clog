@@ -12,8 +12,18 @@ package clog
 import (
 	"clog/res/proto/generated/sclog"
 	"context"
+	"fmt"
+
+	"google.golang.org/grpc/metadata"
 )
 
 func (slf *stuClog) InfoLog(ctx context.Context, req *sclog.RequestInfoLog) (*sclog.Response, error) {
+	md, ok := metadata.FromIncomingContext(ctx)
+	if ok {
+		for key, val := range md {
+			fmt.Printf("%v: %v\n", key, val[0])
+		}
+	}
+
 	return slf.send(nil)
 }

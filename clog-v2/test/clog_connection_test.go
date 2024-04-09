@@ -16,11 +16,11 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestGrpcConnection(t *testing.T) {
-	start(t, grpcConnection)
+func TestClogConnection(t *testing.T) {
+	start(t, doTestClogConnection)
 }
 
-func grpcConnection(t *testing.T) {
+func doTestClogConnection(t *testing.T) {
 	_, err := gm.Net.GrpcConnection(env.ClogGrpcAddress)
 	require.Nil(t, err)
 }
