@@ -15,7 +15,7 @@ import (
 )
 
 func init() {
-	gm.Util.Init(initialize)
+	gm.Util.SingleExec(initialize)
 }
 
 func initialize() {

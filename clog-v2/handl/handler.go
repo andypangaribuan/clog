@@ -12,6 +12,8 @@ package handl
 import (
 	"clog/handl/clog"
 	"clog/res/proto/generated/sclog"
+
+	"github.com/andypangaribuan/gmod/gm"
 )
 
 var (
@@ -19,5 +21,9 @@ var (
 )
 
 func init() {
+	gm.Util.SingleExec(initialize)
+}
+
+func initialize() {
 	Clog = clog.ServiceServer()
 }

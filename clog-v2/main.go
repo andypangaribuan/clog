@@ -19,7 +19,6 @@ import (
 )
 
 func main() {
-	// app.Init()
 	repo.Make(app.Db)
 	server.FuseG(app.Env.GrpcPort, grpc)
 }
