@@ -7,13 +7,15 @@
  * All Rights Reserved.
  */
 
-package app
+package repo
 
 import (
-	_ "github.com/andypangaribuan/gmod"
+	"sync"
+
+	"github.com/andypangaribuan/gmod/ice"
 )
 
-func init() {
-	initEnv()
-	initDb()
-}
+var (
+	callbacks []func(dbi ice.DbInstance)
+	mx        sync.Mutex
+)

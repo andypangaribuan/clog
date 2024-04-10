@@ -22,4 +22,4 @@ go.work
 
 # miscellaneous
 .DS_Store
-pgdata/
+res/postgres/data

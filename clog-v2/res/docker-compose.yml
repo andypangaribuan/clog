@@ -7,19 +7,36 @@ networks:
 
 services:
 
+  # clog-db:
+  #   container_name: clog-db
+  #   image: postgres:16.2-alpine3.19
+  #   restart: always
+  #   command: postgres -c 'max_connections=1000'
+  #   networks:
+  #     - clog
+  #   volumes:
+  #     - ./pgdata:/var/lib/postgresql/data
+  #   ports:
+  #     - 6677:5432
+  #   environment:
+  #     PGDATA: ./pgdata
+  #     POSTGRES_USER: cloguser
+  #     POSTGRES_PASSWORD: clogpassword
+  #     POSTGRES_DB: clogdb
+
   clog-db:
     container_name: clog-db
-    image: postgres:16.2-alpine3.19
+    image: ghcr.io/hydradatabase/hydra:14-fdbc04dca1e8aab67308193a717e2ed2fd2a061e
     restart: always
-    command: postgres -c 'max_connections=1000'
     networks:
       - clog
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
     ports:
       - 6677:5432
     environment:
-      PGDATA: ./pgdata
       POSTGRES_USER: cloguser
       POSTGRES_PASSWORD: clogpassword
       POSTGRES_DB: clogdb
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'

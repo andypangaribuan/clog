@@ -10,16 +10,18 @@
 package main
 
 import (
+	_ "clog/db/repo"
+
 	"clog/app"
-	"clog/db/repo"
 	"clog/handl"
 	"clog/res/proto/generated/sclog"
 
+	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/server"
 )
 
 func main() {
-	repo.Make(app.Db)
+	fm.CallOrderedInit()
 	server.FuseG(app.Env.GrpcPort, grpc)
 }
 

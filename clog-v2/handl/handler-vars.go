@@ -7,10 +7,8 @@
  * All Rights Reserved.
  */
 
-package repo
+package handl
 
-import "github.com/andypangaribuan/gmod/ice"
+import "clog/res/proto/generated/sclog"
 
-func Make(db ice.DbInstance) {
-	dbqLog(db)
-}
+var Clog sclog.CLogServiceServer

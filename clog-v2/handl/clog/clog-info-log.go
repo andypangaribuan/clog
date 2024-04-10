@@ -10,6 +10,8 @@
 package clog
 
 import (
+	"clog/db/entity"
+	"clog/db/repo"
 	"clog/res/proto/generated/sclog"
 	"fmt"
 )
@@ -19,5 +21,9 @@ func (slf *stuClog) infoLog(req *sclog.RequestInfoLog, header map[string]string)
 		fmt.Printf("%v: %v\n", key, val)
 	}
 
-	return send(nil)
+	err := repo.DbqLog.Insert(&entity.DbqLog{
+		Uid: req.Uid,
+	})
+
+	return send(err)
 }

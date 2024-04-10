@@ -7,16 +7,25 @@
  * All Rights Reserved.
  */
 
-package handl
+package repo
 
 import (
-	"clog/handl/clog"
+	"clog/app"
 
 	"github.com/andypangaribuan/gmod/fm"
+	"github.com/andypangaribuan/gmod/ice"
 )
 
 func init() {
-	fm.OrderedInit(fm.OrderedLevelService, func() {
-		Clog = clog.ServiceServer()
+	fm.OrderedInit(fm.OrderedLevelRepo, func() {
+		for _, fn := range callbacks {
+			fn(app.Db)
+		}
 	})
+}
+
+func add(callback func(dbi ice.DbInstance)) {
+	mx.Lock()
+	defer mx.Unlock()
+	callbacks = append(callbacks, callback)
 }
