@@ -11,6 +11,7 @@ package main
 
 import (
 	"clog/app"
+	"clog/db/repo"
 	"clog/handl"
 	"clog/res/proto/generated/sclog"
 
@@ -18,6 +19,8 @@ import (
 )
 
 func main() {
+	// app.Init()
+	repo.Make(app.Db)
 	server.FuseG(app.Env.GrpcPort, grpc)
 }
 

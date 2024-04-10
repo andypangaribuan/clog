@@ -7,17 +7,21 @@
  * All Rights Reserved.
  */
 
-package clog
+package repo
 
 import (
-	"clog/res/proto/generated/sclog"
-	"fmt"
+	"clog/db/entity"
+
+	"github.com/andypangaribuan/gmod/core/db"
+	"github.com/andypangaribuan/gmod/ice"
 )
 
-func (slf *stuClog) infoLog(req *sclog.RequestInfoLog, header map[string]string) (*sclog.Response, error) {
-	for key, val := range header {
-		fmt.Printf("%v: %v\n", key, val)
-	}
+var DbqLog *stuDbqLog
 
-	return send(nil)
+type stuDbqLog struct {
+	repo db.Repo[entity.DbqLog]
+}
+
+func dbqLog(db ice.DbInstance) {
+	
 }

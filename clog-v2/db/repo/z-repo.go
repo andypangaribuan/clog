@@ -7,12 +7,10 @@
  * All Rights Reserved.
  */
 
-package clog
+package repo
 
-import (
-	"clog/res/proto/generated/sclog"
-)
+import "github.com/andypangaribuan/gmod/ice"
 
-type stuClog struct {
-	sclog.CLogServiceServer
+func Make(db ice.DbInstance) {
+	dbqLog(db)
 }

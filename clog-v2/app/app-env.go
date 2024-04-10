@@ -11,8 +11,6 @@ package app
 
 import "github.com/andypangaribuan/gmod/gm"
 
-var Env *stuEnv
-
 func initEnv() {
 	Env = &stuEnv{
 		AppName:        gm.Util.Env.GetString("APP_NAME"),

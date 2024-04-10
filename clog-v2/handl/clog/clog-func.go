@@ -14,7 +14,7 @@ import (
 	"fmt"
 )
 
-func (slf *stuClog) send(err error, msg ...string) (*sclog.Response, error) {
+func send(err error, msg ...string) (*sclog.Response, error) {
 	var (
 		status  = "ok"
 		message = ""

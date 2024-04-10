@@ -7,15 +7,11 @@
  * All Rights Reserved.
  */
 
-package clog
+package app
 
-import (
-	"clog/res/proto/generated/sclog"
-	"context"
+import "github.com/andypangaribuan/gmod/ice"
 
-	"github.com/andypangaribuan/gmod/fm"
+var (
+	Db  ice.DbInstance
+	Env *stuEnv
 )
-
-func (slf *stuClog) InfoLog(ctx context.Context, req *sclog.RequestInfoLog) (*sclog.Response, error) {
-	return slf.infoLog(req, fm.GrpcHeader(ctx))
-}

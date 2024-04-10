@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS dbq_log (
     partner_id    VARCHAR(20),
     svc_name      VARCHAR(50)  NOT NULL,
     svc_version   VARCHAR(15)  NOT NULL,
-    sql_query     TEXT,
+    sql_query     TEXT         NOT NULL,
     sql_args      TEXT,
     severity      VARCHAR(10)  NOT NULL,
     exec_path     VARCHAR(500) NOT NULL,

@@ -10,15 +10,19 @@
 package app
 
 import (
-	_ "github.com/andypangaribuan/gmod"
 	"github.com/andypangaribuan/gmod/gm"
+	"github.com/andypangaribuan/gmod/mol"
 )
 
-func init() {
-	gm.Util.Init(initialize)
-}
+func initDb() {
+	conn := mol.DbConnection{
+		AppName:  Env.AppName,
+		Host:     Env.DbHost,
+		Port:     Env.DbPort,
+		Name:     Env.DbName,
+		Username: Env.DbUser,
+		Password: Env.DbPass,
+	}
 
-func initialize() {
-	initEnv()
-	initDb()
+	Db = gm.Db.Postgres(conn)
 }
