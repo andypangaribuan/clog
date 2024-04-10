@@ -10,6 +10,7 @@
 package test
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -32,6 +33,7 @@ func dbCreate(t *testing.T) {
 
 	dbCreateTable(t, parentDir+"/res/sql/table.sql")
 	dbCreateIndex(t, parentDir+"/res/sql/index.sql")
+	dbUpdateColumnar(t)
 }
 
 func dbCreateTable(t *testing.T, filePath string) {
@@ -63,5 +65,18 @@ func dbCreateIndex(t *testing.T, filePath string) {
 			_, err = dbi.Execute(v)
 			require.Nil(t, err)
 		}
+	}
+}
+
+func dbUpdateColumnar(t *testing.T) {
+	cmds := []string{
+		"CREATE EXTENSION IF NOT EXISTS columnar",
+		"ALTER EXTENSION columnar UPDATE",
+		fmt.Sprintf("ALTER DATABASE %v SET default_table_access_method = 'columnar'", env.DbName),
+	}
+
+	for _, cmd := range cmds {
+		_, err := dbi.Execute(cmd)
+		require.Nil(t, err)
 	}
 }
