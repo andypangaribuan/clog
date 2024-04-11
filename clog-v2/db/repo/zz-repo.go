@@ -12,6 +12,7 @@ package repo
 import (
 	"clog/app"
 
+	"github.com/andypangaribuan/gmod/core/db"
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/ice"
 )
@@ -28,4 +29,13 @@ func add(callback func(dbi ice.DbInstance)) {
 	mx.Lock()
 	defer mx.Unlock()
 	callbacks = append(callbacks, callback)
+}
+
+func new[T any](dbi ice.DbInstance, tableName string, columns string, fn func(e *T) []any, opt ...db.RepoOptBuilder) *stuRepo[T] {
+	repo := db.NewRepo[T](dbi, tableName, opt...)
+	repo.SetInsert(columns, fn)
+
+	stu := &stuRepo[T]{repo: repo}
+	stu.xrepo.repo = repo
+	return stu
 }
