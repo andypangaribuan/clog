@@ -11,7 +11,7 @@ package entity
 
 import "time"
 
-type DbqLog struct {
+type DbqLogV1 struct {
 	CreatedAt    time.Time `db:"created_at"`
 	Uid          string    `db:"uid"`
 	UserId       *string   `db:"user_id"`

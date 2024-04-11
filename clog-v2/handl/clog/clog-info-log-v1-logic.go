@@ -13,18 +13,13 @@ import (
 	"clog/db/entity"
 	"clog/db/repo"
 	"clog/res/proto/generated/sclog"
-	"fmt"
 	"time"
 
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
 )
 
-func (slf *stuClog) infoLogV1(req *sclog.RequestInfoLogV1, header map[string]string) (*sclog.Response, error) {
-	for key, val := range header {
-		fmt.Printf("%v: %v\n", key, val)
-	}
-
+func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqLogV1, header map[string]string) (*sclog.Response, error) {
 	var (
 		startedAt  *time.Time
 		finishedAt *time.Time
@@ -38,7 +33,7 @@ func (slf *stuClog) infoLogV1(req *sclog.RequestInfoLogV1, header map[string]str
 		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
 	}
 
-	entity := &entity.DbqLog{
+	e := &entity.DbqLogV1{
 		CreatedAt:    gm.Util.Timenow(),
 		Uid:          req.Uid,
 		UserId:       fm.DirectPbwGet[string](req.UserId),
@@ -59,9 +54,9 @@ func (slf *stuClog) infoLogV1(req *sclog.RequestInfoLogV1, header map[string]str
 		Duration:     duration,
 	}
 
-	entity.StartedAt = fm.Ternary(startedAt == nil, entity.StartedAt, *startedAt)
-	entity.FinishedAt = fm.Ternary(startedAt == nil, entity.FinishedAt, *finishedAt)
+	e.StartedAt = fm.Ternary(startedAt == nil, e.StartedAt, *startedAt)
+	e.FinishedAt = fm.Ternary(startedAt == nil, e.FinishedAt, *finishedAt)
 
-	err = repo.DbqLog.Insert(entity)
+	err = repo.DbqLogV1.Insert(e)
 	return send(err)
 }

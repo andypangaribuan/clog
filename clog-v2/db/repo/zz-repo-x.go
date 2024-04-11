@@ -7,14 +7,14 @@
  * All Rights Reserved.
  */
 
-package ice
+package repo
 
-import (
-	"clog/res/proto/generated/sclog"
-	"context"
-)
+import "github.com/andypangaribuan/gmod/core/db"
 
-type HandlCLog interface {
-	InfoLogV1(context.Context, *sclog.RequestDbqLogV1) (*sclog.Response, error)
-	mustEmbedUnimplementedCLogServiceServer()
+type xrepo[T any] struct {
+	repo db.Repo[T]
+}
+
+func (slf *xrepo[T]) Insert(e *T) error {
+	return slf.repo.XInsert(e)
 }

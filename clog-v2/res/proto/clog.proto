@@ -9,50 +9,70 @@
 
 
 syntax = "proto3";
-
 package sclog;
-
 option go_package = "res/proto/generated/sclog";
-
 import "google/protobuf/wrappers.proto";
 
 
 
 service CLogService {
-  rpc InfoLogV1(RequestInfoLogV1) returns (Response);
+  rpc DbqLogV1(RequestDbqLogV1) returns (Response);
+  rpc ServicePieceLogV1(RequestServicePieceLogV1) returns (Response);
 }
+
 
 
 /*
  * status: enum [ok, !ok]
  */
 message Response {
-  string status = 1;
-  string message = 2;
+  string status   = 1;
+  string message  = 2;
 }
 
 
+
 /*
- * startedAt using RFC3339 MilliSecond
- * finishedAt using RFC3339 MilliSecond
+ * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * finishedAt: format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-message RequestInfoLogV1 {
-  string uid = 1;
-  google.protobuf.StringValue userId = 2;
-  google.protobuf.StringValue partnerId = 3;
-  string svcName = 4;
-  string svcVersion = 5;
-  string sqlQuery = 6;
-  google.protobuf.StringValue sqlArgs = 7;
-  string severity = 8;
-  string execPath = 9;
-  string function = 10;
-  google.protobuf.StringValue errorMessage = 11;
-  google.protobuf.StringValue stackTrace = 12;
-  string host1 = 13;
-  google.protobuf.StringValue host2 = 14;
-  int32 duration1 = 15;
-  google.protobuf.Int32Value duration2 = 16;
-  string startedAt = 17;
-  string finishedAt = 18;
+message RequestDbqLogV1 {
+  string uid                                  = 1;
+  google.protobuf.StringValue userId          = 2;
+  google.protobuf.StringValue partnerId       = 3;
+  string svcName                              = 4;
+  string svcVersion                           = 5;
+  string sqlQuery                             = 6;
+  google.protobuf.StringValue sqlArgs         = 7;
+  string severity                             = 8;
+  string execPath                             = 9;
+  string function                             = 10;
+  google.protobuf.StringValue errorMessage    = 11;
+  google.protobuf.StringValue stackTrace      = 12;
+  string host1                                = 13;
+  google.protobuf.StringValue host2           = 14;
+  int32 duration1                             = 15;
+  google.protobuf.Int32Value duration2        = 16;
+  string startedAt                            = 17;
+  string finishedAt                           = 18;
+}
+
+
+
+/*
+ * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ */
+message RequestServicePieceLogV1 {
+  string uid                              = 1;
+  string svcName                          = 2;
+  string svcVersion                       = 3;
+  string endpoint                         = 4;
+  string url                              = 5;
+  google.protobuf.StringValue reqHeader   = 6;
+  google.protobuf.StringValue reqParam    = 7;
+  google.protobuf.StringValue reqQuery    = 8;
+  google.protobuf.StringValue reqForm     = 9;
+  google.protobuf.StringValue reqBody     = 10;
+  string clientIp                         = 11;
+  string startedAt                        = 12;
 }

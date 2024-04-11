@@ -1,7 +1,7 @@
 /*
  * severity: enum [success, warning, error]
  */
-CREATE TABLE IF NOT EXISTS dbq_log (
+CREATE TABLE IF NOT EXISTS dbq_log_v1 (
     created_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
     uid           VARCHAR(20)  NOT NULL,
     user_id       VARCHAR(20),
@@ -22,4 +22,21 @@ CREATE TABLE IF NOT EXISTS dbq_log (
     duration      INTEGER      NOT NULL,
     started_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
     finished_at   TIMESTAMP(3) WITH TIME ZONE NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS service_piece_log_v1 (
+    created_at  TIMESTAMP(3)  WITH TIME ZONE NOT NULL,
+    uid         VARCHAR(20)   NOT NULL,
+    svc_name    VARCHAR(50)   NOT NULL,
+    svc_version VARCHAR(15)   NOT NULL,
+    endpoint    VARCHAR(1000) NOT NULL,
+    url         VARCHAR(1500) NOT NULL,
+    req_header  VARCHAR(2000),
+    req_param   VARCHAR(2000),
+    req_query   VARCHAR(2000),
+    req_form    VARCHAR(2000),
+    req_body    TEXT,
+    client_ip   VARCHAR(50)   NOT NULL,
+    started_at  TIMESTAMP(3)  WITH TIME ZONE NOT NULL
 );
