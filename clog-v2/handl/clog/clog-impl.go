@@ -16,6 +16,6 @@ import (
 	"github.com/andypangaribuan/gmod/fm"
 )
 
-func (slf *stuClog) InfoLog(ctx context.Context, req *sclog.RequestInfoLog) (*sclog.Response, error) {
-	return slf.infoLog(req, fm.GrpcHeader(ctx))
+func (slf *stuClog) InfoLogV1(ctx context.Context, req *sclog.RequestInfoLogV1) (*sclog.Response, error) {
+	return slf.infoLogV1(req, fm.GrpcHeader(ctx))
 }

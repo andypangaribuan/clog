@@ -15,6 +15,6 @@ import (
 )
 
 type HandlCLog interface {
-	InfoLog(context.Context, *sclog.RequestInfoLog) (*sclog.Response, error)
+	InfoLogV1(context.Context, *sclog.RequestInfoLogV1) (*sclog.Response, error)
 	mustEmbedUnimplementedCLogServiceServer()
 }

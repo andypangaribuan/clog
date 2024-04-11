@@ -19,7 +19,7 @@ import "google/protobuf/wrappers.proto";
 
 
 service CLogService {
-  rpc InfoLog(RequestInfoLog) returns (Response);
+  rpc InfoLogV1(RequestInfoLogV1) returns (Response);
 }
 
 
@@ -33,21 +33,26 @@ message Response {
 
 
 /*
- *
+ * startedAt using RFC3339 MilliSecond
+ * finishedAt using RFC3339 MilliSecond
  */
-message RequestInfoLog {
+message RequestInfoLogV1 {
   string uid = 1;
   google.protobuf.StringValue userId = 2;
   google.protobuf.StringValue partnerId = 3;
-  google.protobuf.StringValue xid = 4;
-  string svcName = 5;
-  string svcVersion = 6;
-  google.protobuf.StringValue svcParent = 7;
-  string message = 8;
-  string severity = 9;
-  string path = 10;
-  string function = 11;
-  google.protobuf.StringValue data = 12;
-  string createdAt = 13; // RFC3339 MilliSecond
+  string svcName = 4;
+  string svcVersion = 5;
+  string sqlQuery = 6;
+  google.protobuf.StringValue sqlArgs = 7;
+  string severity = 8;
+  string execPath = 9;
+  string function = 10;
+  google.protobuf.StringValue errorMessage = 11;
+  google.protobuf.StringValue stackTrace = 12;
+  string host1 = 13;
+  google.protobuf.StringValue host2 = 14;
+  int32 duration1 = 15;
+  google.protobuf.Int32Value duration2 = 16;
+  string startedAt = 17;
+  string finishedAt = 18;
 }
-

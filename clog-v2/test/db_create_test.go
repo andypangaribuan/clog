@@ -32,7 +32,6 @@ func dbCreate(t *testing.T) {
 	parentDir := strings.Join(ls[:len(ls)-1], "/")
 
 	dbCreateTable(t, parentDir+"/res/sql/table.sql")
-	dbCreateIndex(t, parentDir+"/res/sql/index.sql")
 	dbUpdateColumnar(t)
 }
 

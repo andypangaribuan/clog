@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2022.
+# Copyright (c) 2024.
 # Created by Andy Pangaribuan. All Rights Reserved.
 #
 # This product is protected by copyright and distributed under
@@ -28,10 +28,53 @@ function help {
 }
 
 
-#: generate proto: golang, dart
+#: generate proto
 function generate {
   rm -rf $(pwd)/res/proto/generated
   protoc --go_out=. --go-grpc_out=. ./res/proto/*.proto
+}
+
+#: turn on the docker database
+function docker-up {
+  cd res
+  docker-compose up -d
+}
+
+#: turn off the docker database
+function docker-down {
+  cd res
+  docker-compose down
+}
+
+#: clean the docker database
+function docker-clean {
+  cd res
+  docker-compose down
+  rm -rf postgres/data
+  docker-compose up -d
+  sleep 5
+  docker-compose ps -a
+}
+
+#: space
+
+#: execute sql files and configuration
+function sql {
+  PGPASSWORD=clogpassword \
+  PGOPTIONS="-c search_path=public" \
+  psql -h 127.0.0.1 -p 6677 \
+  -U cloguser -d clogdb \
+  <<-EOSQL
+  BEGIN;
+
+  \i res/sql/table.sql
+
+  CREATE EXTENSION IF NOT EXISTS columnar;
+  ALTER EXTENSION columnar UPDATE;
+  ALTER DATABASE clogdb SET default_table_access_method = 'columnar';
+
+  COMMIT;
+EOSQL
 }
 
 #: space

@@ -20,6 +20,6 @@ CREATE TABLE IF NOT EXISTS dbq_log (
     duration1     INTEGER      NOT NULL,
     duration2     INTEGER,
     duration      INTEGER      NOT NULL,
-    started_at    TIMESTAMP(3) NOT NULL,
-    finished_at   TIMESTAMP(3) NOT NULL
+    started_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    finished_at   TIMESTAMP(3) WITH TIME ZONE NOT NULL
 );
