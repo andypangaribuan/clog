@@ -19,7 +19,7 @@ import (
 	"github.com/andypangaribuan/gmod/gm"
 )
 
-func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqLogV1, header map[string]string) (*sclog.Response, error) {
+func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqV1, header map[string]string) (*sclog.Response, error) {
 	var (
 		startedAt  *time.Time
 		finishedAt *time.Time

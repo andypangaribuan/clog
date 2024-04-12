@@ -31,7 +31,7 @@ func doTestClogDbqInfo(t *testing.T) {
 	timenow := gm.Util.Timenow()
 	after := timenow.Add(time.Second * 2)
 
-	req := &sclog.RequestDbqLogV1{
+	req := &sclog.RequestDbqV1{
 		Uid:        gm.Util.UID(),
 		UserId:     &wrapperspb.StringValue{Value: "xyz"},
 		Duration2:  &wrapperspb.Int32Value{Value: 101},
@@ -39,7 +39,7 @@ func doTestClogDbqInfo(t *testing.T) {
 		FinishedAt: gm.Conv.Time.ToStrFull(after),
 	}
 
-	res, err := fm.GrpcCall(c.DbqLogV1, req,
+	res, err := fm.GrpcCall(c.DbqV1, req,
 		map[string]string{
 			"key1": "val1",
 			"key2": "val2",

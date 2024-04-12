@@ -16,10 +16,10 @@ import (
 	"github.com/andypangaribuan/gmod/fm"
 )
 
-func (slf *stuClog) DbqLogV1(ctx context.Context, req *sclog.RequestDbqLogV1) (*sclog.Response, error) {
+func (slf *stuClog) DbqV1(ctx context.Context, req *sclog.RequestDbqV1) (*sclog.Response, error) {
 	return slf.dbqLogV1(req, fm.GrpcHeader(ctx))
 }
 
-func (slf *stuClog) ServicePieceLogV1(ctx context.Context, req *sclog.RequestServicePieceLogV1) (*sclog.Response, error) {
+func (slf *stuClog) ServicePieceV1(ctx context.Context, req *sclog.RequestServicePieceV1) (*sclog.Response, error) {
 	return slf.servicePieceLogV1(req, fm.GrpcHeader(ctx))
 }

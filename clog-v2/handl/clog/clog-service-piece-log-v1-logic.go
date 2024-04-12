@@ -18,7 +18,7 @@ import (
 	"github.com/andypangaribuan/gmod/gm"
 )
 
-func (slf *stuClog) servicePieceLogV1(req *sclog.RequestServicePieceLogV1, header map[string]string) (*sclog.Response, error) {
+func (slf *stuClog) servicePieceLogV1(req *sclog.RequestServicePieceV1, header map[string]string) (*sclog.Response, error) {
 	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
 
 	e := &entity.ServicePieceLogV1{
