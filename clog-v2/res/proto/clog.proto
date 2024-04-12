@@ -16,8 +16,9 @@ import "google/protobuf/wrappers.proto";
 
 
 service CLogService {
-  rpc DbqLogV1(RequestDbqLogV1) returns (Response);
-  rpc ServicePieceLogV1(RequestServicePieceLogV1) returns (Response);
+  rpc DbqV1(RequestDbqV1) returns (Response);
+  rpc ServicePieceV1(RequestServicePieceV1) returns (Response);
+  rpc ServiceV1(RequestServiceV1) returns (Response);
 }
 
 
@@ -36,7 +37,7 @@ message Response {
  * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt: format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-message RequestDbqLogV1 {
+message RequestDbqV1 {
   string uid                                  = 1;
   google.protobuf.StringValue userId          = 2;
   google.protobuf.StringValue partnerId       = 3;
@@ -62,7 +63,7 @@ message RequestDbqLogV1 {
 /*
  * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-message RequestServicePieceLogV1 {
+message RequestServicePieceV1 {
   string uid                              = 1;
   string svcName                          = 2;
   string svcVersion                       = 3;
@@ -75,4 +76,38 @@ message RequestServicePieceLogV1 {
   google.protobuf.StringValue reqBody     = 10;
   string clientIp                         = 11;
   string startedAt                        = 12;
+}
+
+
+
+/*
+ * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * finishedAt: format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ */
+message RequestServiceV1 {
+  string uid                                = 1;
+  google.protobuf.StringValue userId        = 2;
+  google.protobuf.StringValue partnerId     = 3;
+  string svcName                            = 4;
+  string svcVersion                         = 5;
+  google.protobuf.StringValue svcParent     = 6;
+  string endpoint                           = 7;
+  string url                                = 8;
+  string severity                           = 9;
+  string path                               = 10;
+  string function                           = 11;
+  google.protobuf.StringValue reqVersion    = 12;
+  google.protobuf.StringValue reqHeader     = 13;
+  google.protobuf.StringValue reqParam      = 14;
+  google.protobuf.StringValue reqQuery      = 15;
+  google.protobuf.StringValue reqForm       = 16;
+  google.protobuf.StringValue reqBody       = 17;
+  google.protobuf.StringValue resData       = 18;
+  int32 resCode                             = 19;
+  google.protobuf.StringValue errMessage    = 20;
+  google.protobuf.StringValue stackTrace    = 21;
+  string clientIp                           = 22;
+  int32 duration                            = 23;
+  string startedAt                          = 24;
+  string finishedAt                         = 25;
 }
