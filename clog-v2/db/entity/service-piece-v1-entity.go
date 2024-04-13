@@ -11,7 +11,7 @@ package entity
 
 import "time"
 
-type ServicePieceLogV1 struct {
+type ServicePieceV1 struct {
 	CreatedAt  time.Time `db:"created_at"`
 	Uid        string    `db:"uid"`
 	SvcName    string    `db:"svc_name"`

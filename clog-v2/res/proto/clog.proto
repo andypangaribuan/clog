@@ -34,8 +34,9 @@ message Response {
 
 
 /*
- * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
- * finishedAt: format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * severity   : enum [success, warning, error] 
+ * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
 message RequestDbqV1 {
   string uid                                  = 1;
@@ -47,7 +48,7 @@ message RequestDbqV1 {
   google.protobuf.StringValue sqlArgs         = 7;
   string severity                             = 8;
   string execPath                             = 9;
-  string function                             = 10;
+  string execFunction                         = 10;
   google.protobuf.StringValue errorMessage    = 11;
   google.protobuf.StringValue stackTrace      = 12;
   string host1                                = 13;
@@ -64,50 +65,55 @@ message RequestDbqV1 {
  * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
 message RequestServicePieceV1 {
-  string uid                              = 1;
-  string svcName                          = 2;
-  string svcVersion                       = 3;
-  string endpoint                         = 4;
-  string url                              = 5;
-  google.protobuf.StringValue reqHeader   = 6;
-  google.protobuf.StringValue reqParam    = 7;
-  google.protobuf.StringValue reqQuery    = 8;
-  google.protobuf.StringValue reqForm     = 9;
-  google.protobuf.StringValue reqBody     = 10;
-  string clientIp                         = 11;
-  string startedAt                        = 12;
+  string uid                                      = 1;
+  string svcName                                  = 2;
+  string svcVersion                               = 3;
+  google.protobuf.StringValue svcParent           = 4;
+  google.protobuf.StringValue svcParentVersion    = 5;
+  string endpoint                                 = 6;
+  string url                                      = 7;
+  google.protobuf.StringValue reqVersion          = 8;
+  google.protobuf.StringValue reqHeader           = 9;
+  google.protobuf.StringValue reqParam            = 10;
+  google.protobuf.StringValue reqQuery            = 11;
+  google.protobuf.StringValue reqForm             = 12;
+  google.protobuf.StringValue reqBody             = 13;
+  string clientIp                                 = 14;
+  string startedAt                                = 15;
 }
 
 
 
 /*
- * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
- * finishedAt: format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * severity   : server (1xx & 3xx), success (2xx), warning (4xx), error (5xx)
+ * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
 message RequestServiceV1 {
-  string uid                                = 1;
-  google.protobuf.StringValue userId        = 2;
-  google.protobuf.StringValue partnerId     = 3;
-  string svcName                            = 4;
-  string svcVersion                         = 5;
-  google.protobuf.StringValue svcParent     = 6;
-  string endpoint                           = 7;
-  string url                                = 8;
-  string severity                           = 9;
-  string path                               = 10;
-  string function                           = 11;
-  google.protobuf.StringValue reqVersion    = 12;
-  google.protobuf.StringValue reqHeader     = 13;
-  google.protobuf.StringValue reqParam      = 14;
-  google.protobuf.StringValue reqQuery      = 15;
-  google.protobuf.StringValue reqForm       = 16;
-  google.protobuf.StringValue reqBody       = 17;
-  google.protobuf.StringValue resData       = 18;
-  int32 resCode                             = 19;
-  google.protobuf.StringValue errMessage    = 20;
-  google.protobuf.StringValue stackTrace    = 21;
-  string clientIp                           = 22;
-  int32 duration                            = 23;
-  string startedAt                          = 24;
-  string finishedAt                         = 25;
+  string uid                                      = 1;
+  google.protobuf.StringValue userId              = 2;
+  google.protobuf.StringValue partnerId           = 3;
+  string svcName                                  = 4;
+  string svcVersion                               = 5;
+  google.protobuf.StringValue svcParent           = 6;
+  google.protobuf.StringValue svcParentVersion    = 7;
+  string endpoint                                 = 8;
+  string url                                      = 9;
+  string severity                                 = 10;
+  string execPath                                 = 11;
+  string execFunction                             = 12;
+  google.protobuf.StringValue reqVersion          = 13;
+  google.protobuf.StringValue reqHeader           = 14;
+  google.protobuf.StringValue reqParam            = 15;
+  google.protobuf.StringValue reqQuery            = 16;
+  google.protobuf.StringValue reqForm             = 17;
+  google.protobuf.StringValue reqBody             = 18;
+  google.protobuf.StringValue resData             = 19;
+  int32 resCode                                   = 20;
+  google.protobuf.StringValue errMessage          = 21;
+  google.protobuf.StringValue stackTrace          = 22;
+  string clientIp                                 = 23;
+  int32 duration                                  = 24;
+  string startedAt                                = 25;
+  string finishedAt                               = 26;
 }

@@ -21,7 +21,7 @@ import (
 func (slf *stuClog) servicePieceLogV1(req *sclog.RequestServicePieceV1, header map[string]string) (*sclog.Response, error) {
 	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
 
-	e := &entity.ServicePieceLogV1{
+	e := &entity.ServicePieceV1{
 		CreatedAt:  gm.Util.Timenow(),
 		Uid:        req.Uid,
 		SvcName:    req.SvcName,

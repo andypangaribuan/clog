@@ -33,7 +33,7 @@ func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqV1, header map[string]string) 
 		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
 	}
 
-	e := &entity.DbqLogV1{
+	e := &entity.DbqV1{
 		CreatedAt:    gm.Util.Timenow(),
 		Uid:          req.Uid,
 		UserId:       fm.DirectPbwGet[string](req.UserId),

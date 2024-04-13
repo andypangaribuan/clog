@@ -15,17 +15,17 @@ import (
 	"github.com/andypangaribuan/gmod/ice"
 )
 
-var DbqLogV1 *stuRepo[entity.DbqLogV1]
+var DbqLogV1 *stuRepo[entity.DbqV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		DbqLogV1 = new[entity.DbqLogV1](dbi, "dbq_v1", `
+		DbqLogV1 = new[entity.DbqV1](dbi, "dbq_v1", `
 					created_at, uid,
 					user_id, partner_id, svc_name, svc_version, sql_query,
 					sql_args, severity, exec_path, function, error_message,
 					stack_trace, host1, host2, duration1, duration2,
 					duration, started_at, finished_at`,
-			func(e *entity.DbqLogV1) []any {
+			func(e *entity.DbqV1) []any {
 				return []any{
 					e.CreatedAt, e.Uid,
 					e.UserId, e.PartnerId, e.SvcName, e.SvcVersion, e.SqlQuery,
