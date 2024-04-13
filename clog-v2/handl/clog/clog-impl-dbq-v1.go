@@ -19,7 +19,7 @@ import (
 	"github.com/andypangaribuan/gmod/gm"
 )
 
-func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqV1, header map[string]string) (*sclog.Response, error) {
+func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, header map[string]string) (*sclog.Response, error) {
 	var (
 		startedAt  *time.Time
 		finishedAt *time.Time
@@ -44,7 +44,7 @@ func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqV1, header map[string]string) 
 		SqlArgs:      fm.DirectPbwGet[string](req.SqlArgs),
 		Severity:     req.Severity,
 		ExecPath:     req.ExecPath,
-		Function:     req.Function,
+		ExecFunction: req.ExecFunction,
 		ErrorMessage: fm.DirectPbwGet[string](req.ErrorMessage),
 		StackTrace:   fm.DirectPbwGet[string](req.StackTrace),
 		Host1:        req.Host1,
@@ -58,5 +58,9 @@ func (slf *stuClog) dbqLogV1(req *sclog.RequestDbqV1, header map[string]string) 
 	e.FinishedAt = fm.Ternary(startedAt == nil, e.FinishedAt, *finishedAt)
 
 	err = repo.DbqLogV1.Insert(e)
+	if err != nil {
+		
+	}
+
 	return send(err)
 }

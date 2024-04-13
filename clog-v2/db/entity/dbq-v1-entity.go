@@ -12,8 +12,8 @@ package entity
 import "time"
 
 type DbqV1 struct {
-	CreatedAt    time.Time `db:"created_at"`
-	Uid          string    `db:"uid"`
+	CreatedAt    time.Time `db:"created_at" json:"created_at"`
+	Uid          string    `db:"uid" json:"uid"`
 	UserId       *string   `db:"user_id"`
 	PartnerId    *string   `db:"partner_id"`
 	SvcName      string    `db:"svc_name"`
@@ -22,7 +22,7 @@ type DbqV1 struct {
 	SqlArgs      *string   `db:"sql_args"`
 	Severity     string    `db:"severity"`
 	ExecPath     string    `db:"exec_path"`
-	Function     string    `db:"function"`
+	ExecFunction string    `db:"exec_function"`
 	ErrorMessage *string   `db:"error_message"`
 	StackTrace   *string   `db:"stack_trace"`
 	Host1        string    `db:"host1"`

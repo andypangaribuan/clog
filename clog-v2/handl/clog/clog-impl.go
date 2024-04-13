@@ -17,7 +17,7 @@ import (
 )
 
 func (slf *stuClog) DbqV1(ctx context.Context, req *sclog.RequestDbqV1) (*sclog.Response, error) {
-	return slf.dbqLogV1(req, fm.GrpcHeader(ctx))
+	return slf.dbqV1(req, fm.GrpcHeader(ctx))
 }
 
 func (slf *stuClog) ServicePieceV1(ctx context.Context, req *sclog.RequestServicePieceV1) (*sclog.Response, error) {

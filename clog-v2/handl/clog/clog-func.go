@@ -10,8 +10,12 @@
 package clog
 
 import (
+	"clog/db/entity"
+	"clog/db/repo"
 	"clog/res/proto/generated/sclog"
 	"fmt"
+
+	"github.com/andypangaribuan/gmod/gm"
 )
 
 func send(err error, msg ...string) (*sclog.Response, error) {
@@ -32,4 +36,27 @@ func send(err error, msg ...string) (*sclog.Response, error) {
 	}
 
 	return &sclog.Response{Status: status, Message: message}, nil
+}
+
+func saveError(err error, data map[string]any) {
+	if err == nil {
+		return
+	}
+
+	execPath, execFunction := gm.Util.GetExecPathFunc(1)
+	jsonData, err := gm.Json.MapToJson(data)
+	if err != nil {
+		jsonData = fmt.Sprintf("%+v", data)
+	}
+
+	e := &entity.Internal{
+		CreatedAt:    gm.Util.Timenow(),
+		Uid:          gm.Util.UID(),
+		ExecPath:     execPath,
+		ExecFunction: execFunction,
+		Data:         jsonData,
+		StackTrace:   fmt.Sprintf("%+v", err),
+	}
+
+	repo.Internal.Insert(e)
 }
