@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS internal (
     exec_path     VARCHAR(500)  NOT NULL,
     exec_function VARCHAR(500)  NOT NULL,
     data          TEXT          NOT NULL,
-    error_message VARCHAR(1000),
-    stack_trace   TEXT
+    error_message VARCHAR(1000) NOT NULL,
+    stack_trace   TEXT          NOT NULL
 );
 
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1 (
     req_query          VARCHAR(2000),
     req_form           VARCHAR(2000),
     req_body           TEXT,
-    client_ip          VARCHAR(50)    NOT NULL,
+    client_ip          VARCHAR(150)    NOT NULL,
     started_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL
 );
 

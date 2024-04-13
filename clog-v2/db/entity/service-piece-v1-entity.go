@@ -12,17 +12,20 @@ package entity
 import "time"
 
 type ServicePieceV1 struct {
-	CreatedAt  time.Time `db:"created_at"`
-	Uid        string    `db:"uid"`
-	SvcName    string    `db:"svc_name"`
-	SvcVersion string    `db:"svc_version"`
-	Endpoint   string    `db:"endpoint"`
-	Url        string    `db:"url"`
-	ReqHeader  *string   `db:"req_header"`
-	ReqParam   *string   `db:"req_param"`
-	ReqQuery   *string   `db:"req_query"`
-	ReqForm    *string   `db:"req_form"`
-	ReqBody    *string   `db:"req_body"`
-	ClientIp   string    `db:"client_ip"`
-	StartedAt  time.Time `db:"started_at"`
+	CreatedAt        time.Time `db:"created_at"`
+	Uid              string    `db:"uid"`
+	SvcName          string    `db:"svc_name"`
+	SvcVersion       string    `db:"svc_version"`
+	SvcParent        *string   `db:"svc_parent"`
+	SvcParentVersion *string   `db:"svc_parent_version"`
+	Endpoint         string    `db:"endpoint"`
+	Url              string    `db:"url"`
+	ReqVersion       *string   `db:"req_version"`
+	ReqHeader        *string   `db:"req_header"`
+	ReqParam         *string   `db:"req_param"`
+	ReqQuery         *string   `db:"req_query"`
+	ReqForm          *string   `db:"req_form"`
+	ReqBody          *string   `db:"req_body"`
+	ClientIp         string    `db:"client_ip"`
+	StartedAt        time.Time `db:"started_at"`
 }
