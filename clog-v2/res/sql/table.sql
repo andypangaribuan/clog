@@ -1,7 +1,7 @@
 /*
  * severity: enum [success, warning, error]
  */
-CREATE TABLE IF NOT EXISTS dbq_log_v1 (
+CREATE TABLE IF NOT EXISTS dbq_v1 (
     created_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
     uid           VARCHAR(20)  NOT NULL,
     user_id       VARCHAR(20),
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS dbq_log_v1 (
 );
 
 
-CREATE TABLE IF NOT EXISTS service_piece_log_v1 (
+CREATE TABLE IF NOT EXISTS service_piece_v1 (
     created_at  TIMESTAMP(3)  WITH TIME ZONE NOT NULL,
     uid         VARCHAR(20)   NOT NULL,
     svc_name    VARCHAR(50)   NOT NULL,
