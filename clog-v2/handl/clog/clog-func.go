@@ -38,13 +38,13 @@ func send(err error, msg ...string) (*sclog.Response, error) {
 	return &sclog.Response{Status: status, Message: message}, nil
 }
 
-func saveError(err error, data map[string]any) {
+func saveError(err error, data any) {
 	if err == nil {
 		return
 	}
 
 	execPath, execFunction := gm.Util.GetExecPathFunc(1)
-	jsonData, err := gm.Json.MapToJson(data)
+	jsonData, err := gm.Json.Encode(data)
 	if err != nil {
 		jsonData = fmt.Sprintf("%+v", data)
 	}
@@ -55,6 +55,7 @@ func saveError(err error, data map[string]any) {
 		ExecPath:     execPath,
 		ExecFunction: execFunction,
 		Data:         jsonData,
+		ErrorMessage: err.Error(),
 		StackTrace:   fmt.Sprintf("%+v", err),
 	}
 
