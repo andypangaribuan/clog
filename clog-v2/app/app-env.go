@@ -15,6 +15,7 @@ func initEnv() {
 	Env = &stuEnv{
 		AppName:        gm.Util.Env.GetString("APP_NAME"),
 		AppEnv:         gm.Util.Env.GetAppEnv("APP_ENV"),
+		AppTimezone:    gm.Util.Env.GetString("APP_TIMEZONE"),
 		AppAutoRecover: gm.Util.Env.GetBool("APP_AUTO_RECOVER"),
 		GrpcPort:       gm.Util.Env.GetInt("GRPC_PORT"),
 

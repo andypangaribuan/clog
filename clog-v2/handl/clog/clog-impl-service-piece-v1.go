@@ -22,22 +22,27 @@ func (slf *stuClog) servicePieceLogV1(req *sclog.RequestServicePieceV1, header m
 	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
 
 	e := &entity.ServicePieceV1{
-		CreatedAt:  gm.Util.Timenow(),
-		Uid:        req.Uid,
-		SvcName:    req.SvcName,
-		SvcVersion: req.SvcVersion,
-		Endpoint:   req.Endpoint,
-		Url:        req.Url,
-		ReqHeader:  fm.DirectPbwGet[string](req.ReqHeader),
-		ReqParam:   fm.DirectPbwGet[string](req.ReqParam),
-		ReqQuery:   fm.DirectPbwGet[string](req.ReqQuery),
-		ReqForm:    fm.DirectPbwGet[string](req.ReqForm),
-		ReqBody:    fm.DirectPbwGet[string](req.ReqBody),
-		ClientIp:   req.ClientIp,
+		CreatedAt:        gm.Util.Timenow(),
+		Uid:              req.Uid,
+		SvcName:          req.SvcName,
+		SvcVersion:       req.SvcVersion,
+		SvcParent:        fm.DirectPbwGet[string](req.SvcParent),
+		SvcParentVersion: fm.DirectPbwGet[string](req.SvcParentVersion),
+		Endpoint:         req.Endpoint,
+		Url:              req.Url,
+		ReqVersion:       fm.DirectPbwGet[string](req.ReqVersion),
+		ReqHeader:        fm.DirectPbwGet[string](req.ReqHeader),
+		ReqParam:         fm.DirectPbwGet[string](req.ReqParam),
+		ReqQuery:         fm.DirectPbwGet[string](req.ReqQuery),
+		ReqForm:          fm.DirectPbwGet[string](req.ReqForm),
+		ReqBody:          fm.DirectPbwGet[string](req.ReqBody),
+		ClientIp:         req.ClientIp,
 	}
 
 	e.StartedAt = fm.Ternary(startedAt == nil, e.StartedAt, *startedAt)
 
 	err := repo.ServicePieceV1.Insert(e)
+	saveError(err, e)
+
 	return send(err)
 }

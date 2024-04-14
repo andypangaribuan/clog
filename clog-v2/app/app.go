@@ -11,9 +11,14 @@ package app
 
 import (
 	_ "github.com/andypangaribuan/gmod"
+	"github.com/andypangaribuan/gmod/gm"
 )
 
 func init() {
 	initEnv()
 	initDb()
+
+	gm.Conf.
+		SetTimezone(Env.AppTimezone).
+		Commit()
 }

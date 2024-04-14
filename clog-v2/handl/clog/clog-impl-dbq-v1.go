@@ -58,7 +58,7 @@ func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, header map[string]string) (*s
 	e.FinishedAt = fm.Ternary(startedAt == nil, e.FinishedAt, *finishedAt)
 
 	err = repo.DbqLogV1.Insert(e)
-	saveError(err, *e)
+	saveError(err, e)
 
 	return send(err)
 }

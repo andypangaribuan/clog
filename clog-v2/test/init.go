@@ -16,5 +16,7 @@ import (
 
 func init() {
 	loadEnv()
-	gm.Conf.SetTimeZone(env.AppTimezone)
+	gm.Conf.
+		SetTimezone(env.AppTimezone).
+		Commit()
 }

@@ -43,6 +43,7 @@ func saveError(err error, data any) {
 		return
 	}
 
+	errMessage := err.Error()
 	execPath, execFunction := gm.Util.GetExecPathFunc(1)
 	jsonData, err := gm.Json.Encode(data)
 	if err != nil {
@@ -55,8 +56,8 @@ func saveError(err error, data any) {
 		ExecPath:     execPath,
 		ExecFunction: execFunction,
 		Data:         jsonData,
-		ErrorMessage: err.Error(),
-		StackTrace:   fmt.Sprintf("%+v", err),
+		ErrorMessage: errMessage,
+		StackTrace:   gm.Util.StackTrace(1),
 	}
 
 	repo.Internal.Insert(e)

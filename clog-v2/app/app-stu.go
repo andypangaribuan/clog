@@ -14,6 +14,7 @@ import "github.com/andypangaribuan/gmod/ice"
 type stuEnv struct {
 	AppName        string
 	AppEnv         ice.AppEnv
+	AppTimezone    string
 	AppAutoRecover bool
 	GrpcPort       int
 
