@@ -65,8 +65,8 @@ func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, header map[string]str
 	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
 	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
 
-	// err = repo.DbqLogV1.Insert(e)
-	// saveError(err, e)
+	err = repo.ServiceV1.Insert(e)
+	saveError(err, e)
 
-	// return send(err)
+	return send(err)
 }
