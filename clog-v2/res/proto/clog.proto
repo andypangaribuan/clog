@@ -78,8 +78,9 @@ message RequestServicePieceV1 {
   google.protobuf.StringValue reqQuery            = 11;
   google.protobuf.StringValue reqForm             = 12;
   google.protobuf.StringValue reqBody             = 13;
-  string clientIp                                 = 14;
-  string startedAt                                = 15;
+  google.protobuf.StringValue reqFiles            = 14;
+  string clientIp                                 = 15;
+  string startedAt                                = 16;
 }
 
 
@@ -108,12 +109,13 @@ message RequestServiceV1 {
   google.protobuf.StringValue reqQuery            = 16;
   google.protobuf.StringValue reqForm             = 17;
   google.protobuf.StringValue reqBody             = 18;
-  google.protobuf.StringValue resData             = 19;
-  int32 resCode                                   = 20;
-  google.protobuf.StringValue errMessage          = 21;
-  google.protobuf.StringValue stackTrace          = 22;
-  string clientIp                                 = 23;
-  int32 duration                                  = 24;
-  string startedAt                                = 25;
-  string finishedAt                               = 26;
+  google.protobuf.StringValue reqFiles            = 19;
+  google.protobuf.StringValue resData             = 20;
+  int32 resCode                                   = 21;
+  google.protobuf.StringValue errMessage          = 22;
+  google.protobuf.StringValue stackTrace          = 23;
+  string clientIp                                 = 24;
+  int32 duration                                  = 25;
+  string startedAt                                = 26;
+  string finishedAt                               = 27;
 }
