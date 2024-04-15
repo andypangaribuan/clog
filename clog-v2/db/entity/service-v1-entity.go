@@ -30,6 +30,7 @@ type ServiceV1 struct {
 	ReqParam         *string   `db:"req_param"`
 	ReqQuery         *string   `db:"req_query"`
 	ReqForm          *string   `db:"req_form"`
+	ReqFiles         *string   `db:"req_files"`
 	ReqBody          *string   `db:"req_body"`
 	ResData          *string   `db:"res_data"`
 	ResCode          int       `db:"res_code"`

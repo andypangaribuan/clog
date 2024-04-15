@@ -54,8 +54,8 @@ func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, header map[string]string) (*s
 		Duration:     duration,
 	}
 
-	e.StartedAt = fm.Ternary(startedAt == nil, e.StartedAt, *startedAt)
-	e.FinishedAt = fm.Ternary(startedAt == nil, e.FinishedAt, *finishedAt)
+	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
+	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
 
 	err = repo.DbqLogV1.Insert(e)
 	saveError(err, e)

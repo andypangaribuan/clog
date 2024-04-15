@@ -21,5 +21,10 @@ func (slf *stuClog) DbqV1(ctx context.Context, req *sclog.RequestDbqV1) (*sclog.
 }
 
 func (slf *stuClog) ServicePieceV1(ctx context.Context, req *sclog.RequestServicePieceV1) (*sclog.Response, error) {
-	return slf.servicePieceLogV1(req, fm.GrpcHeader(ctx))
+	return slf.servicePieceV1(req, fm.GrpcHeader(ctx))
+}
+
+
+func (slf *stuClog) ServiceV1(ctx context.Context, req *sclog.RequestServiceV1) (*sclog.Response, error) {
+	return slf.serviceV1(req, fm.GrpcHeader(ctx))
 }

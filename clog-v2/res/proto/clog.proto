@@ -114,7 +114,6 @@ message RequestServiceV1 {
   google.protobuf.StringValue errMessage          = 22;
   google.protobuf.StringValue stackTrace          = 23;
   string clientIp                                 = 24;
-  int32 duration                                  = 25;
-  string startedAt                                = 26;
-  string finishedAt                               = 27;
+  string startedAt                                = 25;
+  string finishedAt                               = 26;
 }

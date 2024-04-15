@@ -13,36 +13,60 @@ import (
 	"clog/db/entity"
 	"clog/db/repo"
 	"clog/res/proto/generated/sclog"
+	"time"
 
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
 )
 
-func (slf *stuClog) servicePieceV1(req *sclog.RequestServicePieceV1, header map[string]string) (*sclog.Response, error) {
-	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
+func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, header map[string]string) (*sclog.Response, error) {
+	var (
+		startedAt  *time.Time
+		finishedAt *time.Time
+		duration   int
+		err        error
+	)
 
-	e := &entity.ServicePieceV1{
+	startedAt, _ = gm.Conv.Time.ToTimeFull(req.StartedAt)
+	finishedAt, _ = gm.Conv.Time.ToTimeFull(req.FinishedAt)
+	if startedAt != nil && finishedAt != nil {
+		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
+	}
+
+	e := &entity.ServiceV1{
 		CreatedAt:        gm.Util.Timenow(),
 		Uid:              req.Uid,
+		UserId:           fm.DirectPbwGet[string](req.UserId),
+		PartnerId:        fm.DirectPbwGet[string](req.PartnerId),
 		SvcName:          req.SvcName,
 		SvcVersion:       req.SvcVersion,
 		SvcParent:        fm.DirectPbwGet[string](req.SvcParent),
 		SvcParentVersion: fm.DirectPbwGet[string](req.SvcParentVersion),
 		Endpoint:         req.Endpoint,
 		Url:              req.Url,
+		Severity:         req.Severity,
+		ExecPath:         req.ExecPath,
+		ExecFunction:     req.ExecFunction,
 		ReqVersion:       fm.DirectPbwGet[string](req.ReqVersion),
 		ReqHeader:        fm.DirectPbwGet[string](req.ReqHeader),
 		ReqParam:         fm.DirectPbwGet[string](req.ReqParam),
 		ReqQuery:         fm.DirectPbwGet[string](req.ReqQuery),
 		ReqForm:          fm.DirectPbwGet[string](req.ReqForm),
+		ReqFiles:         fm.DirectPbwGet[string](req.ReqFiles),
 		ReqBody:          fm.DirectPbwGet[string](req.ReqBody),
+		ResData:          fm.DirectPbwGet[string](req.ResData),
+		ResCode:          int(req.ResCode),
+		ErrorMessage:     fm.DirectPbwGet[string](req.ErrMessage),
+		StackTrace:       fm.DirectPbwGet[string](req.StackTrace),
 		ClientIp:         req.ClientIp,
+		Duration:         duration,
 	}
 
 	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
+	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
 
-	err := repo.ServicePieceV1.Insert(e)
-	saveError(err, e)
+	// err = repo.DbqLogV1.Insert(e)
+	// saveError(err, e)
 
-	return send(err)
+	// return send(err)
 }
