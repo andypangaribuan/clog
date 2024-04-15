@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1 (
     req_query          VARCHAR(2000),
     req_form           VARCHAR(2000),
     req_body           TEXT,
-    client_ip          VARCHAR(150)    NOT NULL,
+    client_ip          VARCHAR(150)   NOT NULL,
     started_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL
 );
 
@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS service_v1 (
     req_param          VARCHAR(2000),
     req_query          VARCHAR(2000),
     req_form           VARCHAR(2000),
+    req_files          VARCHAR(2000),
     req_body           TEXT,
     res_data           TEXT,
     res_code           INTEGER        NOT NULL,
