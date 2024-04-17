@@ -12,10 +12,10 @@ package clog
 import (
 	"clog/db/entity"
 	"clog/db/repo"
-	"clog/res/proto/generated/sclog"
 
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
+	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
 func (slf *stuClog) servicePieceV1(req *sclog.RequestServicePieceV1, header map[string]string) (*sclog.Response, error) {

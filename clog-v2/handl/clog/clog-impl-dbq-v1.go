@@ -12,11 +12,11 @@ package clog
 import (
 	"clog/db/entity"
 	"clog/db/repo"
-	"clog/res/proto/generated/sclog"
 	"time"
 
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
+	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
 func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, header map[string]string) (*sclog.Response, error) {

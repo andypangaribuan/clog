@@ -16,5 +16,5 @@ type xrepo[T any] struct {
 }
 
 func (slf *xrepo[T]) Insert(e *T) error {
-	return slf.repo.XInsert(e)
+	return slf.repo.Insert(e)
 }

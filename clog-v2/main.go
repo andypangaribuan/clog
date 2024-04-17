@@ -14,9 +14,9 @@ import (
 
 	"clog/app"
 	"clog/handl"
-	"clog/res/proto/generated/sclog"
 
 	"github.com/andypangaribuan/gmod/fm"
+	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 	"github.com/andypangaribuan/gmod/server"
 )
 

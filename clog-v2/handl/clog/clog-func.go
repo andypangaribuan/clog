@@ -12,10 +12,10 @@ package clog
 import (
 	"clog/db/entity"
 	"clog/db/repo"
-	"clog/res/proto/generated/sclog"
 	"fmt"
 
 	"github.com/andypangaribuan/gmod/gm"
+	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
 func send(err error, msg ...string) (*sclog.Response, error) {

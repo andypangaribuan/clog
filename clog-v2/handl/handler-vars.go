@@ -9,6 +9,6 @@
 
 package handl
 
-import "clog/res/proto/generated/sclog"
+import "github.com/andypangaribuan/gmod/grpc/service/sclog"
 
 var Clog sclog.CLogServiceServer

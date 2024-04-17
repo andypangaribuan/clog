@@ -10,7 +10,7 @@
 package clog
 
 import (
-	"clog/res/proto/generated/sclog"
+	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
 type stuClog struct {

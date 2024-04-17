@@ -10,12 +10,12 @@
 package test
 
 import (
-	"clog/res/proto/generated/sclog"
 	"testing"
 	"time"
 
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
+	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
