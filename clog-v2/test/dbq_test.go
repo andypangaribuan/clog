@@ -20,11 +20,11 @@ import (
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
-func TestClogDbqInfo(t *testing.T) {
-	start(t, doTestClogDbqInfo)
+func TestClogDbq(t *testing.T) {
+	start(t, doTestClogDbq)
 }
 
-func doTestClogDbqInfo(t *testing.T) {
+func doTestClogDbq(t *testing.T) {
 	c, err := fm.GrpcClient(env.ClogGrpcAddress, sclog.NewCLogServiceClient)
 	require.Nil(t, err)
 

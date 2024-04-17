@@ -19,7 +19,7 @@ import (
 	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
-func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, header map[string]string) (*sclog.Response, error) {
+func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, _ map[string]string) (*sclog.Response, error) {
 	var (
 		startedAt  *time.Time
 		finishedAt *time.Time
