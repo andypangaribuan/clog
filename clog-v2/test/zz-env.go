@@ -17,7 +17,7 @@ func loadEnv() {
 		panic(err)
 	}
 
-	gm.Util.LoadEnv(dirPath + "/z-local.env")
+	gm.Util.LoadEnv(dirPath + "/.env")
 
 	env = &stuEnv{
 		AppName:     gm.Util.Env.GetString("APP_NAME"),

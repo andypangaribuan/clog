@@ -40,7 +40,7 @@ func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, _ map[string]string) 
 		PartnerId:        fm.DirectPbwGet[string](req.PartnerId),
 		SvcName:          req.SvcName,
 		SvcVersion:       req.SvcVersion,
-		SvcParent:        fm.DirectPbwGet[string](req.SvcParent),
+		SvcParentName:    fm.DirectPbwGet[string](req.SvcParentName),
 		SvcParentVersion: fm.DirectPbwGet[string](req.SvcParentVersion),
 		Endpoint:         req.Endpoint,
 		Url:              req.Url,

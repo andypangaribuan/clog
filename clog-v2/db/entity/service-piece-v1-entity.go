@@ -16,7 +16,7 @@ type ServicePieceV1 struct {
 	Uid              string    `db:"uid"`
 	SvcName          string    `db:"svc_name"`
 	SvcVersion       string    `db:"svc_version"`
-	SvcParent        *string   `db:"svc_parent"`
+	SvcParentName    *string   `db:"svc_parent_name"`
 	SvcParentVersion *string   `db:"svc_parent_version"`
 	Endpoint         string    `db:"endpoint"`
 	Url              string    `db:"url"`

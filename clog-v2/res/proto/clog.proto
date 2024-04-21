@@ -68,7 +68,7 @@ message RequestServicePieceV1 {
   string uid                                      = 1;
   string svcName                                  = 2;
   string svcVersion                               = 3;
-  google.protobuf.StringValue svcParent           = 4;
+  google.protobuf.StringValue svcParentName       = 4;
   google.protobuf.StringValue svcParentVersion    = 5;
   string endpoint                                 = 6;
   string url                                      = 7;
@@ -95,7 +95,7 @@ message RequestServiceV1 {
   google.protobuf.StringValue partnerId           = 3;
   string svcName                                  = 4;
   string svcVersion                               = 5;
-  google.protobuf.StringValue svcParent           = 6;
+  google.protobuf.StringValue svcParentName       = 6;
   google.protobuf.StringValue svcParentVersion    = 7;
   string endpoint                                 = 8;
   string url                                      = 9;
