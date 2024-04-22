@@ -19,7 +19,7 @@ var DbqLogV1 *stuRepo[entity.DbqV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		DbqLogV1 = new[entity.DbqV1](dbi, "dbq_v1", `
+		DbqLogV1 = new(dbi, "dbq_v1", `
 					created_at, uid,
 					user_id, partner_id, svc_name, svc_version, sql_query,
 					sql_args, severity, exec_path, exec_function, error_message,
