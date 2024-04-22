@@ -22,4 +22,6 @@ go.work
 
 # miscellaneous
 .DS_Store
+__debug_*
+
 res/postgres/data
