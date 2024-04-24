@@ -85,7 +85,7 @@ message RequestHttpCallPieceV1 {
 
 
 /*
- * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
 message RequestHttpCallV1 {
@@ -95,18 +95,19 @@ message RequestHttpCallV1 {
   string svcName                            = 4;
   string svcVersion                         = 5;
   string url                                = 6;
-  google.protobuf.StringValue reqHeader     = 7;
-  google.protobuf.StringValue reqParam      = 8;
-  google.protobuf.StringValue reqQuery      = 9;
-  google.protobuf.StringValue reqForm       = 10;
-  google.protobuf.StringValue reqFiles      = 11;
-  google.protobuf.StringValue reqBody       = 12;
-  google.protobuf.StringValue resData       = 13;
-  int32 resCode                             = 14;
-  google.protobuf.StringValue errMessage    = 15;
-  google.protobuf.StringValue stackTrace    = 16;
-  string startedAt                          = 17;
-  string finishedAt                         = 18;
+  string severity                           = 7;
+  google.protobuf.StringValue reqHeader     = 8;
+  google.protobuf.StringValue reqParam      = 9;
+  google.protobuf.StringValue reqQuery      = 10;
+  google.protobuf.StringValue reqForm       = 11;
+  google.protobuf.StringValue reqFiles      = 12;
+  google.protobuf.StringValue reqBody       = 13;
+  google.protobuf.StringValue resData       = 14;
+  int32 resCode                             = 15;
+  google.protobuf.StringValue errMessage    = 16;
+  google.protobuf.StringValue stackTrace    = 17;
+  string startedAt                          = 18;
+  string finishedAt                         = 19;
 }
 
 

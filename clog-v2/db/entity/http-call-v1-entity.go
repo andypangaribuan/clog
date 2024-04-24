@@ -19,6 +19,7 @@ type HttpCallV1 struct {
 	SvcName      string    `db:"svc_name"`
 	SvcVersion   string    `db:"svc_version"`
 	Url          string    `db:"url"`
+	Severity     string    `db:"severity"`
 	ReqHeader    *string   `db:"req_header"`
 	ReqParam     *string   `db:"req_param"`
 	ReqQuery     *string   `db:"req_query"`

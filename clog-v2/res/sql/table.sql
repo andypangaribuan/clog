@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS http_call_piece_v1 (
 
 
 /*
- * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
 CREATE TABLE IF NOT EXISTS http_call_v1 (
@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS http_call_v1 (
     svc_name      VARCHAR(50)    NOT NULL,
     svc_version   VARCHAR(15)    NOT NULL,
     url           VARCHAR(1000)  NOT NULL,
+    severity      VARCHAR(10)    NOT NULL,
     req_header    VARCHAR(2000),
     req_param     VARCHAR(2000),
     req_query     VARCHAR(2000),

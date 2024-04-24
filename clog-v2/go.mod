@@ -3,14 +3,17 @@ module clog
 go 1.22.2
 
 require (
-	github.com/andypangaribuan/gmod v1.0.1
+	github.com/andypangaribuan/gmod v1.0.2
 	github.com/stretchr/testify v1.8.4
 	google.golang.org/protobuf v1.32.0
 )
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
+	github.com/bsm/redislock v0.9.4 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/go-resty/resty/v2 v2.12.0 // indirect
 	github.com/gofiber/fiber/v2 v2.52.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
@@ -27,6 +30,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/redis/go-redis/v9 v9.5.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.52.0 // indirect
@@ -40,4 +44,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// replace github.com/andypangaribuan/gmod => /Users/apangaribuan/all/github/gmod
+replace github.com/andypangaribuan/gmod => /Users/apangaribuan/all/github/gmod
