@@ -21,6 +21,7 @@ type ServicePieceV1 struct {
 	Endpoint         string    `db:"endpoint"`
 	Url              string    `db:"url"`
 	ReqVersion       *string   `db:"req_version"`
+	ReqSource        *string   `db:"req_source"`
 	ReqHeader        *string   `db:"req_header"`
 	ReqParam         *string   `db:"req_param"`
 	ReqQuery         *string   `db:"req_query"`

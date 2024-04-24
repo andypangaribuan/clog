@@ -46,20 +46,18 @@ function docker-down {
   docker-compose down
 }
 
+#: space
+
 #: clean the docker database
-function docker-clean {
+function reset {
   cd res
   docker-compose down
   rm -rf postgres/data
   docker-compose up -d
   sleep 5
   docker-compose ps -a
-}
 
-#: space
-
-#: execute sql files and configuration
-function sql {
+  sleep 3
   PGPASSWORD=clogpassword \
   PGOPTIONS="-c search_path=public" \
   psql -h 127.0.0.1 -p 6677 \
@@ -67,7 +65,7 @@ function sql {
   <<-EOSQL
   BEGIN;
 
-  \i res/sql/table.sql
+  \i sql/table.sql
 
   CREATE EXTENSION IF NOT EXISTS columnar;
   ALTER EXTENSION columnar UPDATE;

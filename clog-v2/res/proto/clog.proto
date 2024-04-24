@@ -73,13 +73,14 @@ message RequestServicePieceV1 {
   string endpoint                                 = 6;
   string url                                      = 7;
   google.protobuf.StringValue reqVersion          = 8;
-  google.protobuf.StringValue reqHeader           = 9;
-  google.protobuf.StringValue reqParam            = 10;
-  google.protobuf.StringValue reqQuery            = 11;
-  google.protobuf.StringValue reqForm             = 12;
-  google.protobuf.StringValue reqBody             = 13;
-  string clientIp                                 = 14;
-  string startedAt                                = 15;
+  google.protobuf.StringValue reqSource           = 9;
+  google.protobuf.StringValue reqHeader           = 10;
+  google.protobuf.StringValue reqParam            = 11;
+  google.protobuf.StringValue reqQuery            = 12;
+  google.protobuf.StringValue reqForm             = 13;
+  google.protobuf.StringValue reqBody             = 14;
+  string clientIp                                 = 15;
+  string startedAt                                = 16;
 }
 
 
@@ -103,17 +104,18 @@ message RequestServiceV1 {
   string execPath                                 = 11;
   string execFunction                             = 12;
   google.protobuf.StringValue reqVersion          = 13;
-  google.protobuf.StringValue reqHeader           = 14;
-  google.protobuf.StringValue reqParam            = 15;
-  google.protobuf.StringValue reqQuery            = 16;
-  google.protobuf.StringValue reqForm             = 17;
-  google.protobuf.StringValue reqFiles            = 18;
-  google.protobuf.StringValue reqBody             = 19;
-  google.protobuf.StringValue resData             = 20;
-  int32 resCode                                   = 21;
-  google.protobuf.StringValue errMessage          = 22;
-  google.protobuf.StringValue stackTrace          = 23;
-  string clientIp                                 = 24;
-  string startedAt                                = 25;
-  string finishedAt                               = 26;
+  google.protobuf.StringValue reqSource           = 14;
+  google.protobuf.StringValue reqHeader           = 15;
+  google.protobuf.StringValue reqParam            = 16;
+  google.protobuf.StringValue reqQuery            = 17;
+  google.protobuf.StringValue reqForm             = 18;
+  google.protobuf.StringValue reqFiles            = 19;
+  google.protobuf.StringValue reqBody             = 20;
+  google.protobuf.StringValue resData             = 21;
+  int32 resCode                                   = 22;
+  google.protobuf.StringValue errMessage          = 23;
+  google.protobuf.StringValue stackTrace          = 24;
+  string clientIp                                 = 25;
+  string startedAt                                = 26;
+  string finishedAt                               = 27;
 }

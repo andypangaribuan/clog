@@ -31,6 +31,7 @@ func (slf *stuClog) servicePieceV1(req *sclog.RequestServicePieceV1, _ map[strin
 		Endpoint:         req.Endpoint,
 		Url:              req.Url,
 		ReqVersion:       fm.DirectPbwGet[string](req.ReqVersion),
+		ReqSource:        fm.DirectPbwGet[string](req.ReqSource),
 		ReqHeader:        fm.DirectPbwGet[string](req.ReqHeader),
 		ReqParam:         fm.DirectPbwGet[string](req.ReqParam),
 		ReqQuery:         fm.DirectPbwGet[string](req.ReqQuery),

@@ -48,6 +48,7 @@ func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, _ map[string]string) 
 		ExecPath:         req.ExecPath,
 		ExecFunction:     req.ExecFunction,
 		ReqVersion:       fm.DirectPbwGet[string](req.ReqVersion),
+		ReqSource:        fm.DirectPbwGet[string](req.ReqSource),
 		ReqHeader:        fm.DirectPbwGet[string](req.ReqHeader),
 		ReqParam:         fm.DirectPbwGet[string](req.ReqParam),
 		ReqQuery:         fm.DirectPbwGet[string](req.ReqQuery),

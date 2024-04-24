@@ -26,6 +26,7 @@ type ServiceV1 struct {
 	ExecPath         string    `db:"exec_path"`
 	ExecFunction     string    `db:"exec_function"`
 	ReqVersion       *string   `db:"req_version"`
+	ReqSource        *string   `db:"req_source"`
 	ReqHeader        *string   `db:"req_header"`
 	ReqParam         *string   `db:"req_param"`
 	ReqQuery         *string   `db:"req_query"`

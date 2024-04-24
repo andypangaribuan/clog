@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS internal (
 
 
 /*
- * severity: enum [success, warning, error]
+ * severity   : enum [success, warning, error]
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
@@ -47,6 +47,47 @@ CREATE TABLE IF NOT EXISTS dbq_v1 (
 /*
  * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
+CREATE TABLE IF NOT EXISTS http_piece_call_v1 (
+    created_at TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
+    url        VARCHAR(1000)  NOT NULL,
+    req_header VARCHAR(2000),
+    req_param  VARCHAR(2000),
+    req_query  VARCHAR(2000),
+    req_form   VARCHAR(2000),
+    req_files  VARCHAR(2000),
+    req_body   TEXT,
+    started_at TIMESTAMP(3)   WITH TIME ZONE NOT NULL
+);
+
+
+
+/*
+ * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ */
+CREATE TABLE IF NOT EXISTS http_call_v1 (
+    created_at    TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
+    url           VARCHAR(1000)  NOT NULL,
+    req_header    VARCHAR(2000),
+    req_param     VARCHAR(2000),
+    req_query     VARCHAR(2000),
+    req_form      VARCHAR(2000),
+    req_files     VARCHAR(2000),
+    req_body      TEXT,
+    res_data      TEXT,
+    res_code      INTEGER        NOT NULL,
+    error_message VARCHAR(1000),
+    stack_trace   TEXT,
+    duration      INTEGER        NOT NULL,
+    started_at    TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
+    finished_at   TIMESTAMP(3)   WITH TIME ZONE NOT NULL
+);
+
+
+
+/*
+ * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
+ */
 CREATE TABLE IF NOT EXISTS service_piece_v1 (
     created_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
     uid                VARCHAR(20)    NOT NULL,
@@ -57,6 +98,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1 (
     endpoint           VARCHAR(1000)  NOT NULL,
     url                VARCHAR(1500)  NOT NULL,
     req_version        VARCHAR(5),
+    req_source         VARCHAR(100),
     req_header         VARCHAR(2000),
     req_param          VARCHAR(2000),
     req_query          VARCHAR(2000),
@@ -88,6 +130,7 @@ CREATE TABLE IF NOT EXISTS service_v1 (
     exec_path          VARCHAR(500)   NOT NULL,
     exec_function      VARCHAR(500)   NOT NULL,
     req_version        VARCHAR(5),
+    req_source         VARCHAR(100),
     req_header         VARCHAR(2000),
     req_param          VARCHAR(2000),
     req_query          VARCHAR(2000),

@@ -1,9 +1,9 @@
 module clog
 
-go 1.22.1
+go 1.22.2
 
 require (
-	github.com/andypangaribuan/gmod v0.0.1
+	github.com/andypangaribuan/gmod v1.0.1
 	github.com/stretchr/testify v1.8.4
 	google.golang.org/protobuf v1.32.0
 )
@@ -40,4 +40,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/andypangaribuan/gmod => /Users/apangaribuan/all/github/gmod
+// replace github.com/andypangaribuan/gmod => /Users/apangaribuan/all/github/gmod
