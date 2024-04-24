@@ -45,28 +45,6 @@ CREATE TABLE IF NOT EXISTS dbq_v1 (
 
 
 /*
- * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
- */
-CREATE TABLE IF NOT EXISTS http_call_piece_v1 (
-    created_at  TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
-    uid         VARCHAR(20)    NOT NULL,
-    user_id     VARCHAR(20),
-    partner_id  VARCHAR(20),
-    svc_name    VARCHAR(50)    NOT NULL,
-    svc_version VARCHAR(15)    NOT NULL,
-    url         VARCHAR(1000)  NOT NULL,
-    req_header  VARCHAR(2000),
-    req_param   VARCHAR(2000),
-    req_query   VARCHAR(2000),
-    req_form    VARCHAR(2000),
-    req_files   VARCHAR(2000),
-    req_body    TEXT,
-    started_at  TIMESTAMP(3)   WITH TIME ZONE NOT NULL
-);
-
-
-
-/*
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */

@@ -20,10 +20,6 @@ func (slf *stuClog) DbqV1(ctx context.Context, req *sclog.RequestDbqV1) (*sclog.
 	return slf.dbqV1(req, fm.GrpcHeader(ctx))
 }
 
-func (slf *stuClog) HttpCallPieceV1(ctx context.Context, req *sclog.RequestHttpCallPieceV1) (*sclog.Response, error) {
-	return slf.httpCallPieceV1(req, fm.GrpcHeader(ctx))
-}
-
 func (slf *stuClog) HttpCallV1(ctx context.Context, req *sclog.RequestHttpCallV1) (*sclog.Response, error) {
 	return slf.httpCallV1(req, fm.GrpcHeader(ctx))
 }
