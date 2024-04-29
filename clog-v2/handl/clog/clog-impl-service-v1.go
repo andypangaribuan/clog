@@ -57,6 +57,7 @@ func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, _ map[string]string) 
 		ReqBody:          fm.DirectPbwGet[string](req.ReqBody),
 		ResData:          fm.DirectPbwGet[string](req.ResData),
 		ResCode:          int(req.ResCode),
+		ResSubCode:       req.ResSubCode,
 		ErrorMessage:     fm.DirectPbwGet[string](req.ErrMessage),
 		StackTrace:       fm.DirectPbwGet[string](req.StackTrace),
 		ClientIp:         req.ClientIp,

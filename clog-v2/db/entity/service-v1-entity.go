@@ -35,6 +35,7 @@ type ServiceV1 struct {
 	ReqBody          *string   `db:"req_body"`
 	ResData          *string   `db:"res_data"`
 	ResCode          int       `db:"res_code"`
+	ResSubCode       string    `db:"res_sub_code"`
 	ErrorMessage     *string   `db:"error_message"`
 	StackTrace       *string   `db:"stack_trace"`
 	ClientIp         string    `db:"client_ip"`

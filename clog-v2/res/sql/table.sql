@@ -128,6 +128,7 @@ CREATE TABLE IF NOT EXISTS service_v1 (
     req_body           TEXT,
     res_data           TEXT,
     res_code           INTEGER        NOT NULL,
+    res_sub_code       VARCHAR(300)   NOT NULL,
     error_message      VARCHAR(1000),
     stack_trace        TEXT,
     client_ip          VARCHAR(150)   NOT NULL,

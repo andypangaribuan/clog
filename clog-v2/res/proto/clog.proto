@@ -142,9 +142,10 @@ message RequestServiceV1 {
   google.protobuf.StringValue reqBody             = 20;
   google.protobuf.StringValue resData             = 21;
   int32 resCode                                   = 22;
-  google.protobuf.StringValue errMessage          = 23;
-  google.protobuf.StringValue stackTrace          = 24;
-  string clientIp                                 = 25;
-  string startedAt                                = 26;
-  string finishedAt                               = 27;
+  string resSubCode                               = 23;
+  google.protobuf.StringValue errMessage          = 24;
+  google.protobuf.StringValue stackTrace          = 25;
+  string clientIp                                 = 26;
+  string startedAt                                = 27;
+  string finishedAt                               = 28;
 }
