@@ -2,16 +2,31 @@
  * this log only for clog service
  * if any error occurs
  */
-CREATE TABLE IF NOT EXISTS internal (
-    created_at    TIMESTAMP(3)  WITH TIME ZONE NOT NULL,
-    uid           VARCHAR(20)   NOT NULL,
-    exec_path     VARCHAR(500)  NOT NULL,
-    exec_function VARCHAR(500)  NOT NULL,
-    data          TEXT          NOT NULL,
-    error_message VARCHAR(1000) NOT NULL,
-    stack_trace   TEXT          NOT NULL
+CREATE TABLE IF NOT EXISTS internal
+(
+    created_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid           VARCHAR(20)                 NOT NULL,
+    exec_path     VARCHAR(500)                NOT NULL,
+    exec_function VARCHAR(500)                NOT NULL,
+    data          TEXT                        NOT NULL,
+    error_message VARCHAR(1000)               NOT NULL,
+    stack_trace   TEXT                        NOT NULL
 );
 
+
+/*
+ * this is a custom log, from direct add
+ */
+CREATE TABLE IF NOT EXISTS note
+(
+    created_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid           VARCHAR(20)                 NOT NULL,
+    exec_path     VARCHAR(500)                NOT NULL,
+    exec_function VARCHAR(500)                NOT NULL,
+    key           VARCHAR(500),
+    sub_key       VARCHAR(500),
+    data          TEXT                        NOT NULL,
+);
 
 
 /*
@@ -19,44 +34,45 @@ CREATE TABLE IF NOT EXISTS internal (
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-CREATE TABLE IF NOT EXISTS dbq_v1 (
-    created_at    TIMESTAMP(3)  WITH TIME ZONE NOT NULL,
-    uid           VARCHAR(20)   NOT NULL,
+CREATE TABLE IF NOT EXISTS dbq_v1
+(
+    created_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid           VARCHAR(20)                 NOT NULL,
     user_id       VARCHAR(20),
     partner_id    VARCHAR(20),
-    svc_name      VARCHAR(50)   NOT NULL,
-    svc_version   VARCHAR(15)   NOT NULL,
-    sql_query     TEXT          NOT NULL,
+    svc_name      VARCHAR(50)                 NOT NULL,
+    svc_version   VARCHAR(15)                 NOT NULL,
+    sql_query     TEXT                        NOT NULL,
     sql_args      TEXT,
-    severity      VARCHAR(10)   NOT NULL,
-    exec_path     VARCHAR(500)  NOT NULL,
-    exec_function VARCHAR(500)  NOT NULL,
+    severity      VARCHAR(10)                 NOT NULL,
+    exec_path     VARCHAR(500)                NOT NULL,
+    exec_function VARCHAR(500)                NOT NULL,
     error_message VARCHAR(1000),
     stack_trace   TEXT,
-    host1         VARCHAR(20)   NOT NULL,
+    host1         VARCHAR(20)                 NOT NULL,
     host2         VARCHAR(20),
-    duration1     INTEGER       NOT NULL,
+    duration1     INTEGER                     NOT NULL,
     duration2     INTEGER,
-    duration      INTEGER       NOT NULL,
-    started_at    TIMESTAMP(3)  WITH TIME ZONE NOT NULL,
-    finished_at   TIMESTAMP(3)  WITH TIME ZONE NOT NULL
+    duration      INTEGER                     NOT NULL,
+    started_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    finished_at   TIMESTAMP(3) WITH TIME ZONE NOT NULL
 );
-
 
 
 /*
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-CREATE TABLE IF NOT EXISTS http_call_v1 (
-    created_at    TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
-    uid           VARCHAR(20)    NOT NULL,
+CREATE TABLE IF NOT EXISTS http_call_v1
+(
+    created_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid           VARCHAR(20)                 NOT NULL,
     user_id       VARCHAR(20),
     partner_id    VARCHAR(20),
-    svc_name      VARCHAR(50)    NOT NULL,
-    svc_version   VARCHAR(15)    NOT NULL,
-    url           VARCHAR(1000)  NOT NULL,
-    severity      VARCHAR(10)    NOT NULL,
+    svc_name      VARCHAR(50)                 NOT NULL,
+    svc_version   VARCHAR(15)                 NOT NULL,
+    url           VARCHAR(1000)               NOT NULL,
+    severity      VARCHAR(10)                 NOT NULL,
     req_header    VARCHAR(2000),
     req_param     VARCHAR(2000),
     req_query     VARCHAR(2000),
@@ -64,28 +80,28 @@ CREATE TABLE IF NOT EXISTS http_call_v1 (
     req_files     VARCHAR(2000),
     req_body      TEXT,
     res_data      TEXT,
-    res_code      INTEGER        NOT NULL,
+    res_code      INTEGER                     NOT NULL,
     error_message VARCHAR(1000),
     stack_trace   TEXT,
-    duration      INTEGER        NOT NULL,
-    started_at    TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
-    finished_at   TIMESTAMP(3)   WITH TIME ZONE NOT NULL
+    duration      INTEGER                     NOT NULL,
+    started_at    TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    finished_at   TIMESTAMP(3) WITH TIME ZONE NOT NULL
 );
-
 
 
 /*
  * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-CREATE TABLE IF NOT EXISTS service_piece_v1 (
-    created_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
-    uid                VARCHAR(20)    NOT NULL,
-    svc_name           VARCHAR(50)    NOT NULL,
-    svc_version        VARCHAR(15)    NOT NULL,
+CREATE TABLE IF NOT EXISTS service_piece_v1
+(
+    created_at         TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid                VARCHAR(20)                 NOT NULL,
+    svc_name           VARCHAR(50)                 NOT NULL,
+    svc_version        VARCHAR(15)                 NOT NULL,
     svc_parent_name    VARCHAR(50),
     svc_parent_version VARCHAR(15),
-    endpoint           VARCHAR(1000)  NOT NULL,
-    url                VARCHAR(1500)  NOT NULL,
+    endpoint           VARCHAR(1000)               NOT NULL,
+    url                VARCHAR(1500)               NOT NULL,
     req_version        VARCHAR(5),
     req_source         VARCHAR(100),
     req_header         VARCHAR(2000),
@@ -93,10 +109,9 @@ CREATE TABLE IF NOT EXISTS service_piece_v1 (
     req_query          VARCHAR(2000),
     req_form           VARCHAR(2000),
     req_body           TEXT,
-    client_ip          VARCHAR(150)   NOT NULL,
-    started_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL
+    client_ip          VARCHAR(150)                NOT NULL,
+    started_at         TIMESTAMP(3) WITH TIME ZONE NOT NULL
 );
-
 
 
 /*
@@ -104,20 +119,21 @@ CREATE TABLE IF NOT EXISTS service_piece_v1 (
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
-CREATE TABLE IF NOT EXISTS service_v1 (
-    created_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
-    uid                VARCHAR(20)    NOT NULL,
+CREATE TABLE IF NOT EXISTS service_v1
+(
+    created_at         TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid                VARCHAR(20)                 NOT NULL,
     user_id            VARCHAR(20),
     partner_id         VARCHAR(20),
-    svc_name           VARCHAR(50)    NOT NULL,
-    svc_version        VARCHAR(15)    NOT NULL,
+    svc_name           VARCHAR(50)                 NOT NULL,
+    svc_version        VARCHAR(15)                 NOT NULL,
     svc_parent_name    VARCHAR(50),
     svc_parent_version VARCHAR(15),
-    endpoint           VARCHAR(1000)  NOT NULL,
-    url                VARCHAR(1500)  NOT NULL,
-    severity           VARCHAR(10)    NOT NULL,
-    exec_path          VARCHAR(500)   NOT NULL,
-    exec_function      VARCHAR(500)   NOT NULL,
+    endpoint           VARCHAR(1000)               NOT NULL,
+    url                VARCHAR(1500)               NOT NULL,
+    severity           VARCHAR(10)                 NOT NULL,
+    exec_path          VARCHAR(500)                NOT NULL,
+    exec_function      VARCHAR(500)                NOT NULL,
     req_version        VARCHAR(5),
     req_source         VARCHAR(100),
     req_header         VARCHAR(2000),
@@ -127,12 +143,12 @@ CREATE TABLE IF NOT EXISTS service_v1 (
     req_files          VARCHAR(2000),
     req_body           TEXT,
     res_data           TEXT,
-    res_code           INTEGER        NOT NULL,
-    res_sub_code       VARCHAR(300)   NOT NULL,
+    res_code           INTEGER                     NOT NULL,
+    res_sub_code       VARCHAR(300)                NOT NULL,
     error_message      VARCHAR(1000),
     stack_trace        TEXT,
-    client_ip          VARCHAR(150)   NOT NULL,
-    duration           INTEGER        NOT NULL,
-    started_at         TIMESTAMP(3)   WITH TIME ZONE NOT NULL,
-    finished_at        TIMESTAMP(3)   WITH TIME ZONE NOT NULL
+    client_ip          VARCHAR(150)                NOT NULL,
+    duration           INTEGER                     NOT NULL,
+    started_at         TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    finished_at        TIMESTAMP(3) WITH TIME ZONE NOT NULL
 );
