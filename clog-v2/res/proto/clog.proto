@@ -16,6 +16,7 @@ import "google/protobuf/wrappers.proto";
 
 
 service CLogService {
+  rpc Note(RequestNote) returns (Response);
   rpc DbqV1(RequestDbqV1) returns (Response);
   rpc HttpCallV1(RequestHttpCallV1) returns (Response);
   rpc ServicePieceV1(RequestServicePieceV1) returns (Response);
@@ -30,6 +31,17 @@ service CLogService {
 message Response {
   string status   = 1;
   string message  = 2;
+}
+
+
+
+message RequestNote {
+  string uid                            = 1;
+  string execPath                       = 2;
+  string execFunction                   = 3;
+  google.protobuf.StringValue key       = 4;
+  google.protobuf.StringValue subKey    = 5;
+  string data                           = 6;
 }
 
 
