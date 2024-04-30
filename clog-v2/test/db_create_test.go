@@ -51,22 +51,6 @@ func dbCreateTable(t *testing.T, filePath string) {
 	}
 }
 
-func dbCreateIndex(t *testing.T, filePath string) {
-	ls, err := gm.Util.ReadTextFile(filePath)
-	require.Nil(t, err)
-
-	sql := strings.Join(ls, "\n")
-	ls = strings.Split(sql, ");")
-	for _, v := range ls {
-		v = strings.TrimSpace(v)
-		if v != "" {
-			v += ");"
-			_, err = dbi.Execute(v)
-			require.Nil(t, err)
-		}
-	}
-}
-
 func dbUpdateColumnar(t *testing.T) {
 	cmds := []string{
 		"CREATE EXTENSION IF NOT EXISTS columnar",

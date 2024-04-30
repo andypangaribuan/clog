@@ -28,6 +28,20 @@ function help {
 }
 
 
+
+#: update + check
+function run {
+  go mod tidy
+  go vet
+  gofmt -l .
+  golangci-lint run
+  staticcheck ./...
+}
+
+
+#: space
+
+
 #: generate proto
 function generate {
   rm -rf $(pwd)/res/proto/generated

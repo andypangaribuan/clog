@@ -16,6 +16,10 @@ import (
 	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
+func (slf *stuClog) Note(ctx context.Context, req *sclog.RequestNote) (*sclog.Response, error) {
+	return slf.note(req, fm.GrpcHeader(ctx))
+}
+
 func (slf *stuClog) DbqV1(ctx context.Context, req *sclog.RequestDbqV1) (*sclog.Response, error) {
 	return slf.dbqV1(req, fm.GrpcHeader(ctx))
 }
