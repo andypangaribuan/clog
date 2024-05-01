@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS note
     exec_function VARCHAR(500)                NOT NULL,
     key           VARCHAR(500),
     sub_key       VARCHAR(500),
-    data          TEXT                        NOT NULL,
+    data          TEXT                        NOT NULL
 );
 
 
