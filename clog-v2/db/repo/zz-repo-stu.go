@@ -15,3 +15,7 @@ type stuRepo[T any] struct {
 	repo db.Repo[T]
 	xrepo[T]
 }
+
+type xrepo[T any] struct {
+	repo db.Repo[T]
+}

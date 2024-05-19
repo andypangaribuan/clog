@@ -10,9 +10,8 @@
 package main
 
 import (
-	_ "clog/db/repo"
-
 	"clog/app"
+	_ "clog/db/repo"
 	"clog/handl"
 
 	"github.com/andypangaribuan/gmod/fm"
@@ -27,5 +26,6 @@ func main() {
 
 func grpc(router server.RouterG) {
 	router.AutoRecover(app.Env.AppAutoRecover)
+	router.RunHealthCheck()
 	sclog.RegisterCLogServiceServer(router.Server(), handl.Clog)
 }

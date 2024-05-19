@@ -38,15 +38,23 @@ function run {
   staticcheck ./...
 }
 
-
-#: space
-
-
 #: generate proto
 function generate {
   rm -rf $(pwd)/res/proto/generated
   protoc --go_out=. --go-grpc_out=. ./res/proto/*.proto
 }
+
+#: build clog image
+function build-image {
+  version=2.0.1
+  image=ghcr.io/andypangaribuan/clog
+
+  docker build --no-cache \
+    -t $image:$version \
+    -f ./res/Dockerfile .
+}
+
+#: space
 
 #: turn on the docker database
 function docker-up {
@@ -60,10 +68,8 @@ function docker-down {
   docker-compose down
 }
 
-#: space
-
 #: clean the docker database
-function reset {
+function docker-reset {
   cd res
   docker-compose down
   rm -rf postgres/data

@@ -9,12 +9,6 @@
 
 package repo
 
-import "github.com/andypangaribuan/gmod/core/db"
-
-type xrepo[T any] struct {
-	repo db.Repo[T]
-}
-
 func (slf *xrepo[T]) Insert(e *T) error {
 	return slf.repo.Insert(nil, e)
 }
