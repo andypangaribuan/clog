@@ -18,7 +18,8 @@ RUN CGO_ENABLED=0 \
 FROM gcr.io/distroless/static
 LABEL maintainer="Andy Pangaribuan <iam.pangaribuan@gmail.com>"
 
-ENV TZ=Asia/Jakarta
+ARG TZ=Asia/Jakarta
+ENV TZ=${TZ}
 
 ARG APP_VERSION=unknown
 ENV APP_VERSION=${APP_VERSION}

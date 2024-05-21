@@ -8,3 +8,4 @@ timenow
 wrapperspb
 protobuf
 xrepo
+logc

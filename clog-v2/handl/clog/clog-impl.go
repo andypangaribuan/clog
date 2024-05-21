@@ -35,3 +35,7 @@ func (slf *stuClog) ServicePieceV1(ctx context.Context, req *sclog.RequestServic
 func (slf *stuClog) ServiceV1(ctx context.Context, req *sclog.RequestServiceV1) (*sclog.Response, error) {
 	return slf.serviceV1(req, fm.GrpcHeader(ctx))
 }
+
+func (slf *stuClog) GrpcV1(ctx context.Context, req *sclog.RequestGrpcV1) (*sclog.Response, error) {
+	return slf.grpcV1(req, fm.GrpcHeader(ctx))
+}

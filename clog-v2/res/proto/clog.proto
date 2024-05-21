@@ -21,6 +21,7 @@ service CLogService {
   rpc HttpCallV1(RequestHttpCallV1) returns (Response);
   rpc ServicePieceV1(RequestServicePieceV1) returns (Response);
   rpc ServiceV1(RequestServiceV1) returns (Response);
+  rpc GrpcV1(RequestGrpcV1) returns (Response);
 }
 
 
@@ -160,4 +161,25 @@ message RequestServiceV1 {
   string clientIp                                 = 26;
   string startedAt                                = 27;
   string finishedAt                               = 28;
+}
+
+
+
+/*
+ * severity : info, warning, error
+ */
+message RequestGrpcV1 {
+  string uid                                      = 1;
+  google.protobuf.StringValue userId              = 2;
+  google.protobuf.StringValue partnerId           = 3;
+  string svcName                                  = 4;
+  string svcVersion                               = 5;
+  google.protobuf.StringValue svcParentName       = 6;
+  google.protobuf.StringValue svcParentVersion    = 7;
+  string destination                              = 8;
+  string severity                                 = 9;
+  string execPath                                 = 10;
+  string execFunction                             = 11;
+  google.protobuf.StringValue reqHeader           = 12;
+  google.protobuf.StringValue data                = 13;
 }

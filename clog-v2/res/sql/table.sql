@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS dbq_v1
     exec_function VARCHAR(500)                NOT NULL,
     error_message VARCHAR(1000),
     stack_trace   TEXT,
-    host1         VARCHAR(20)                 NOT NULL,
-    host2         VARCHAR(20),
+    host1         VARCHAR(100)                NOT NULL,
+    host2         VARCHAR(100),
     duration1     INTEGER                     NOT NULL,
     duration2     INTEGER,
     duration      INTEGER                     NOT NULL,
@@ -151,4 +151,26 @@ CREATE TABLE IF NOT EXISTS service_v1
     duration           INTEGER                     NOT NULL,
     started_at         TIMESTAMP(3) WITH TIME ZONE NOT NULL,
     finished_at        TIMESTAMP(3) WITH TIME ZONE NOT NULL
+);
+
+
+/*
+ * severity : info, warning, error
+ */
+CREATE TABLE IF NOT EXISTS grpc_v1
+(
+    created_at         TIMESTAMP(3) WITH TIME ZONE NOT NULL,
+    uid                VARCHAR(20)                 NOT NULL,
+    user_id            VARCHAR(20),
+    partner_id         VARCHAR(20),
+    svc_name           VARCHAR(50)                 NOT NULL,
+    svc_version        VARCHAR(15)                 NOT NULL,
+    svc_parent_name    VARCHAR(50),
+    svc_parent_version VARCHAR(15),
+    destination        VARCHAR(100)                NOT NULL,
+    severity           VARCHAR(10)                 NOT NULL,
+    exec_path          VARCHAR(500)                NOT NULL,
+    exec_function      VARCHAR(500)                NOT NULL,
+    req_header         VARCHAR(2000),
+    data               TEXT
 );

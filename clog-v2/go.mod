@@ -3,7 +3,7 @@ module clog
 go 1.22.2
 
 require (
-	github.com/andypangaribuan/gmod v1.0.10
+	github.com/andypangaribuan/gmod v1.0.13
 	github.com/stretchr/testify v1.8.4
 	google.golang.org/protobuf v1.32.0
 )

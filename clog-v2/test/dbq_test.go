@@ -13,6 +13,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/andypangaribuan/gmod/clog"
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
 	"github.com/andypangaribuan/gmod/grpc/service/sclog"
@@ -21,31 +22,30 @@ import (
 )
 
 func TestClogDbq(t *testing.T) {
-	start(t, doTestClogDbq)
-}
+	start(t, func(t *testing.T) {
+		logc := clog.New()
+		c, err := fm.GrpcClient(env.ClogGrpcAddress, sclog.NewCLogServiceClient)
+		require.Nil(t, err)
 
-func doTestClogDbq(t *testing.T) {
-	c, err := fm.GrpcClient(env.ClogGrpcAddress, sclog.NewCLogServiceClient)
-	require.Nil(t, err)
+		timenow := gm.Util.Timenow()
+		after := timenow.Add(time.Second * 2)
 
-	timenow := gm.Util.Timenow()
-	after := timenow.Add(time.Second * 2)
+		req := &sclog.RequestDbqV1{
+			Uid:        gm.Util.UID(),
+			UserId:     &wrapperspb.StringValue{Value: "xyz"},
+			Duration2:  &wrapperspb.Int32Value{Value: 101},
+			StartedAt:  gm.Conv.Time.ToStrFull(timenow),
+			FinishedAt: gm.Conv.Time.ToStrFull(after),
+		}
 
-	req := &sclog.RequestDbqV1{
-		Uid:        gm.Util.UID(),
-		UserId:     &wrapperspb.StringValue{Value: "xyz"},
-		Duration2:  &wrapperspb.Int32Value{Value: 101},
-		StartedAt:  gm.Conv.Time.ToStrFull(timenow),
-		FinishedAt: gm.Conv.Time.ToStrFull(after),
-	}
+		res, err := fm.GrpcCall(logc, c.DbqV1, req,
+			map[string]string{
+				"key1": "val1",
+				"key2": "val2",
+			})
 
-	res, err := fm.GrpcCall(c.DbqV1, req,
-		map[string]string{
-			"key1": "val1",
-			"key2": "val2",
-		})
+		require.Nil(t, err)
 
-	require.Nil(t, err)
-
-	printf(t, "status: %v, message: %v\n", res.Status, res.Message)
+		printf(t, "status: %v, message: %v\n", res.Status, res.Message)
+	})
 }
