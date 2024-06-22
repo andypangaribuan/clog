@@ -95,6 +95,14 @@ function docker-reset {
 EOSQL
 }
 
+
+#: force prune docker container, image and builder
+function docker-clean {
+  docker container prune -f
+  docker image prune -f
+  docker builder prune -f
+}
+
 #: space
 
 # ___ do not change ___
