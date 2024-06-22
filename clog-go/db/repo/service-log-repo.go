@@ -24,7 +24,7 @@ func (slf srServiceLog) new() *srServiceLog {
 	slf.repo.DbInstance = app.Db
 	slf.repo.PrintUnsafeErr = !app.Env.AppEnv.IsProd()
 
-	slf.repo.TableName = "service_log"
+	slf.repo.TableName = app.Env.TableName.ServiceLog
 	slf.repo.SetInsertColumnNames(`
 		id, uid, user_id, partner_id, xid,
 		svc_name, svc_version, svc_parent, endpoint, version,

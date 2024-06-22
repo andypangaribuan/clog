@@ -22,8 +22,9 @@ type srEnv struct {
 	AppAutoRecover bool
 	Timezone       string
 
-	DbRead  *srDB
-	DbWrite *srDB
+	DbRead    *srDB
+	DbWrite   *srDB
+	TableName *srTableName
 }
 
 type srDB struct {
@@ -38,6 +39,12 @@ type srDB struct {
 	MaxLifetime         int
 	MaxIdle             int
 	MaxOpen             int
+}
+
+type srTableName struct {
+	ServiceLog string
+	DbqLog     string
+	InfoLog    string
 }
 
 func envInitialize() {
@@ -76,6 +83,12 @@ func envInitialize() {
 			MaxLifetime:         p9.Util.Env.GetInt("DB_MAX_LIFETIME"),
 			MaxIdle:             p9.Util.Env.GetInt("DB_MAX_IDLE"),
 			MaxOpen:             p9.Util.Env.GetInt("DB_MAX_OPEN"),
+		},
+
+		TableName: &srTableName{
+			ServiceLog: p9.Util.Env.GetStr("TABLE_NAME_SERVICE_LOG", "service_log"),
+			DbqLog:     p9.Util.Env.GetStr("TABLE_NAME_DBQ_LOG", "dbq_log"),
+			InfoLog:    p9.Util.Env.GetStr("TABLE_NAME_INFO_LOG", "info_log"),
 		},
 	}
 }
