@@ -13,6 +13,8 @@ import (
 	"clog/db/repo"
 	"context"
 	"fmt"
+	"strconv"
+	"time"
 
 	"github.com/andypangaribuan/project9/f9"
 	"github.com/andypangaribuan/project9/p9"
@@ -23,6 +25,14 @@ func (slf *CLogCtrl) InfoLog(ctx context.Context, req *clog_svc.RequestInfoLog) 
 	createdAt, err := p9.Conv.Time.ToTimeRFC3339MilliSecond(req.CreatedAt)
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("failed to convert created_at value as RFC3339 Millisecond time format, req data: %v", req.CreatedAt))
+	}
+
+	microStr, err := p9.Util.GetRandom(3, "1234567890")
+	if err == nil {
+		microInt, err := strconv.Atoi(microStr)
+		if err == nil {
+			createdAt = createdAt.Add(time.Microsecond * time.Duration(microInt))
+		}
 	}
 
 	e := entity.InfoLog{
