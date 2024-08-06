@@ -2,6 +2,7 @@
  * this log only for clog service
  * if any error occurs
  */
+DROP TABLE IF EXISTS internal;
 CREATE TABLE IF NOT EXISTS internal
 (
   created_at    TIMESTAMPTZ(6) NOT NULL,
@@ -17,6 +18,7 @@ CREATE TABLE IF NOT EXISTS internal
 /*
  * this is a custom log, from direct add
  */
+DROP TABLE IF EXISTS note;
 CREATE TABLE IF NOT EXISTS note
 (
   created_at    TIMESTAMPTZ(6) NOT NULL,
@@ -34,6 +36,7 @@ CREATE TABLE IF NOT EXISTS note
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
+DROP TABLE IF EXISTS dbq_v1;
 CREATE TABLE IF NOT EXISTS dbq_v1
 (
   created_at    TIMESTAMPTZ(6) NOT NULL,
@@ -63,6 +66,7 @@ CREATE TABLE IF NOT EXISTS dbq_v1
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
+DROP TABLE IF EXISTS http_call_v1;
 CREATE TABLE IF NOT EXISTS http_call_v1
 (
   created_at    TIMESTAMPTZ(6) NOT NULL,
@@ -92,6 +96,7 @@ CREATE TABLE IF NOT EXISTS http_call_v1
 /*
  * startedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
+DROP TABLE IF EXISTS service_piece_v1;
 CREATE TABLE IF NOT EXISTS service_piece_v1
 (
   created_at         TIMESTAMPTZ(6) NOT NULL,
@@ -101,7 +106,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1
   svc_parent_name    VARCHAR(50),
   svc_parent_version VARCHAR(15),
   endpoint           VARCHAR(1000)  NOT NULL,
-  url                VARCHAR(1500)  NOT NULL,
+  url                VARCHAR(1000)  NOT NULL,
   req_version        VARCHAR(5),
   req_source         VARCHAR(100),
   req_header         VARCHAR(2000),
@@ -119,6 +124,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
+DROP TABLE IF EXISTS service_v1;
 CREATE TABLE IF NOT EXISTS service_v1
 (
   created_at         TIMESTAMPTZ(6) NOT NULL,
@@ -130,7 +136,7 @@ CREATE TABLE IF NOT EXISTS service_v1
   svc_parent_name    VARCHAR(50),
   svc_parent_version VARCHAR(15),
   endpoint           VARCHAR(1000)  NOT NULL,
-  url                VARCHAR(1500)  NOT NULL,
+  url                VARCHAR(1000)  NOT NULL,
   severity           VARCHAR(10)    NOT NULL,
   exec_path          VARCHAR(500)   NOT NULL,
   exec_function      VARCHAR(500)   NOT NULL,
@@ -157,6 +163,7 @@ CREATE TABLE IF NOT EXISTS service_v1
 /*
  * severity : info, warning, error
  */
+DROP TABLE IF EXISTS grpc_v1;
 CREATE TABLE IF NOT EXISTS grpc_v1
 (
   created_at         TIMESTAMPTZ(6) NOT NULL,

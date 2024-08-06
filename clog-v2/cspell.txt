@@ -9,3 +9,4 @@ wrapperspb
 protobuf
 xrepo
 logc
+questdb

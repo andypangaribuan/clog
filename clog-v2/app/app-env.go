@@ -24,5 +24,6 @@ func initEnv() {
 		DbName: gm.Util.Env.GetString("DB_NAME"),
 		DbUser: gm.Util.Env.GetString("DB_USER"),
 		DbPass: gm.Util.Env.GetString("DB_PASS"),
+		DbType: gm.Util.Env.GetString("DB_TYPE"),
 	}
 }

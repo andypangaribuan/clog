@@ -10,7 +10,9 @@
 package repo
 
 import (
+	"clog/app"
 	"clog/db/entity"
+	"strconv"
 
 	"github.com/andypangaribuan/gmod/ice"
 )
@@ -26,11 +28,17 @@ func init() {
 					req_files, req_body, res_data, res_code, error_message,
 					stack_trace, duration, started_at, finished_at`,
 			func(e *entity.HttpCallV1) []any {
+				var resCode any = e.ResCode
+
+				if app.Env.DbType == "questdb" {
+					resCode = strconv.Itoa(e.ResCode)
+				}
+
 				return []any{
 					e.CreatedAt, e.Uid,
 					e.UserId, e.PartnerId, e.SvcName, e.SvcVersion, e.Url,
 					e.Severity, e.ReqHeader, e.ReqParam, e.ReqQuery, e.ReqForm,
-					e.ReqFiles, e.ReqBody, e.ResData, e.ResCode, e.ErrorMessage,
+					e.ReqFiles, e.ReqBody, e.ResData, resCode, e.ErrorMessage,
 					e.StackTrace, e.Duration, e.StartedAt, e.FinishedAt,
 				}
 			})
