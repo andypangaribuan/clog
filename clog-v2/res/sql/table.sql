@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1
     svc_parent_name    VARCHAR(50),
     svc_parent_version VARCHAR(15),
     endpoint           VARCHAR(1000)               NOT NULL,
-    url                VARCHAR(1500)               NOT NULL,
+    url                VARCHAR(1000)               NOT NULL,
     req_version        VARCHAR(5),
     req_source         VARCHAR(100),
     req_header         VARCHAR(2000),

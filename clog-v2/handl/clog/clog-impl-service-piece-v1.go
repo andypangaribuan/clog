@@ -42,7 +42,7 @@ func (slf *stuClog) servicePieceV1(req *sclog.RequestServicePieceV1, _ map[strin
 
 	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
 
-	err := repo.ServicePieceV1.Insert(e)
+	err := repo.ServicePieceV1.Insert(trimServicePieceV1(e))
 	saveError(err, e)
 
 	return send(err)

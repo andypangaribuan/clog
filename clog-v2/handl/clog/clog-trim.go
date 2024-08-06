@@ -81,4 +81,13 @@ func trimHttpCallV1(e *entity.HttpCallV1) *entity.HttpCallV1 {
 	return e
 }
 
-
+func trimServicePieceV1(e *entity.ServicePieceV1) *entity.ServicePieceV1 {
+	e.Endpoint = trim(e.Endpoint, l1k)
+	e.Url = trim(e.Url, l1k)
+	e.ReqHeader = ptrTrim(e.ReqHeader, l2k)
+	e.ReqParam = ptrTrim(e.ReqParam, l2k)
+	e.ReqQuery = ptrTrim(e.ReqQuery, l2k)
+	e.ReqForm = ptrTrim(e.ReqForm, l2k)
+	e.ReqBody = ptrTrim(e.ReqBody, lMax)
+	return e
+}
