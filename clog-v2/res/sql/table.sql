@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS service_v1
     svc_parent_name    VARCHAR(50),
     svc_parent_version VARCHAR(15),
     endpoint           VARCHAR(1000)               NOT NULL,
-    url                VARCHAR(1500)               NOT NULL,
+    url                VARCHAR(1000)               NOT NULL,
     severity           VARCHAR(10)                 NOT NULL,
     exec_path          VARCHAR(500)                NOT NULL,
     exec_function      VARCHAR(500)                NOT NULL,

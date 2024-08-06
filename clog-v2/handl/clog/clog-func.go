@@ -60,5 +60,5 @@ func saveError(err error, data any) {
 		StackTrace:   gm.Util.StackTrace(1),
 	}
 
-	_ = repo.Internal.Insert(e)
+	_ = repo.Internal.Insert(trimInternal(e))
 }
