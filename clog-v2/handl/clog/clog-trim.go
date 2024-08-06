@@ -91,3 +91,20 @@ func trimServicePieceV1(e *entity.ServicePieceV1) *entity.ServicePieceV1 {
 	e.ReqBody = ptrTrim(e.ReqBody, lMax)
 	return e
 }
+
+func trimServiceV1(e *entity.ServiceV1) *entity.ServiceV1 {
+	e.Endpoint = trim(e.Endpoint, l1k)
+	e.Url = trim(e.Url, l1k)
+	e.ExecPath = trim(e.ExecPath, l500)
+	e.ExecFunction = trim(e.ExecFunction, l500)
+	e.ReqHeader = ptrTrim(e.ReqHeader, l2k)
+	e.ReqParam = ptrTrim(e.ReqParam, l2k)
+	e.ReqQuery = ptrTrim(e.ReqQuery, l2k)
+	e.ReqForm = ptrTrim(e.ReqForm, l2k)
+	e.ReqFiles = ptrTrim(e.ReqFiles, l2k)
+	e.ReqBody = ptrTrim(e.ReqBody, lMax)
+	e.ResData = ptrTrim(e.ResData, lMax)
+	e.ErrorMessage = ptrTrim(e.ErrorMessage, l1k)
+	e.StackTrace = ptrTrim(e.StackTrace, lMax)
+	return e
+}

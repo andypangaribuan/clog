@@ -67,7 +67,7 @@ func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, _ map[string]string) 
 	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
 	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
 
-	err = repo.ServiceV1.Insert(e)
+	err = repo.ServiceV1.Insert(trimServiceV1(e))
 	saveError(err, e)
 
 	return send(err)
