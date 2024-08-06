@@ -36,7 +36,7 @@ func (slf *stuClog) grpcV1(req *sclog.RequestGrpcV1, _ map[string]string) (*sclo
 		Data:             fm.DirectPbwGet[string](req.Data),
 	}
 
-	err := repo.GrpcV1.Insert(e)
+	err := repo.GrpcV1.Insert(trimGrpcV1(e))
 	saveError(err, err)
 
 	return send(err)

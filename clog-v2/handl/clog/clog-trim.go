@@ -108,3 +108,11 @@ func trimServiceV1(e *entity.ServiceV1) *entity.ServiceV1 {
 	e.StackTrace = ptrTrim(e.StackTrace, lMax)
 	return e
 }
+
+func trimGrpcV1(e *entity.GrpcV1) *entity.GrpcV1 {
+	e.ExecPath = trim(e.ExecPath, l500)
+	e.ExecFunction = trim(e.ExecFunction, l500)
+	e.ReqHeader = ptrTrim(e.ReqHeader, l2k)
+	e.Data = ptrTrim(e.Data, lMax)
+	return e
+}
