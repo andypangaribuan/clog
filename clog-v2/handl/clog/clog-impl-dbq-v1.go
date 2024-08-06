@@ -57,7 +57,7 @@ func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, _ map[string]string) (*sclog.
 	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
 	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
 
-	err = repo.DbqLogV1.Insert(e)
+	err = repo.DbqLogV1.Insert(trimDbqV1(e))
 	saveError(err, e)
 
 	return send(err)

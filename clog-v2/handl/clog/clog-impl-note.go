@@ -29,7 +29,7 @@ func (slf *stuClog) note(req *sclog.RequestNote, _ map[string]string) (*sclog.Re
 		Data:         req.Data,
 	}
 
-	err := repo.Note.Insert(e)
+	err := repo.Note.Insert(trimNote(e))
 	saveError(err, e)
 
 	return send(err)

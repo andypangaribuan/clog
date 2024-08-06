@@ -58,7 +58,7 @@ func (stu *stuClog) httpCallV1(req *sclog.RequestHttpCallV1, _ map[string]string
 	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
 	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
 
-	err = repo.HttpCallV1.Insert(e)
+	err = repo.HttpCallV1.Insert(trimHttpCallV1(e))
 	saveError(err, e)
 
 	return send(err)
