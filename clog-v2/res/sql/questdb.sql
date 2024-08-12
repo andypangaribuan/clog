@@ -188,3 +188,43 @@ CREATE TABLE IF NOT EXISTS grpc_v1
   data               VARCHAR
 ) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
 
+
+
+
+ALTER TABLE note ALTER COLUMN key     ADD INDEX;
+ALTER TABLE note ALTER COLUMN sub_key ADD INDEX;
+
+
+ALTER TABLE dbq_v1 ALTER COLUMN partner_id  ADD INDEX;
+ALTER TABLE dbq_v1 ALTER COLUMN svc_name    ADD INDEX;
+ALTER TABLE dbq_v1 ALTER COLUMN severity    ADD INDEX;
+
+
+ALTER TABLE http_call_v1 ALTER COLUMN partner_id  ADD INDEX;
+ALTER TABLE http_call_v1 ALTER COLUMN svc_name    ADD INDEX;
+ALTER TABLE http_call_v1 ALTER COLUMN url         ADD INDEX;
+ALTER TABLE http_call_v1 ALTER COLUMN severity    ADD INDEX;
+ALTER TABLE http_call_v1 ALTER COLUMN res_code    ADD INDEX;
+
+
+ALTER TABLE service_piece_v1 ALTER COLUMN svc_name        ADD INDEX;
+ALTER TABLE service_piece_v1 ALTER COLUMN svc_parent_name ADD INDEX;
+ALTER TABLE service_piece_v1 ALTER COLUMN endpoint        ADD INDEX;
+ALTER TABLE service_piece_v1 ALTER COLUMN url             ADD INDEX;
+
+
+ALTER TABLE service_v1 ALTER COLUMN partner_id      ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN svc_name        ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN svc_parent_name ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN endpoint        ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN url             ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN severity        ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN res_code        ADD INDEX;
+ALTER TABLE service_v1 ALTER COLUMN res_sub_code    ADD INDEX;
+
+
+ALTER TABLE grpc_v1 ALTER COLUMN partner_id       ADD INDEX;
+ALTER TABLE grpc_v1 ALTER COLUMN svc_name         ADD INDEX;
+ALTER TABLE grpc_v1 ALTER COLUMN svc_parent_name  ADD INDEX;
+ALTER TABLE grpc_v1 ALTER COLUMN destination      ADD INDEX;
+ALTER TABLE grpc_v1 ALTER COLUMN severity         ADD INDEX;
