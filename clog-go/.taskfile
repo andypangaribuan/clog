@@ -38,6 +38,16 @@ function run {
   staticcheck ./...
 }
 
+#: build clog image
+function build-image {
+  version=1.0.15
+  image=ghcr.io/andypangaribuan/clog
+
+  docker build --no-cache \
+    -t $image:$version \
+    -f ./files/Dockerfile .
+}
+
 
 #: generate proto: golang, dart
 function generate-proto {
