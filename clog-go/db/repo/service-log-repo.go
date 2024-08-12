@@ -37,7 +37,7 @@ func (slf srServiceLog) new() *srServiceLog {
 	return &slf
 }
 
-func (slf *srServiceLog) Insert(e entity.ServiceLog) error {
+func (slf *srServiceLog) Insert(e *entity.ServiceLog) error {
 	return slf.repo.Insert(nil,
 		e.Id, e.Uid, e.UserId, e.PartnerId, e.Xid,
 		e.SvcName, e.SvcVersion, e.SvcParent, e.Endpoint, e.Version,

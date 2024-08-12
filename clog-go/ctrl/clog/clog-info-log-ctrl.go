@@ -35,7 +35,7 @@ func (slf *CLogCtrl) InfoLog(ctx context.Context, req *clog_svc.RequestInfoLog) 
 		}
 	}
 
-	e := entity.InfoLog{
+	e := &entity.InfoLog{
 		Id:         slf.generateId(),
 		Uid:        req.Uid,
 		UserId:     f9.Val[string](req.UserId),
@@ -52,7 +52,7 @@ func (slf *CLogCtrl) InfoLog(ctx context.Context, req *clog_svc.RequestInfoLog) 
 		CreatedAt:  createdAt,
 	}
 
-	err = repo.InfoLog.Insert(e)
+	err = repo.InfoLog.Insert(trimInfoLog(e))
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("%+v", err))
 	}

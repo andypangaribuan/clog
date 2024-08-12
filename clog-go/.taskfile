@@ -13,43 +13,53 @@
 # run with $ task
 
 function help {
-    cat .taskfile | \
-    sed 's/#: space/&\nfunction space {/g' | \
-    grep -B1 -E '^[[:space:]]*([[:alnum:]_]+[[:space:]]*\(\)|function[[:space:]]+[[:alnum:]_]+)' | \
-    sed '/function help {/d' | \
-    sed -r 's/function //' | \
-    sed -r 's/ \{/:/' | \
-    grep -v -- -- | \
-    sed '/^\s*$/d' | \
-    sed 'N;s/\n/###/' | \
-    sed -n 's/^#: \(.*\)###\(.*\):.*/\2###→ \1/p' | \
-    column -t -s '###' | \
-    sed 's/.*→ space.*//g'
+  cat .taskfile | \
+  sed 's/#: space/&\nfunction space {/g' | \
+  grep -B1 -E '^[[:space:]]*([[:alnum:]_]+[[:space:]]*\(\)|function[[:space:]]+[[:alnum:]_]+)' | \
+  sed '/function help {/d' | \
+  sed -r 's/function //' | \
+  sed -r 's/ \{/:/' | \
+  grep -v -- -- | \
+  sed '/^\s*$/d' | \
+  sed 'N;s/\n/###/' | \
+  sed -n 's/^#: \(.*\)###\(.*\):.*/\2###→ \1/p' | \
+  column -t -s '###' | \
+  sed 's/.*→ space.*//g'
 }
 
 
 
+#: update + check
+function run {
+  go mod tidy
+  go vet
+  gofmt -l .
+  golangci-lint run
+  staticcheck ./...
+}
+
+
 #: generate proto: golang, dart
 function generate-proto {
-    cmds="
-        golang | → | generate proto for golang\n
-        dart | → | generate proto for dart"
+  cmds="
+    golang | → | generate proto for golang\n
+    dart | → | generate proto for dart"
 
-    case $1 in
-        "") _printTable $cmds ;;
+  case $1 in
+    "") _printTable $cmds ;;
 
-        "golang")
-            rm -rf $(pwd)/files/proto/generated
-            protoc --go_out=. --go-grpc_out=. ./files/proto/*.proto
-            ;;
+    "golang")
+      rm -rf $(pwd)/files/proto/generated
+      protoc --go_out=. --go-grpc_out=. ./files/proto/*.proto
+      ;;
 
-        "dart")
-            protoc --dart_out=grpc:lib/proto -Iproto files/proto/google/protobuf/wrappers.proto
-            protoc --dart_out=grpc:lib/proto -Iproto files/proto/clog.proto
-            ;;
+    "dart")
+      protoc --dart_out=grpc:lib/proto -Iproto files/proto/google/protobuf/wrappers.proto
+      protoc --dart_out=grpc:lib/proto -Iproto files/proto/clog.proto
+      ;;
 
-        *) _printTable $cmds ;;
-    esac
+    *) _printTable $cmds ;;
+  esac
 }
 
 
@@ -57,13 +67,13 @@ function generate-proto {
 
 
 function _printTable {
-    v=""
-    for i in "$*"; do v="$v$i"; done;
+  v=""
+  for i in "$*"; do v="$v$i"; done;
 
-    echo -e $v | \
-    sed -e 's/^[[:space:]]*//' | \
-    sed 's/ | /###/g' | \
-    column -t -s '###'
+  echo -e $v | \
+  sed -e 's/^[[:space:]]*//' | \
+  sed 's/ | /###/g' | \
+  column -t -s '###'
 }
 
 

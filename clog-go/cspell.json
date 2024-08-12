@@ -6,7 +6,7 @@
     "dictionaryDefinitions": [
       {
         "name": "project",
-        "path": "./cspell-project.txt",
+        "path": "./cspell.txt",
         "addWords": true,
         "scope": ["workspace"]
       }

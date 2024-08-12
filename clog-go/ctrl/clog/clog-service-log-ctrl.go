@@ -50,7 +50,7 @@ func (slf *CLogCtrl) ServiceLog(ctx context.Context, req *clog_svc.RequestServic
 		durationMs *= -1
 	}
 
-	e := entity.ServiceLog{
+	e := &entity.ServiceLog{
 		Id:         slf.generateId(),
 		Uid:        req.Uid,
 		UserId:     f9.Val[string](req.UserId),
@@ -80,7 +80,7 @@ func (slf *CLogCtrl) ServiceLog(ctx context.Context, req *clog_svc.RequestServic
 		CreatedAt:  createdAt,
 	}
 
-	err = repo.ServiceLog.Insert(e)
+	err = repo.ServiceLog.Insert(trimServiceLog(e))
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("%+v", err))
 	}

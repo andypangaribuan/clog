@@ -35,7 +35,7 @@ func (slf srDbqLog) new() *srDbqLog {
 	return &slf
 }
 
-func (slf *srDbqLog) Insert(e entity.DbqLog) error {
+func (slf *srDbqLog) Insert(e *entity.DbqLog) error {
 	return slf.repo.Insert(nil,
 		e.Id, e.Uid, e.UserId, e.PartnerId, e.Xid,
 		e.SvcName, e.SvcVersion, e.SvcParent, e.SqlQuery, e.SqlPars,

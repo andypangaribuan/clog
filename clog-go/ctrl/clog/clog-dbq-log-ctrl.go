@@ -50,7 +50,7 @@ func (slf *CLogCtrl) DbqLog(ctx context.Context, req *clog_svc.RequestDbqLog) (*
 		durationMs *= -1
 	}
 
-	e := entity.DbqLog{
+	e := &entity.DbqLog{
 		Id:         slf.generateId(),
 		Uid:        req.Uid,
 		UserId:     f9.Val[string](req.UserId),
@@ -72,7 +72,7 @@ func (slf *CLogCtrl) DbqLog(ctx context.Context, req *clog_svc.RequestDbqLog) (*
 		CreatedAt:  createdAt,
 	}
 
-	err = repo.DbqLog.Insert(e)
+	err = repo.DbqLog.Insert(trimDbqLog(e))
 	if err != nil {
 		return slf.sendFailed(fmt.Sprintf("%+v", err))
 	}

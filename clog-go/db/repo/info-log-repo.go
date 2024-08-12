@@ -34,7 +34,7 @@ func (slf srInfoLog) new() *srInfoLog {
 	return &slf
 }
 
-func (slf *srInfoLog) Insert(e entity.InfoLog) error {
+func (slf *srInfoLog) Insert(e *entity.InfoLog) error {
 	return slf.repo.Insert(nil,
 		e.Id, e.Uid, e.UserId, e.PartnerId, e.Xid,
 		e.SvcName, e.SvcVersion, e.SvcParent, e.Message, e.Severity,
