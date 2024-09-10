@@ -18,7 +18,7 @@ import (
 	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
-func (slf *stuClog) note(req *sclog.RequestNote, _ map[string]string) (*sclog.Response, error) {
+func (slf *stuClog) noteV1(req *sclog.RequestNote, _ map[string]string) (*sclog.Response, error) {
 	e := &entity.NoteV1{
 		CreatedAt:    gm.Util.Timenow(),
 		Uid:          req.Uid,

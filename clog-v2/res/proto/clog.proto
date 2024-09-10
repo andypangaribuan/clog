@@ -16,7 +16,7 @@ import "google/protobuf/wrappers.proto";
 
 
 service CLogService {
-  rpc Note(RequestNoteV1) returns (Response);
+  rpc NoteV1(RequestNoteV1) returns (Response);
   rpc DbqV1(RequestDbqV1) returns (Response);
   rpc HttpCallV1(RequestHttpCallV1) returns (Response);
   rpc ServicePieceV1(RequestServicePieceV1) returns (Response);
