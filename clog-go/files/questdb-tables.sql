@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS service_log (
     start_at    TIMESTAMP,
     finish_at   TIMESTAMP,
     created_at  TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 
@@ -69,7 +69,7 @@ CREATE TABLE dbq_log (
     start_at    TIMESTAMP,
     finish_at   TIMESTAMP,
     created_at  TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 
@@ -89,7 +89,7 @@ CREATE TABLE info_log (
     function    VARCHAR,
     data        VARCHAR,
     created_at  TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 

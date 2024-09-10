@@ -11,9 +11,13 @@ package entity
 
 import "time"
 
-type Note struct {
+type NoteV1 struct {
 	CreatedAt    time.Time `db:"created_at"`
 	Uid          string    `db:"uid"`
+	UserId       *string   `db:"user_id"`
+	PartnerId    *string   `db:"partner_id"`
+	SvcName      string    `db:"svc_name"`
+	SvcVersion   string    `db:"svc_version"`
 	ExecPath     string    `db:"exec_path"`
 	ExecFunction string    `db:"exec_function"`
 	Key          *string   `db:"key"`

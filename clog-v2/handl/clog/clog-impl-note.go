@@ -19,7 +19,7 @@ import (
 )
 
 func (slf *stuClog) note(req *sclog.RequestNote, _ map[string]string) (*sclog.Response, error) {
-	e := &entity.Note{
+	e := &entity.NoteV1{
 		CreatedAt:    gm.Util.Timenow(),
 		Uid:          req.Uid,
 		ExecPath:     req.ExecPath,

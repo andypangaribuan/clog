@@ -48,7 +48,7 @@ func trimInternal(e *entity.Internal) *entity.Internal {
 	return e
 }
 
-func trimNote(e *entity.Note) *entity.Note {
+func trimNote(e *entity.NoteV1) *entity.NoteV1 {
 	e.ExecPath = trim(e.ExecPath, l500)
 	e.ExecFunction = trim(e.ExecFunction, l500)
 	e.Key = ptrTrim(e.Key, l500)

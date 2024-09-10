@@ -18,11 +18,15 @@ CREATE TABLE IF NOT EXISTS internal
 /*
  * this is a custom log, from direct add
  */
-DROP TABLE IF EXISTS note;
-CREATE TABLE IF NOT EXISTS note
+DROP TABLE IF EXISTS note_v1;
+CREATE TABLE IF NOT EXISTS note_v1
 (
   created_at    TIMESTAMPTZ(6) NOT NULL,
   uid           VARCHAR(20)    NOT NULL,
+  user_id       VARCHAR(20),
+  partner_id    VARCHAR(20),
+  svc_name      VARCHAR(50)    NOT NULL,
+  svc_version   VARCHAR(15)    NOT NULL,
   exec_path     VARCHAR(500)   NOT NULL,
   exec_function VARCHAR(500)   NOT NULL,
   key           VARCHAR(500),

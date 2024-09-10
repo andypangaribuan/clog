@@ -24,11 +24,15 @@ CREATE TABLE IF NOT EXISTS internal
 /*
  * this is a custom log, from direct add
  */
-DROP TABLE IF EXISTS note;
-CREATE TABLE IF NOT EXISTS note
+DROP TABLE IF EXISTS note_v1;
+CREATE TABLE IF NOT EXISTS note_v1
 (
   created_at    TIMESTAMP,
   uid           VARCHAR,
+  user_id       VARCHAR,
+  partner_id    SYMBOL CACHE,
+  svc_name      SYMBOL CACHE,
+  svc_version   VARCHAR,
   exec_path     VARCHAR,
   exec_function VARCHAR,
   key           SYMBOL CACHE,
@@ -191,8 +195,11 @@ CREATE TABLE IF NOT EXISTS grpc_v1
 
 
 
-ALTER TABLE note ALTER COLUMN key     ADD INDEX;
-ALTER TABLE note ALTER COLUMN sub_key ADD INDEX;
+
+ALTER TABLE note_v1 ALTER COLUMN partner_id  ADD INDEX;
+ALTER TABLE note_v1 ALTER COLUMN svc_name    ADD INDEX;
+ALTER TABLE note_v1 ALTER COLUMN key         ADD INDEX;
+ALTER TABLE note_v1 ALTER COLUMN sub_key     ADD INDEX;
 
 
 ALTER TABLE dbq_v1 ALTER COLUMN partner_id  ADD INDEX;
