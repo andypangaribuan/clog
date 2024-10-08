@@ -16,7 +16,7 @@ import (
 	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
-func (slf *stuClog) NoteV1(ctx context.Context, req *sclog.RequestNote) (*sclog.Response, error) {
+func (slf *stuClog) NoteV1(ctx context.Context, req *sclog.RequestNoteV1) (*sclog.Response, error) {
 	return slf.noteV1(req, fm.GrpcHeader(ctx))
 }
 
