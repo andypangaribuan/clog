@@ -27,6 +27,8 @@ function help {
   sed 's/.*→ space.*//g'
 }
 
+version=2.0.8
+image=ghcr.io/andypangaribuan/clog
 
 
 #: update + check
@@ -45,13 +47,24 @@ function generate {
 }
 
 #: build clog image
-function build-image {
-  version=2.0.8
-  image=ghcr.io/andypangaribuan/clog
+function build {
+  # docker build --no-cache \
+  #   -t $image:$version \
+  #   -f ./res/Dockerfile .
 
-  docker build --no-cache \
-    -t $image:$version \
-    -f ./res/Dockerfile .
+  echo "${image}:${version}"
+}
+
+#: push clog image
+function push {
+  docker push $image:$version
+}
+
+#: run cspell with grep exclude
+function cspell {
+  _cspell > >(\
+    grep -v "res/Dockerfile" | \
+    grep -v "res/docker-compose.yml")
 }
 
 #: space
@@ -104,6 +117,16 @@ function docker-clean {
 }
 
 #: space
+
+function _cspell {
+  img=ghcr.io/streetsidesoftware/cspell:8.13.3
+  docker run --rm --platform linux/amd64 \
+    -v $PWD:/workdir $img \
+    . -u --quiet \
+    -e go.mod -e go.sum -e README.md -e LICENSE \
+    -e "res/**" -e "grc/**" -e "test/**" -e "http-client/**" -e ".vscode/**" \
+    -e "handler/article/article-fetches/article-fetches-v1p0.go"
+}
 
 # ___ do not change ___
 case $1 in
