@@ -11,9 +11,11 @@ package repo
 
 import (
 	"clog/app"
+	"strings"
 
 	"github.com/andypangaribuan/gmod/core/db"
 	"github.com/andypangaribuan/gmod/fm"
+	"github.com/andypangaribuan/gmod/gm"
 	"github.com/andypangaribuan/gmod/ice"
 )
 
@@ -31,11 +33,30 @@ func add(callback func(dbi ice.DbInstance)) {
 	callbacks = append(callbacks, callback)
 }
 
-func new[T any](dbi ice.DbInstance, tableName string, columns string, fn func(e *T) []any, opt ...db.RepoOptBuilder) *stuRepo[T] {
+func new[T any](dbi ice.DbInstance, tableName string, symbols string, columns string, fn func(e *T) []any, opt ...db.RepoOptBuilder) *stuRepo[T] {
 	repo := db.NewRepo[T](dbi, tableName, opt...)
 	repo.SetInsert(columns, fn)
 
 	stu := &stuRepo[T]{repo: repo}
 	stu.xrepo.repo = repo
+
+	if app.Env.DbType == "questdb" {
+		stu.xrepo.tableName = tableName
+		stu.xrepo.fn = fn
+		stu.xrepo.qdbSymbols = make(map[string]any, 0)
+		stu.xrepo.qdbColumns = make([]string, 0)
+
+		sys := gm.Util.ReplaceAll(&symbols, "", "\n", "\t", " ")
+		if *sys != "" {
+			ls := strings.Split(*sys, ",")
+			for _, column := range ls {
+				stu.qdbSymbols[column] = nil
+			}
+		}
+
+		cm := gm.Util.ReplaceAll(&columns, "", "\n", "\t", " ")
+		stu.xrepo.qdbColumns = strings.Split(*cm, ",")
+	}
+
 	return stu
 }

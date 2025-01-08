@@ -1,7 +1,7 @@
 -- SAMPLE QUERIES
--- SELECT * FROM table_name WHERE created_at IN '2024-05-18;3d';
--- SELECT res_code, COUNT() FROM table_name WHERE created_at IN '2024-06-17;3d' ORDER BY res_code;
--- ALTER TABLE table_name DROP PARTITION LIST '2024-01';
+-- SELECT * FROM table_name WHERE created_at IN ('2024-05-18;2d');
+-- SELECT res_code, COUNT() FROM table_name WHERE created_at IN ('2024-06-17;2d') ORDER BY res_code;
+-- ALTER TABLE table_name DROP PARTITION LIST '2024-01-01';
 
 
 /*
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS internal
   data          VARCHAR,
   error_message VARCHAR,
   stack_trace   VARCHAR
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 /*
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS note_v1
   key           SYMBOL CACHE,
   sub_key       SYMBOL CACHE,
   data          VARCHAR
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 /*
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS dbq_v1
   duration      INT,
   started_at    TIMESTAMP,
   finished_at   TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 /*
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS http_call_v1
   duration      INT,
   started_at    TIMESTAMP,
   finished_at   TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 /*
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS service_piece_v1
   req_body           VARCHAR,
   client_ip          VARCHAR,
   started_at         TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 /*
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS service_v1
   duration           INT,
   started_at         TIMESTAMP,
   finished_at        TIMESTAMP
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 /*
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS grpc_v1
   exec_function      VARCHAR,
   req_header         VARCHAR,
   data               VARCHAR
-) TIMESTAMP (created_at) PARTITION BY MONTH WAL;
+) TIMESTAMP (created_at) PARTITION BY DAY WAL;
 
 
 

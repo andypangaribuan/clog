@@ -9,6 +9,18 @@
 
 package repo
 
+import (
+	"clog/app"
+)
+
 func (slf *xrepo[T]) Insert(e *T) error {
+	if app.Env.DbType == "-" {
+		return nil
+	}
+
+	if app.Env.DbType == "questdb" {
+		return slf.qdbInsert(e)
+	}
+
 	return slf.repo.Insert(nil, e)
 }

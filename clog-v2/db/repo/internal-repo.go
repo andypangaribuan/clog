@@ -19,9 +19,9 @@ var Internal *stuRepo[entity.Internal]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		Internal = new(dbi, "internal", `
-					created_at, uid,
-					exec_path, exec_function, data, error_message, stack_trace`,
+		Internal = new(dbi, "internal", "", `
+				created_at, uid,
+				exec_path, exec_function, data, error_message, stack_trace`,
 			func(e *entity.Internal) []any {
 				return []any{
 					e.CreatedAt, e.Uid,

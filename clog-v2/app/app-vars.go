@@ -9,9 +9,13 @@
 
 package app
 
-import "github.com/andypangaribuan/gmod/ice"
+import (
+	"github.com/andypangaribuan/gmod/ice"
+	qdb "github.com/questdb/go-questdb-client/v3"
+)
 
 var (
-	Db  ice.DbInstance
-	Env *stuEnv
+	Db      ice.DbInstance
+	QdbPool *qdb.LineSenderPool
+	Env     *stuEnv
 )
