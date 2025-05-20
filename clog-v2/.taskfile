@@ -48,9 +48,10 @@ function generate {
 
 #: build clog image
 function build {
-  # docker build --no-cache \
-  #   -t $image:$version \
-  #   -f ./res/Dockerfile .
+  docker build --no-cache \
+    --build-arg APP_VERSION=$version \
+    -f ./res/Dockerfile \
+    -t $image:$version .
 
   echo "${image}:${version}"
 }
