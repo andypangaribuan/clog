@@ -1,6 +1,6 @@
 ARG GO_VERSION=1.24.3-alpine3.21
 
-FROM golang:${GO_VERSION} as builder
+FROM golang:${GO_VERSION} AS builder
 
 WORKDIR /goapp
 COPY . .
