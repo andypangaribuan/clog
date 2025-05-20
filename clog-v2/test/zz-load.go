@@ -12,23 +12,11 @@ package test
 import "github.com/andypangaribuan/gmod/gm"
 
 func loadEnv() {
-	dirPath, err := gm.Util.GetExecDir()
-	if err != nil {
-		panic(err)
-	}
-
-	_ = gm.Util.LoadEnv(dirPath + "/.env")
-
 	env = &stuEnv{
 		AppName:     gm.Util.Env.GetString("APP_NAME"),
+		AppVersion:  gm.Util.Env.GetString("APP_VERSION"),
 		AppTimezone: gm.Util.Env.GetString("APP_TIMEZONE"),
 
-		DbHost: gm.Util.Env.GetString("DB_HOST"),
-		DbPort: gm.Util.Env.GetInt("DB_PORT"),
-		DbName: gm.Util.Env.GetString("DB_NAME"),
-		DbUser: gm.Util.Env.GetString("DB_USER"),
-		DbPass: gm.Util.Env.GetString("DB_PASS"),
-
-		ClogGrpcAddress: gm.Util.Env.GetString("CLOG_GRPC_ADDRESS"),
+		ClogAddress: gm.Util.Env.GetString("CLOG_ADDRESS"),
 	}
 }

@@ -22,6 +22,10 @@ func (slf *stuClog) noteV1(req *sclog.RequestNoteV1, _ map[string]string) (*sclo
 	e := &entity.NoteV1{
 		CreatedAt:    gm.Util.Timenow(),
 		Uid:          req.Uid,
+		UserId:       fm.DirectPbwGet[string](req.UserId),
+		PartnerId:    fm.DirectPbwGet[string](req.PartnerId),
+		SvcName:      req.SvcName,
+		SvcVersion:   req.SvcVersion,
 		ExecPath:     req.ExecPath,
 		ExecFunction: req.ExecFunction,
 		Key:          fm.DirectPbwGet[string](req.Key),

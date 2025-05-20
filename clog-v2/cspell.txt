@@ -1,6 +1,3 @@
-andypangaribuan
-pangaribuan
-decompilation
 gmod
 sclog
 handl
@@ -13,3 +10,4 @@ protobuf
 xrepo
 logc
 questdb
+clickhouse

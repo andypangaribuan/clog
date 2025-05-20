@@ -58,5 +58,21 @@ func new[T any](dbi ice.DbInstance, tableName string, symbols string, columns st
 		stu.xrepo.qdbColumns = strings.Split(*cm, ",")
 	}
 
+	if app.Env.DbType == "clickhouse" {
+		stu.xrepo.tableName = tableName
+		stu.xrepo.fn = fn
+
+		cm := gm.Util.ReplaceAll(&columns, "", "\n", "\t", " ")
+		stu.xrepo.chColumns = *cm
+
+		ls := strings.Split(*cm, ",")
+		for range ls {
+			if stu.xrepo.chArgs != "" {
+				stu.xrepo.chArgs += ","
+			}
+			stu.xrepo.chArgs += "?"
+		}
+	}
+
 	return stu
 }

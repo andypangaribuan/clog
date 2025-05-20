@@ -22,5 +22,9 @@ func (slf *xrepo[T]) Insert(e *T) error {
 		return slf.qdbInsert(e)
 	}
 
+	if app.Env.DbType == "clickhouse" {
+		return slf.chInsert(e)
+	}
+
 	return slf.repo.Insert(nil, e)
 }

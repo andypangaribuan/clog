@@ -17,9 +17,13 @@ type stuRepo[T any] struct {
 }
 
 type xrepo[T any] struct {
-	repo       db.Repo[T]
-	tableName  string
-	fn         func(e *T) []any
+	repo      db.Repo[T]
+	tableName string
+	fn        func(e *T) []any
+
 	qdbSymbols map[string]any
 	qdbColumns []string
+
+	chColumns string
+	chArgs    string
 }

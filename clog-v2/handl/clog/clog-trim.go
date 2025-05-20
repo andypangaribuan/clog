@@ -9,7 +9,10 @@
 
 package clog
 
-import "clog/db/entity"
+import (
+	"clog/app"
+	"clog/db/entity"
+)
 
 const (
 	lMax = 10000
@@ -49,11 +52,14 @@ func trimInternal(e *entity.Internal) *entity.Internal {
 }
 
 func trimNote(e *entity.NoteV1) *entity.NoteV1 {
-	e.ExecPath = trim(e.ExecPath, l500)
-	e.ExecFunction = trim(e.ExecFunction, l500)
-	e.Key = ptrTrim(e.Key, l500)
-	e.SubKey = ptrTrim(e.SubKey, l500)
-	e.Data = trim(e.Data, lMax)
+	if app.Db != nil {
+		e.ExecPath = trim(e.ExecPath, l500)
+		e.ExecFunction = trim(e.ExecFunction, l500)
+		e.Key = ptrTrim(e.Key, l500)
+		e.SubKey = ptrTrim(e.SubKey, l500)
+		e.Data = trim(e.Data, lMax)
+	}
+
 	return e
 }
 

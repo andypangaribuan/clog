@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS service_log (
   stack_trace VARCHAR(10000),
   client_ip   VARCHAR(200)   NOT NULL,
   duration_ms INTEGER        NOT NULL,
-  start_at    TIMESTAMPTZ(6) NULL,
-  finish_at   TIMESTAMPTZ(6) NULL,
-  created_at  TIMESTAMPTZ(6) NULL,
+  start_at    TIMESTAMPTZ(6) NOT NULL,
+  finish_at   TIMESTAMPTZ(6) NOT NULL,
+  created_at  TIMESTAMPTZ(6) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -51,9 +51,9 @@ CREATE TABLE dbq_log
   error       VARCHAR(10000),
   stack_trace VARCHAR(10000),
   duration_ms INTEGER        NOT NULL,
-  start_at    TIMESTAMPTZ(6) NULL,
-  finish_at   TIMESTAMPTZ(6) NULL,
-  created_at  TIMESTAMPTZ(6) NULL,
+  start_at    TIMESTAMPTZ(6) NOT NULL,
+  finish_at   TIMESTAMPTZ(6) NOT NULL,
+  created_at  TIMESTAMPTZ(6) NOT NULL,
   PRIMARY KEY (id)
 );
 

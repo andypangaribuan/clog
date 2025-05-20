@@ -1,4 +1,3 @@
-// Extension: Code Spell Checker
 {
   "version": "0.2",
   "language": "en",
@@ -10,5 +9,16 @@
       "scope": ["workspace"]
     }
   ],
-  "dictionaries": ["project"]
+  "dictionaries": ["project"],
+  "words": ["andypangaribuan", "pangaribuan", "decompilation", "taskfile"],
+  "ignorePaths": [
+    "*.mod",
+    "*.sum",
+    "*.md",
+    "*.taskfile",
+    "LICENSE",
+    ".gitignore",
+    "test/**",
+    "res/**"
+  ]
 }

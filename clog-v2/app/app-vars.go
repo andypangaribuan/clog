@@ -10,6 +10,7 @@
 package app
 
 import (
+	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 	"github.com/andypangaribuan/gmod/ice"
 	qdb "github.com/questdb/go-questdb-client/v3"
 )
@@ -17,5 +18,6 @@ import (
 var (
 	Db      ice.DbInstance
 	QdbPool *qdb.LineSenderPool
+	ChDb    driver.Conn
 	Env     *stuEnv
 )

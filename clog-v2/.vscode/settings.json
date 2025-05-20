@@ -23,25 +23,27 @@
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
   "errorLens.severityText": ["ERROR", "WARNING", "INFO", "HINT"],
   "errorLens.messageBackgroundMode": "line",
-  "editor.rulers": [120],
+  "editor.rulers": [200],
   "editor.foldingStrategy": "indentation",
-  "fileHeaderComment.parameter": {
-    "*": {
-      "author": "Andy Pangaribuan",
-      "github": "https://github.com/apangaribuan",
-      "license": [
-        "Copyright (c) ${year}.",
-        " Created by ${author} <${github}>.",
+  "psi-header.variables": [
+    ["author", "Andy Pangaribuan"],
+    ["email", "iam.pangaribuan@gmail.com"],
+    ["github", "https://github.com/apangaribuan"]
+  ],
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": [
+        "Copyright (c) <<year>>.",
+        "Created by <<author>> (<<email>>)",
+        "<<github>>",
         "",
-        " This product is protected by copyright and distributed under",
-        " licenses restricting copying, distribution and decompilation.",
-        " All Rights Reserved.",
+        "This product is protected by copyright and distributed under",
+        "licenses restricting copying, distribution and decompilation.",
+        "All Rights Reserved."
       ]
     }
-  },
-  "fileHeaderComment.template": {
-    "*": ["${commentbegin}", "${commentprefix} ${license}", "${commentend}"]
-  },
+  ],
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -55,5 +57,6 @@
   "merge-conflict.diffViewPosition": "Current",
   "git.mergeEditor": true,
   "go.testFlags": ["-v"],
-  "terminal.integrated.scrollback": 1000000,
+  "go.testEnvFile": "${workspaceFolder}/test/.env",
+  "terminal.integrated.scrollback": 1000000
 }

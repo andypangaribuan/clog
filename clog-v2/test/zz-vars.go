@@ -9,9 +9,4 @@
 
 package test
 
-import "github.com/andypangaribuan/gmod/ice"
-
-var (
-	env *stuEnv
-	dbi ice.DbPostgresInstance
-)
+var env *stuEnv

@@ -11,13 +11,8 @@ package test
 
 type stuEnv struct {
 	AppName     string
+	AppVersion  string
 	AppTimezone string
 
-	DbHost string
-	DbPort int
-	DbName string
-	DbUser string
-	DbPass string
-
-	ClogGrpcAddress string
+	ClogAddress string
 }
