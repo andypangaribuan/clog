@@ -1,3 +1,11 @@
+SELECT CURRENT_USER AS "user", CONCAT(CURRENT_DATABASE(), '.', CURRENT_SCHEMA()) AS db, INET_SERVER_ADDR() AS address, VERSION();
+
+
+-- EXECUTION HERE MUST USE `owg` ROLE!
+SET ROLE clog_owg;
+SELECT CURRENT_USER AS active_role, SESSION_USER AS active_user;
+
+
 /*
  * this log only for clog service
  * if any error occurs

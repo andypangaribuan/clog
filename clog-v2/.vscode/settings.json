@@ -56,7 +56,7 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "merge-conflict.diffViewPosition": "Current",
   "git.mergeEditor": true,
-  "go.testFlags": ["-v"],
+  "go.testFlags": ["-v", "-count=1"],
   "go.testEnvFile": "${workspaceFolder}/test/.env",
   "terminal.integrated.scrollback": 1000000
 }
