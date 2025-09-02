@@ -6,6 +6,14 @@ SET ROLE clog_owg;
 SELECT CURRENT_USER AS active_role, SESSION_USER AS active_user;
 
 
+
+DROP TABLE IF EXISTS internal_sync_log;
+CREATE TABLE IF NOT EXISTS internal_sync_log (
+  table_name VARCHAR(30)    NOT NULL,
+  last_sync  TIMESTAMPTZ(6) NOT NULL
+);
+
+
 /*
  * this log only for clog service
  * if any error occurs
