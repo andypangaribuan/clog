@@ -21,9 +21,6 @@ type xrepo[T any] struct {
 	tableName string
 	fn        func(e *T) []any
 
-	qdbSymbols map[string]any
-	qdbColumns []string
-
 	chColumns string
 	chArgs    string
 }

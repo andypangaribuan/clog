@@ -19,8 +19,7 @@ var Note *stuRepo[entity.NoteV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		Note = new(dbi, "note_v1",
-			"partner_id, svc_name, key, sub_key", `
+		Note = new(dbi, "note_v1", `
 				created_at, uid,
 				user_id, partner_id, svc_name, svc_version,
 				exec_path, exec_function, key, sub_key, data`,

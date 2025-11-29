@@ -25,6 +25,8 @@ type DbqV1 struct {
 	ExecFunction string    `db:"exec_function" json:"exec_function"`
 	ErrorMessage *string   `db:"error_message" json:"error_message"`
 	StackTrace   *string   `db:"stack_trace" json:"stack_trace"`
+	DbName       *string   `db:"db_name" json:"db_name"`
+	SchemaName   *string   `db:"schema_name" json:"schema_name"`
 	Host1        string    `db:"host1" json:"host1"`
 	Host2        *string   `db:"host2" json:"host2"`
 	Duration1    int       `db:"duration1" json:"duration1"`

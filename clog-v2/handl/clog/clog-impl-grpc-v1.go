@@ -19,8 +19,19 @@ import (
 )
 
 func (slf *stuClog) grpcV1(req *sclog.RequestGrpcV1, _ map[string]string) (*sclog.Response, error) {
+	var (
+		timenow  = gm.Util.Timenow()
+		duration int
+	)
+
+	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
+	finishedAt, _ := gm.Conv.Time.ToTimeFull(req.FinishedAt)
+	if startedAt != nil && finishedAt != nil {
+		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
+	}
+
 	e := &entity.GrpcV1{
-		CreatedAt:        gm.Util.Timenow(),
+		CreatedAt:        timenow,
 		Uid:              req.Uid,
 		UserId:           fm.DirectPbwGet[string](req.UserId),
 		PartnerId:        fm.DirectPbwGet[string](req.PartnerId),
@@ -34,10 +45,14 @@ func (slf *stuClog) grpcV1(req *sclog.RequestGrpcV1, _ map[string]string) (*sclo
 		ExecFunction:     req.ExecFunction,
 		ReqHeader:        fm.DirectPbwGet[string](req.ReqHeader),
 		Data:             fm.DirectPbwGet[string](req.Data),
+		ErrorMessage:     fm.DirectPbwGet[string](req.ErrMessage),
+		StackTrace:       fm.DirectPbwGet[string](req.StackTrace),
+		Duration:         duration,
+		StartedAt:        fm.GetDefault(startedAt, timenow),
+		FinishedAt:       fm.GetDefault(finishedAt, timenow),
 	}
 
 	err := repo.GrpcV1.Insert(trimGrpcV1(e))
 	saveError(err, err)
-
 	return send(err)
 }

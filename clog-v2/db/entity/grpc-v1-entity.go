@@ -26,4 +26,9 @@ type GrpcV1 struct {
 	ExecFunction     string    `db:"exec_function"`
 	ReqHeader        *string   `db:"req_header"`
 	Data             *string   `db:"data"`
+	ErrorMessage     *string   `db:"error_message"`
+	StackTrace       *string   `db:"stack_trace"`
+	Duration         int       `db:"duration"`
+	StartedAt        time.Time `db:"started_at"`
+	FinishedAt       time.Time `db:"finished_at"`
 }

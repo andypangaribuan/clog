@@ -120,5 +120,7 @@ func trimGrpcV1(e *entity.GrpcV1) *entity.GrpcV1 {
 	e.ExecFunction = trim(e.ExecFunction, l500)
 	e.ReqHeader = ptrTrim(e.ReqHeader, l2k)
 	e.Data = ptrTrim(e.Data, lMax)
+	e.ErrorMessage = ptrTrim(e.ErrorMessage, l1k)
+	e.StackTrace = ptrTrim(e.StackTrace, lMax)
 	return e
 }

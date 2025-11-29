@@ -10,9 +10,7 @@
 package repo
 
 import (
-	"clog/app"
 	"clog/db/entity"
-	"strconv"
 
 	"github.com/andypangaribuan/gmod/ice"
 )
@@ -21,8 +19,7 @@ var ServiceV1 *stuRepo[entity.ServiceV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		ServiceV1 = new(dbi, "service_v1",
-			"partner_id, svc_name, svc_parent_name, endpoint, url, severity, res_code, res_sub_code", `
+		ServiceV1 = new(dbi, "service_v1", `
 				created_at, uid,
 				user_id, partner_id, svc_name, svc_version, svc_parent_name,
 				svc_parent_version, endpoint, url, severity, exec_path,
@@ -32,10 +29,6 @@ func init() {
 				duration, started_at, finished_at`,
 			func(e *entity.ServiceV1) []any {
 				var resCode any = e.ResCode
-
-				if app.Env.DbType == "questdb" {
-					resCode = strconv.Itoa(e.ResCode)
-				}
 
 				return []any{
 					e.CreatedAt, e.Uid,

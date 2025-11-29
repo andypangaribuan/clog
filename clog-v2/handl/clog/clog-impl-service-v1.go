@@ -12,7 +12,6 @@ package clog
 import (
 	"clog/db/entity"
 	"clog/db/repo"
-	"time"
 
 	"github.com/andypangaribuan/gmod/fm"
 	"github.com/andypangaribuan/gmod/gm"
@@ -21,20 +20,18 @@ import (
 
 func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, _ map[string]string) (*sclog.Response, error) {
 	var (
-		startedAt  *time.Time
-		finishedAt *time.Time
-		duration   int
-		err        error
+		timenow  = gm.Util.Timenow()
+		duration int
 	)
 
-	startedAt, _ = gm.Conv.Time.ToTimeFull(req.StartedAt)
-	finishedAt, _ = gm.Conv.Time.ToTimeFull(req.FinishedAt)
+	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
+	finishedAt, _ := gm.Conv.Time.ToTimeFull(req.FinishedAt)
 	if startedAt != nil && finishedAt != nil {
 		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
 	}
 
 	e := &entity.ServiceV1{
-		CreatedAt:        gm.Util.Timenow(),
+		CreatedAt:        timenow,
 		Uid:              req.Uid,
 		UserId:           fm.DirectPbwGet[string](req.UserId),
 		PartnerId:        fm.DirectPbwGet[string](req.PartnerId),
@@ -62,13 +59,11 @@ func (slf *stuClog) serviceV1(req *sclog.RequestServiceV1, _ map[string]string) 
 		StackTrace:       fm.DirectPbwGet[string](req.StackTrace),
 		ClientIp:         req.ClientIp,
 		Duration:         duration,
+		StartedAt:        fm.GetDefault(startedAt, timenow),
+		FinishedAt:       fm.GetDefault(finishedAt, timenow),
 	}
 
-	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
-	e.FinishedAt = fm.GetDefault(finishedAt, e.FinishedAt)
-
-	err = repo.ServiceV1.Insert(trimServiceV1(e))
+	err := repo.ServiceV1.Insert(trimServiceV1(e))
 	saveError(err, e)
-
 	return send(err)
 }

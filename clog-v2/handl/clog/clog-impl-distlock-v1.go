@@ -1,6 +1,7 @@
 /*
- * Copyright (c) 2024.
- * Created by Andy Pangaribuan <https://github.com/apangaribuan>.
+ * Copyright (c) 2025.
+ * Created by Andy Pangaribuan (iam.pangaribuan@gmail.com)
+ * https://github.com/apangaribuan
  *
  * This product is protected by copyright and distributed under
  * licenses restricting copying, distribution and decompilation.
@@ -18,7 +19,7 @@ import (
 	"github.com/andypangaribuan/gmod/grpc/service/sclog"
 )
 
-func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, _ map[string]string) (*sclog.Response, error) {
+func (slf *stuClog) distLockV1(req *sclog.RequestDistLockV1, _ map[string]string) (*sclog.Response, error) {
 	var (
 		timenow  = gm.Util.Timenow()
 		duration int
@@ -30,32 +31,25 @@ func (slf *stuClog) dbqV1(req *sclog.RequestDbqV1, _ map[string]string) (*sclog.
 		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
 	}
 
-	e := &entity.DbqV1{
+	e := &entity.DistLockV1{
 		CreatedAt:    timenow,
 		Uid:          req.Uid,
 		UserId:       fm.DirectPbwGet[string](req.UserId),
 		PartnerId:    fm.DirectPbwGet[string](req.PartnerId),
 		SvcName:      req.SvcName,
 		SvcVersion:   req.SvcVersion,
-		SqlQuery:     req.SqlQuery,
-		SqlArgs:      fm.DirectPbwGet[string](req.SqlArgs),
-		Severity:     req.Severity,
-		ExecPath:     req.ExecPath,
-		ExecFunction: req.ExecFunction,
-		ErrorMessage: fm.DirectPbwGet[string](req.ErrorMessage),
+		Engine:       req.Engine,
+		Address:      req.Address,
+		Key:          req.Key,
+		ErrorWhen:    fm.DirectPbwGet[string](req.ErrWhen),
+		ErrorMessage: fm.DirectPbwGet[string](req.ErrMessage),
 		StackTrace:   fm.DirectPbwGet[string](req.StackTrace),
-		DbName:       fm.DirectPbwGet[string](req.DbName),
-		SchemaName:   fm.DirectPbwGet[string](req.SchemaName),
-		Host1:        req.Host1,
-		Host2:        fm.DirectPbwGet[string](req.Host2),
-		Duration1:    int(req.Duration1),
-		Duration2:    fm.DirectPbwGet[int](req.Duration2),
 		Duration:     duration,
 		StartedAt:    fm.GetDefault(startedAt, timenow),
 		FinishedAt:   fm.GetDefault(finishedAt, timenow),
 	}
 
-	err := repo.DbqLogV1.Insert(trimDbqV1(e))
+	err := repo.DistLockV1.Insert(e)
 	saveError(err, e)
 	return send(err)
 }

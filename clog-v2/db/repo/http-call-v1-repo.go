@@ -10,9 +10,7 @@
 package repo
 
 import (
-	"clog/app"
 	"clog/db/entity"
-	"strconv"
 
 	"github.com/andypangaribuan/gmod/ice"
 )
@@ -21,8 +19,7 @@ var HttpCallV1 *stuRepo[entity.HttpCallV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		HttpCallV1 = new(dbi, "http_call_v1",
-			"partner_id, svc_name, url, severity, res_code", `
+		HttpCallV1 = new(dbi, "http_call_v1", `
 				created_at, uid,
 				user_id, partner_id, svc_name, svc_version, url,
 				severity, req_header, req_param, req_query, req_form,
@@ -30,10 +27,6 @@ func init() {
 				stack_trace, duration, started_at, finished_at`,
 			func(e *entity.HttpCallV1) []any {
 				var resCode any = e.ResCode
-
-				if app.Env.DbType == "questdb" {
-					resCode = strconv.Itoa(e.ResCode)
-				}
 
 				return []any{
 					e.CreatedAt, e.Uid,

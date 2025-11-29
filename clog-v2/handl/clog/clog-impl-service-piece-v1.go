@@ -19,10 +19,11 @@ import (
 )
 
 func (slf *stuClog) servicePieceV1(req *sclog.RequestServicePieceV1, _ map[string]string) (*sclog.Response, error) {
+	timenow := gm.Util.Timenow()
 	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
 
 	e := &entity.ServicePieceV1{
-		CreatedAt:        gm.Util.Timenow(),
+		CreatedAt:        timenow,
 		Uid:              req.Uid,
 		SvcName:          req.SvcName,
 		SvcVersion:       req.SvcVersion,
@@ -38,12 +39,10 @@ func (slf *stuClog) servicePieceV1(req *sclog.RequestServicePieceV1, _ map[strin
 		ReqForm:          fm.DirectPbwGet[string](req.ReqForm),
 		ReqBody:          fm.DirectPbwGet[string](req.ReqBody),
 		ClientIp:         req.ClientIp,
+		StartedAt:        fm.GetDefault(startedAt, timenow),
 	}
-
-	e.StartedAt = fm.GetDefault(startedAt, e.StartedAt)
 
 	err := repo.ServicePieceV1.Insert(trimServicePieceV1(e))
 	saveError(err, e)
-
 	return send(err)
 }

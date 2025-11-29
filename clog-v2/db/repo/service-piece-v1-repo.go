@@ -19,8 +19,7 @@ var ServicePieceV1 *stuRepo[entity.ServicePieceV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		ServicePieceV1 = new(dbi, "service_piece_v1",
-			"svc_name, svc_parent_name, endpoint, url", `
+		ServicePieceV1 = new(dbi, "service_piece_v1", `
 				created_at, uid,
 				svc_name, svc_version, svc_parent_name, svc_parent_version, endpoint,
 				url, req_version, req_source, req_header, req_param,

@@ -23,4 +23,5 @@ type NoteV1 struct {
 	Key          *string   `db:"key"`
 	SubKey       *string   `db:"sub_key"`
 	Data         string    `db:"data"`
+	OccurredAt   time.Time `db:"occurred_at"`
 }

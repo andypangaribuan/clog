@@ -38,11 +38,12 @@ CREATE TABLE note_v1
   exec_function String,
   key           LowCardinality(String) DEFAULT '<null>',
   sub_key       String DEFAULT '<null>',
-  data          String
+  data          String,
+  occurred_at   DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
-PARTITION BY toYYYYMMDD(created_at)
-ORDER BY (created_at, svc_name);
+PARTITION BY toYYYYMMDD(occurred_at)
+ORDER BY (svc_name, occurred_at);
 
 
 
@@ -64,6 +65,8 @@ CREATE TABLE dbq_v1
   exec_function String,
   error_message String DEFAULT '<null>',
   stack_trace   String DEFAULT '<null>',
+  db_name       String DEFAULT '<null>',
+  schema_name   String DEFAULT '<null>',
   host1         String,
   host2         String DEFAULT '<null>',
   duration1     UInt32,
@@ -73,8 +76,8 @@ CREATE TABLE dbq_v1
   finished_at   DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
-PARTITION BY toYYYYMMDD(created_at)
-ORDER BY (created_at, svc_name);
+PARTITION BY toYYYYMMDD(started_at)
+ORDER BY (svc_name, started_at);
 
 
 
@@ -103,8 +106,8 @@ CREATE TABLE http_call_v1
   finished_at   DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
-PARTITION BY toYYYYMMDD(created_at)
-ORDER BY (created_at, svc_name);
+PARTITION BY toYYYYMMDD(started_at)
+ORDER BY (svc_name, started_at);
 
 
 
@@ -129,8 +132,8 @@ CREATE TABLE service_piece_v1
   started_at         DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
-PARTITION BY toYYYYMMDD(created_at)
-ORDER BY (created_at, svc_name);
+PARTITION BY toYYYYMMDD(started_at)
+ORDER BY (svc_name, started_at);
 
 
 
@@ -169,8 +172,8 @@ CREATE TABLE service_v1
   finished_at        DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
-PARTITION BY toYYYYMMDD(created_at)
-ORDER BY (created_at, svc_name);
+PARTITION BY toYYYYMMDD(started_at)
+ORDER BY (svc_name, started_at);
 SET allow_suspicious_low_cardinality_types = 0;
 
 
@@ -193,8 +196,36 @@ CREATE TABLE grpc_v1
   exec_path          String,
   exec_function      String,
   req_header         String DEFAULT '<null>',
-  data               String DEFAULT '<null>'
+  data               String DEFAULT '<null>',
+  error_message      String DEFAULT '<null>',
+  stack_trace        String DEFAULT '<null>',
+  started_at         DateTime64(6, 'Asia/Jakarta'),
+  finished_at        DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
-PARTITION BY toYYYYMMDD(created_at)
-ORDER BY (created_at, svc_name);
+PARTITION BY toYYYYMMDD(started_at)
+ORDER BY (svc_name, started_at);
+
+
+
+CREATE TABLE distlock_v1
+(
+  created_at    DateTime64(6, 'Asia/Jakarta'),
+  uid           FixedString(20),
+  user_id       FixedString(20) DEFAULT '<null>',
+  partner_id    FixedString(20) DEFAULT '<null>',
+  svc_name      LowCardinality(String),
+  svc_version   LowCardinality(String),
+  engine        String,
+  address       String,
+  key           String,
+  error_when    String DEFAULT '<null>',
+  error_message String DEFAULT '<null>',
+  stack_trace   String DEFAULT '<null>',
+  duration      UInt32,
+  started_at    DateTime64(6, 'Asia/Jakarta'),
+  finished_at   DateTime64(6, 'Asia/Jakarta')
+)
+engine = MergeTree
+PARTITION BY toYYYYMMDD(started_at)
+ORDER BY (svc_name, started_at);

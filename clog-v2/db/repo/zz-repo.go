@@ -33,44 +33,26 @@ func add(callback func(dbi ice.DbInstance)) {
 	callbacks = append(callbacks, callback)
 }
 
-func new[T any](dbi ice.DbInstance, tableName string, symbols string, columns string, fn func(e *T) []any, opt ...db.RepoOptBuilder) *stuRepo[T] {
+func new[T any](dbi ice.DbInstance, tableName string, columns string, fn func(e *T) []any, opt ...db.RepoOptBuilder) *stuRepo[T] {
 	repo := db.NewRepo[T](dbi, tableName, opt...)
 	repo.SetInsert(columns, fn)
 
 	stu := &stuRepo[T]{repo: repo}
 	stu.xrepo.repo = repo
 
-	if app.Env.DbType == "questdb" {
-		stu.xrepo.tableName = tableName
-		stu.xrepo.fn = fn
-		stu.xrepo.qdbSymbols = make(map[string]any, 0)
-		stu.xrepo.qdbColumns = make([]string, 0)
-
-		sys := gm.Util.ReplaceAll(&symbols, "", "\n", "\t", " ")
-		if *sys != "" {
-			ls := strings.Split(*sys, ",")
-			for _, column := range ls {
-				stu.qdbSymbols[column] = nil
-			}
-		}
-
-		cm := gm.Util.ReplaceAll(&columns, "", "\n", "\t", " ")
-		stu.xrepo.qdbColumns = strings.Split(*cm, ",")
-	}
-
 	if app.Env.DbType == "clickhouse" {
-		stu.xrepo.tableName = tableName
-		stu.xrepo.fn = fn
+		stu.tableName = tableName
+		stu.fn = fn
 
 		cm := gm.Util.ReplaceAll(&columns, "", "\n", "\t", " ")
-		stu.xrepo.chColumns = *cm
+		stu.chColumns = *cm
 
 		ls := strings.Split(*cm, ",")
 		for range ls {
-			if stu.xrepo.chArgs != "" {
-				stu.xrepo.chArgs += ","
+			if stu.chArgs != "" {
+				stu.chArgs += ","
 			}
-			stu.xrepo.chArgs += "?"
+			stu.chArgs += "?"
 		}
 	}
 

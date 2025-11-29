@@ -42,3 +42,7 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS service_v1_$created_at
 -- GRPC V1
 CREATE INDEX CONCURRENTLY IF NOT EXISTS grpc_v1_$created_at
   ON grpc_v1 USING BTREE (created_at);
+
+-- DISTLOCK V1
+CREATE INDEX CONCURRENTLY IF NOT EXISTS distlock_v1_$created_at
+  ON distlock_v1 USING BTREE (created_at);

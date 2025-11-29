@@ -39,3 +39,7 @@ func (slf *stuClog) ServiceV1(ctx context.Context, req *sclog.RequestServiceV1) 
 func (slf *stuClog) GrpcV1(ctx context.Context, req *sclog.RequestGrpcV1) (*sclog.Response, error) {
 	return slf.grpcV1(req, fm.GrpcHeader(ctx))
 }
+
+func (slf *stuClog) DistLockV1(ctx context.Context, req *sclog.RequestDistLockV1) (*sclog.Response, error) {
+	return slf.distLockV1(req, fm.GrpcHeader(ctx))
+}

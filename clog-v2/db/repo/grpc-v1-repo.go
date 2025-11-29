@@ -19,18 +19,19 @@ var GrpcV1 *stuRepo[entity.GrpcV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		GrpcV1 = new(dbi, "grpc_v1",
-			"partner_id, svc_name, svc_parent_name, destination, severity", `
+		GrpcV1 = new(dbi, "grpc_v1", `
 				created_at, uid,
 				user_id, partner_id, svc_name, svc_version, svc_parent_name,
 				svc_parent_version, destination, severity, exec_path, exec_function,
-				req_header, data`,
+				req_header, data, error_message, stack_trace, duration,
+				started_at, finished_at`,
 			func(e *entity.GrpcV1) []any {
 				return []any{
 					e.CreatedAt, e.Uid,
 					e.UserId, e.PartnerId, e.SvcName, e.SvcVersion, e.SvcParentName,
 					e.SvcParentVersion, e.Destination, e.Severity, e.ExecPath, e.ExecFunction,
-					e.ReqHeader, e.Data,
+					e.ReqHeader, e.Data, e.ErrorMessage, e.StackTrace, e.Duration,
+					e.StartedAt, e.FinishedAt,
 				}
 			})
 	})

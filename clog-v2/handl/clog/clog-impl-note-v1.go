@@ -19,8 +19,11 @@ import (
 )
 
 func (slf *stuClog) noteV1(req *sclog.RequestNoteV1, _ map[string]string) (*sclog.Response, error) {
+	timenow := gm.Util.Timenow()
+	occurredAt, _ := gm.Conv.Time.ToTimeFull(req.OccurredAt)
+
 	e := &entity.NoteV1{
-		CreatedAt:    gm.Util.Timenow(),
+		CreatedAt:    timenow,
 		Uid:          req.Uid,
 		UserId:       fm.DirectPbwGet[string](req.UserId),
 		PartnerId:    fm.DirectPbwGet[string](req.PartnerId),
@@ -31,10 +34,10 @@ func (slf *stuClog) noteV1(req *sclog.RequestNoteV1, _ map[string]string) (*sclo
 		Key:          fm.DirectPbwGet[string](req.Key),
 		SubKey:       fm.DirectPbwGet[string](req.SubKey),
 		Data:         req.Data,
+		OccurredAt:   fm.GetDefault(occurredAt, timenow),
 	}
 
 	err := repo.Note.Insert(trimNote(e))
 	saveError(err, e)
-
 	return send(err)
 }
