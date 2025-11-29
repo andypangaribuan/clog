@@ -27,7 +27,7 @@ function help {
   sed 's/.*→ space.*//g'
 }
 
-version=2.0.10
+version=2.0.11
 image=ghcr.io/andypangaribuan/clog
 
 
