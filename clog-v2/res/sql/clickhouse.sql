@@ -137,7 +137,6 @@ ORDER BY (svc_name, started_at);
 
 
 
-SET allow_suspicious_low_cardinality_types = 1; -- IMPLEMENT FOR: res_code
 CREATE TABLE service_v1
 (
   created_at         DateTime64(6, 'Asia/Jakarta'),
@@ -162,7 +161,7 @@ CREATE TABLE service_v1
   req_files          String DEFAULT '<null>',
   req_body           String DEFAULT '<null>',
   res_data           String DEFAULT '<null>',
-  res_code           LowCardinality(UInt16),
+  res_code           UInt16,
   res_sub_code       String,
   error_message      String DEFAULT '<null>',
   stack_trace        String DEFAULT '<null>',
@@ -174,7 +173,6 @@ CREATE TABLE service_v1
 engine = MergeTree
 PARTITION BY toYYYYMMDD(started_at)
 ORDER BY (svc_name, started_at);
-SET allow_suspicious_low_cardinality_types = 0;
 
 
 
@@ -199,6 +197,7 @@ CREATE TABLE grpc_v1
   data               String DEFAULT '<null>',
   error_message      String DEFAULT '<null>',
   stack_trace        String DEFAULT '<null>',
+  duration           UInt32,
   started_at         DateTime64(6, 'Asia/Jakarta'),
   finished_at        DateTime64(6, 'Asia/Jakarta')
 )

@@ -205,6 +205,7 @@ CREATE TABLE IF NOT EXISTS grpc_v1
   data               VARCHAR(10000),
   error_message      VARCHAR(1000),
   stack_trace        VARCHAR(10000),
+  duration           INTEGER        NOT NULL,
   started_at         TIMESTAMPTZ(6) NOT NULL,
   finished_at        TIMESTAMPTZ(6) NOT NULL
 );

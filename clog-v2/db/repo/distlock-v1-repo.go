@@ -20,7 +20,7 @@ var DistLockV1 *stuRepo[entity.DistLockV1]
 
 func init() {
 	add(func(dbi ice.DbInstance) {
-		DistLockV1 = new(dbi, "dbq_v1", `
+		DistLockV1 = new(dbi, "distlock_v1", `
 				created_at, uid,
 				user_id, partner_id, svc_name, svc_version, engine,
 				address, key, error_when, error_message, stack_trace,

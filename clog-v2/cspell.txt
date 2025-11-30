@@ -10,3 +10,4 @@ protobuf
 xrepo
 logc
 clickhouse
+distlock
