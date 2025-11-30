@@ -10,7 +10,7 @@
 CREATE TABLE internal
 (
   created_at    DateTime64(6, 'Asia/Jakarta'),
-  uid           FixedString(20),
+  uid           String,
   exec_path     String,
   exec_function String,
   data          String,
@@ -29,9 +29,9 @@ ORDER BY (created_at);
 CREATE TABLE note_v1
 (
   created_at    DateTime64(6, 'Asia/Jakarta'),
-  uid           FixedString(20),
-  user_id       FixedString(20) DEFAULT '<null>',
-  partner_id    FixedString(20) DEFAULT '<null>',
+  uid           String,
+  user_id       String DEFAULT '<null>',
+  partner_id    String DEFAULT '<null>',
   svc_name      LowCardinality(String),
   svc_version   LowCardinality(String),
   exec_path     String,
@@ -53,9 +53,9 @@ ORDER BY (svc_name, occurred_at);
 CREATE TABLE dbq_v1
 (
   created_at    DateTime64(6, 'Asia/Jakarta'),
-  uid           FixedString(20),
-  user_id       FixedString(20) DEFAULT '<null>',
-  partner_id    FixedString(20) DEFAULT '<null>',
+  uid           String,
+  user_id       String DEFAULT '<null>',
+  partner_id    String DEFAULT '<null>',
   svc_name      LowCardinality(String),
   svc_version   LowCardinality(String),
   sql_query     String,
@@ -84,9 +84,9 @@ ORDER BY (svc_name, started_at);
 CREATE TABLE http_call_v1
 (
   created_at    DateTime64(6, 'Asia/Jakarta'),
-  uid           FixedString(20),
-  user_id       FixedString(20) DEFAULT '<null>',
-  partner_id    FixedString(20) DEFAULT '<null>',
+  uid           String,
+  user_id       String DEFAULT '<null>',
+  partner_id    String DEFAULT '<null>',
   svc_name      LowCardinality(String),
   svc_version   LowCardinality(String),
   url           String,
@@ -114,7 +114,7 @@ ORDER BY (svc_name, started_at);
 CREATE TABLE service_piece_v1
 (
   created_at         DateTime64(6, 'Asia/Jakarta'),
-  uid                FixedString(20),
+  uid                String,
   svc_name           LowCardinality(String),
   svc_version        LowCardinality(String),
   svc_parent_name    LowCardinality(String) DEFAULT '<null>',
@@ -140,9 +140,9 @@ ORDER BY (svc_name, started_at);
 CREATE TABLE service_v1
 (
   created_at         DateTime64(6, 'Asia/Jakarta'),
-  uid                FixedString(20),
-  user_id            FixedString(20) DEFAULT '<null>',
-  partner_id         FixedString(20) DEFAULT '<null>',
+  uid                String,
+  user_id            String DEFAULT '<null>',
+  partner_id         String DEFAULT '<null>',
   svc_name           LowCardinality(String),
   svc_version        LowCardinality(String),
   svc_parent_name    LowCardinality(String) DEFAULT '<null>',
@@ -182,9 +182,9 @@ ORDER BY (svc_name, started_at);
 CREATE TABLE grpc_v1
 (
   created_at         DateTime64(6, 'Asia/Jakarta'),
-  uid                FixedString(20),
-  user_id            FixedString(20) DEFAULT '<null>',
-  partner_id         FixedString(20) DEFAULT '<null>',
+  uid                String,
+  user_id            String DEFAULT '<null>',
+  partner_id         String DEFAULT '<null>',
   svc_name           LowCardinality(String),
   svc_version        LowCardinality(String),
   svc_parent_name    LowCardinality(String) DEFAULT '<null>',
@@ -210,9 +210,9 @@ ORDER BY (svc_name, started_at);
 CREATE TABLE distlock_v1
 (
   created_at      DateTime64(6, 'Asia/Jakarta'),
-  uid             FixedString(20),
-  user_id         FixedString(20) DEFAULT '<null>',
-  partner_id      FixedString(20) DEFAULT '<null>',
+  uid             String,
+  user_id         String DEFAULT '<null>',
+  partner_id      String DEFAULT '<null>',
   svc_name        LowCardinality(String),
   svc_version     LowCardinality(String),
   engine          String,
