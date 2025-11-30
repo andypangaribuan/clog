@@ -209,21 +209,22 @@ ORDER BY (svc_name, started_at);
 
 CREATE TABLE distlock_v1
 (
-  created_at    DateTime64(6, 'Asia/Jakarta'),
-  uid           FixedString(20),
-  user_id       FixedString(20) DEFAULT '<null>',
-  partner_id    FixedString(20) DEFAULT '<null>',
-  svc_name      LowCardinality(String),
-  svc_version   LowCardinality(String),
-  engine        String,
-  address       String,
-  key           String,
-  error_when    String DEFAULT '<null>',
-  error_message String DEFAULT '<null>',
-  stack_trace   String DEFAULT '<null>',
-  duration      UInt32,
-  started_at    DateTime64(6, 'Asia/Jakarta'),
-  finished_at   DateTime64(6, 'Asia/Jakarta')
+  created_at      DateTime64(6, 'Asia/Jakarta'),
+  uid             FixedString(20),
+  user_id         FixedString(20) DEFAULT '<null>',
+  partner_id      FixedString(20) DEFAULT '<null>',
+  svc_name        LowCardinality(String),
+  svc_version     LowCardinality(String),
+  engine          String,
+  address         String,
+  key             String,
+  error_when      String DEFAULT '<null>',
+  error_message   String DEFAULT '<null>',
+  stack_trace     String DEFAULT '<null>',
+  obtain_duration UInt32,
+  duration        UInt32,
+  started_at      DateTime64(6, 'Asia/Jakarta'),
+  finished_at     DateTime64(6, 'Asia/Jakarta')
 )
 engine = MergeTree
 PARTITION BY toYYYYMMDD(started_at)

@@ -4,7 +4,7 @@ go 1.25.1
 
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.34.0
-	github.com/andypangaribuan/gmod v1.0.74
+	github.com/andypangaribuan/gmod v1.0.77
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/grpc v1.77.0
 	google.golang.org/protobuf v1.36.10

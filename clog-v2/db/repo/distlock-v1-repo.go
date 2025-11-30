@@ -24,13 +24,13 @@ func init() {
 				created_at, uid,
 				user_id, partner_id, svc_name, svc_version, engine,
 				address, key, error_when, error_message, stack_trace,
-				duration, started_at, finished_at`,
+				obtain_duration, duration, started_at, finished_at`,
 			func(e *entity.DistLockV1) []any {
 				return []any{
 					e.CreatedAt, e.Uid,
 					e.UserId, e.PartnerId, e.SvcName, e.SvcVersion, e.Engine,
 					e.Address, e.Key, e.ErrorWhen, e.ErrorMessage, e.StackTrace,
-					e.Duration, e.StartedAt, e.FinishedAt,
+					e.ObtainDuration, e.Duration, e.StartedAt, e.FinishedAt,
 				}
 			})
 	})

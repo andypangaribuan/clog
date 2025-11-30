@@ -21,32 +21,40 @@ import (
 
 func (slf *stuClog) distLockV1(req *sclog.RequestDistLockV1, _ map[string]string) (*sclog.Response, error) {
 	var (
-		timenow  = gm.Util.Timenow()
-		duration int
+		timenow        = gm.Util.Timenow()
+		obtainDuration int
+		duration       int
 	)
 
+	obtainAt, _ := gm.Conv.Time.ToTimeFull(req.ObtainAt)
 	startedAt, _ := gm.Conv.Time.ToTimeFull(req.StartedAt)
 	finishedAt, _ := gm.Conv.Time.ToTimeFull(req.FinishedAt)
+
 	if startedAt != nil && finishedAt != nil {
 		duration = int(finishedAt.Sub(*startedAt).Milliseconds())
 	}
 
+	if startedAt != nil && obtainAt != nil {
+		obtainDuration = int(obtainAt.Sub(*startedAt).Milliseconds())
+	}
+
 	e := &entity.DistLockV1{
-		CreatedAt:    timenow,
-		Uid:          req.Uid,
-		UserId:       fm.DirectPbwGet[string](req.UserId),
-		PartnerId:    fm.DirectPbwGet[string](req.PartnerId),
-		SvcName:      req.SvcName,
-		SvcVersion:   req.SvcVersion,
-		Engine:       req.Engine,
-		Address:      req.Address,
-		Key:          req.Key,
-		ErrorWhen:    fm.DirectPbwGet[string](req.ErrWhen),
-		ErrorMessage: fm.DirectPbwGet[string](req.ErrMessage),
-		StackTrace:   fm.DirectPbwGet[string](req.StackTrace),
-		Duration:     duration,
-		StartedAt:    fm.GetDefault(startedAt, timenow),
-		FinishedAt:   fm.GetDefault(finishedAt, timenow),
+		CreatedAt:      timenow,
+		Uid:            req.Uid,
+		UserId:         fm.DirectPbwGet[string](req.UserId),
+		PartnerId:      fm.DirectPbwGet[string](req.PartnerId),
+		SvcName:        req.SvcName,
+		SvcVersion:     req.SvcVersion,
+		Engine:         req.Engine,
+		Address:        req.Address,
+		Key:            req.Key,
+		ErrorWhen:      fm.DirectPbwGet[string](req.ErrWhen),
+		ErrorMessage:   fm.DirectPbwGet[string](req.ErrMessage),
+		StackTrace:     fm.DirectPbwGet[string](req.StackTrace),
+		ObtainDuration: obtainDuration,
+		Duration:       duration,
+		StartedAt:      fm.GetDefault(startedAt, timenow),
+		FinishedAt:     fm.GetDefault(finishedAt, timenow),
 	}
 
 	err := repo.DistLockV1.Insert(e)

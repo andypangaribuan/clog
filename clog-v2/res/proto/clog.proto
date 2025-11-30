@@ -201,6 +201,7 @@ message RequestGrpcV1 {
 
 
 /*
+ * obtainAt   : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  * finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
  */
@@ -216,6 +217,7 @@ message RequestDistLockV1 {
   google.protobuf.StringValue errWhen    = 9;
   google.protobuf.StringValue errMessage = 10;
   google.protobuf.StringValue stackTrace = 11;
-  string                      startedAt  = 12;
-  string                      finishedAt = 13;
+  string                      obtainAt   = 13;
+  string                      startedAt  = 14;
+  string                      finishedAt = 15;
 }

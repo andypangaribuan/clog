@@ -1198,6 +1198,7 @@ func (x *RequestGrpcV1) GetFinishedAt() string {
 	return ""
 }
 
+// obtainAt   : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
 // startedAt  : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
 // finishedAt : format "yyyy-MM-dd HH:mm:ss.SSSSSS TZ"
 type RequestDistLockV1 struct {
@@ -1213,8 +1214,9 @@ type RequestDistLockV1 struct {
 	ErrWhen       *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=errWhen,proto3" json:"errWhen,omitempty"`
 	ErrMessage    *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=errMessage,proto3" json:"errMessage,omitempty"`
 	StackTrace    *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=stackTrace,proto3" json:"stackTrace,omitempty"`
-	StartedAt     string                  `protobuf:"bytes,12,opt,name=startedAt,proto3" json:"startedAt,omitempty"`
-	FinishedAt    string                  `protobuf:"bytes,13,opt,name=finishedAt,proto3" json:"finishedAt,omitempty"`
+	ObtainAt      string                  `protobuf:"bytes,13,opt,name=obtainAt,proto3" json:"obtainAt,omitempty"`
+	StartedAt     string                  `protobuf:"bytes,14,opt,name=startedAt,proto3" json:"startedAt,omitempty"`
+	FinishedAt    string                  `protobuf:"bytes,15,opt,name=finishedAt,proto3" json:"finishedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1324,6 +1326,13 @@ func (x *RequestDistLockV1) GetStackTrace() *wrapperspb.StringValue {
 		return x.StackTrace
 	}
 	return nil
+}
+
+func (x *RequestDistLockV1) GetObtainAt() string {
+	if x != nil {
+		return x.ObtainAt
+	}
+	return ""
 }
 
 func (x *RequestDistLockV1) GetStartedAt() string {
@@ -1515,7 +1524,7 @@ const file_res_proto_clog_proto_rawDesc = "" +
 	"\tstartedAt\x18\x10 \x01(\tR\tstartedAt\x12\x1e\n" +
 	"\n" +
 	"finishedAt\x18\x11 \x01(\tR\n" +
-	"finishedAt\"\x87\x04\n" +
+	"finishedAt\"\xa3\x04\n" +
 	"\x11RequestDistLockV1\x12\x10\n" +
 	"\x03uid\x18\x01 \x01(\tR\x03uid\x124\n" +
 	"\x06userId\x18\x02 \x01(\v2\x1c.google.protobuf.StringValueR\x06userId\x12:\n" +
@@ -1534,10 +1543,11 @@ const file_res_proto_clog_proto_rawDesc = "" +
 	"errMessage\x12<\n" +
 	"\n" +
 	"stackTrace\x18\v \x01(\v2\x1c.google.protobuf.StringValueR\n" +
-	"stackTrace\x12\x1c\n" +
-	"\tstartedAt\x18\f \x01(\tR\tstartedAt\x12\x1e\n" +
+	"stackTrace\x12\x1a\n" +
+	"\bobtainAt\x18\r \x01(\tR\bobtainAt\x12\x1c\n" +
+	"\tstartedAt\x18\x0e \x01(\tR\tstartedAt\x12\x1e\n" +
 	"\n" +
-	"finishedAt\x18\r \x01(\tR\n" +
+	"finishedAt\x18\x0f \x01(\tR\n" +
 	"finishedAt2\x88\x03\n" +
 	"\vCLogService\x12/\n" +
 	"\x06NoteV1\x12\x14.sclog.RequestNoteV1\x1a\x0f.sclog.Response\x12-\n" +

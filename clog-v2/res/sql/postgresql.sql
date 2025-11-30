@@ -215,21 +215,22 @@ CREATE TABLE IF NOT EXISTS grpc_v1
 DROP TABLE IF EXISTS distlock_v1;
 CREATE TABLE IF NOT EXISTS distlock_v1
 (
-  created_at    TIMESTAMPTZ(6) NOT NULL,
-  uid           VARCHAR(20)    NOT NULL,
-  user_id       VARCHAR(20),
-  partner_id    VARCHAR(20),
-  svc_name      VARCHAR(50)    NOT NULL,
-  svc_version   VARCHAR(15)    NOT NULL,
-  engine        VARCHAR(20) NOT NULL,
-  address       VARCHAR(100) NOT NULL,
-  key           VARCHAR(1000)  NOT NULL,
-  error_when    VARCHAR(20),
-  error_message VARCHAR(1000),
-  stack_trace   VARCHAR(10000),
-  duration      INTEGER        NOT NULL,
-  started_at    TIMESTAMPTZ(6) NOT NULL,
-  finished_at   TIMESTAMPTZ(6) NOT NULL
+  created_at      TIMESTAMPTZ(6) NOT NULL,
+  uid             VARCHAR(20)    NOT NULL,
+  user_id         VARCHAR(20),
+  partner_id      VARCHAR(20),
+  svc_name        VARCHAR(50)    NOT NULL,
+  svc_version     VARCHAR(15)    NOT NULL,
+  engine          VARCHAR(20) NOT NULL,
+  address         VARCHAR(100) NOT NULL,
+  key             VARCHAR(1000)  NOT NULL,
+  error_when      VARCHAR(20),
+  error_message   VARCHAR(1000),
+  stack_trace     VARCHAR(10000),
+  obtain_duration INTEGER NOT NULL,
+  duration        INTEGER        NOT NULL,
+  started_at      TIMESTAMPTZ(6) NOT NULL,
+  finished_at     TIMESTAMPTZ(6) NOT NULL
 );
 
 
