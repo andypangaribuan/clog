@@ -1,0 +1,40 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaryDefinitions": [
+    {
+      "name": "project",
+      "path": "./cspell.txt",
+      "addWords": true,
+      "scope": ["workspace"]
+    }
+  ],
+  "dictionaries": ["project"],
+  "words": ["andypangaribuan", "apangaribuan", "pangaribuan", "decompilation"],
+  "ignorePaths": [
+    ".devbox/**",
+    ".rustup/**",
+    ".vscode/**",
+    ".devcontainer/**",
+    ".venv/**",
+    "target/**",
+    "test-debug/**",
+    "debug/**",
+
+    "*.mod",
+    "*.sum",
+    "*.md",
+    "*.taskfile",
+    "*.sh",
+    "*.toml",
+    "devbox.json",
+    "LICENSE",
+    ".gitignore",
+    "test/**",
+    "res/**",
+    "grc/**",
+    "http-client/**",
+
+    "requirements.txt"
+  ]
+}

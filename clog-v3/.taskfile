@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+# Copyright (c) 2026.
+# Created by Andy Pangaribuan. All Rights Reserved.
+# This product is protected by copyright and distributed under
+# licenses restricting copying, distribution and decompilation.
+
+
+
+#: check the code with cargo check, build, clippy and fmt
+function check {
+  cargo check
+  cargo build
+  cargo clippy && cargo fmt --check
+}
+
+
+#: clean the project
+function clean {
+  cargo clean
+}
+
+
+#: do cargo test
+function test {
+  cargo test -q -- --test-threads=1
+}
+
+
+#: generate proto files
+function generate {
+  find src/grc -maxdepth 1 -type f ! -name "mod.rs" -delete
+  ./res/proto-generator.sh
+}
+
+
+#: run cspell to check the project words
+function spell {
+  spell-rs
+}
+
+
+#: space
+
+
+#: start the service locally
+function start {
+  rm -rf ./target/release/clog
+  cargo build --release
+
+  set -a
+  source res/envs/stg.env
+  set +a
+
+  ./target/release/clog
+}
+
+
+#: do graceful shutdown
+function down {
+  # Get the PID of your app
+  pid=$(pgrep clog)
+
+  if [ -z "$pid" ]; then
+    echo "No process found for clog"
+  else
+    # Send the signal
+    echo "Sending SIGTERM to process $pid..."
+    kill -TERM $pid
+  fi
+}
+
+
+#: space
+
+
+#: open devbox shell #: opt: --fresh (delete .cargo and .rustup directories first)
+function shell {
+  if [ "$DEVBOX_SHELL_ENABLED" = "1" ]; then
+    echo "ℹ️  You are already in an active Devbox shell."
+    return 0
+  fi
+
+  if [[ $1 == "--fresh" ]]; then
+    rm -rf .cargo .rustup
+  fi
+
+  DEVBOX_PROJECT_CWD="$PWD" devbox shell --config ~/.devbox/global/rust-1.96/devbox.json
+}
+
+
+#: build image
+function build {
+  docker build \
+    -t clog:latest \
+    -f res/Dockerfile \
+    .
+}
+
+
+#: show unused dependencies
+function udeps {
+  cargo +nightly udeps
+}
+
+
+#: remove unused directories
+function rmd {
+  rm -rf .cargo .devbox .rustup debug target test-debug
+}
+
+
+
+#: space
+[ -z "$TASKFILE_EXECUTOR" ] && sq taskfile --execute "$@"

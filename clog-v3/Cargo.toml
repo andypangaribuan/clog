@@ -1,0 +1,20 @@
+[package]
+name = "clog"
+version = "0.1.0"
+edition = "2024"
+description = "Centralized gRPC Logging Service for rmod"
+
+[profile.release]
+debug = "line-directives-only"
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+[profile.dev]
+opt-level = 0
+debug = "full"
+
+[dependencies]
+rmod = { path = "/Users/apangaribuan/ark/repo/gh/rmod" }
