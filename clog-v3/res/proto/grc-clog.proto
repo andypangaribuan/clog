@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package grc_clog;
+
+// service for push the log from app services using rmod.
+service LogService {
+  // batch processing of log entries
+  rpc PushBatch (LogBatch) returns (LogResponse);
+}
+
+message LogBatch {
+  repeated LogEntry entries = 1;
+}
+
+message LogEntry {
+  string uid               = 1;
+  int64  timestamp_unix_ms = 2;
+  string service_name      = 3;
+  string trace_id          = 4;
+  string parent_uid        = 5;
+  string log_type          = 6;   // 'API_INCOMING', 'DB_QUERY', 'GRPC_OUTGOING', 'GRPC_INCOMING'
+  string action_name       = 7;
+  int32  duration_ms       = 8;
+  int32  status_code       = 9;
+  string payload_json      = 10;
+}
+
+message LogResponse {
+  bool  success        = 1;
+  int32 accepted_count = 2;
+}

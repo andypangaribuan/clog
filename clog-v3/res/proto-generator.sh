@@ -29,7 +29,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     tonic_build::configure()
         .out_dir("../src/grc")
         .compile_protos(
-            &["proto/clog.proto"],
+            &["proto/grc-clog.proto"],
             &["proto"],
         )?;
     Ok(())

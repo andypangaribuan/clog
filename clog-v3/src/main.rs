@@ -11,6 +11,7 @@
 mod app;
 mod db;
 mod svc;
+mod grc;
 
 extern crate rmod as chrono;
 extern crate rmod as prost;
@@ -24,7 +25,7 @@ use rmod::util::lifecycle;
 
 #[rmod::main]
 async fn main() {
-    rmod::log!("🔥 starting central log gRPC service...");
+    rmod::log!("🔥 starting...");
     let (app_name, port) = env::app();
 
     rmod::log!("🔥 app setup...");
@@ -36,7 +37,7 @@ async fn main() {
         rmod::log!("🔥 database master table & partition ready.");
     }
 
-    rmod::log!("🔥 gRPC service setup...");
+    rmod::log!("🔥 grpc setup...");
     rmod::fuse::grpc(
         &format!("0.0.0.0:{}", port),
         svc::service(),

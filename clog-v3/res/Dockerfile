@@ -27,7 +27,7 @@ RUN cargo build --release --target x86_64-unknown-linux-musl --bin clog
 
 
 FROM gcr.io/distroless/static:nonroot
-LABEL maintainer="Andy Pangaribuan <andypangaribuan@treasury.id>"
+LABEL maintainer="Andy Pangaribuan <iam.pangaribuan@gmail.com>"
 WORKDIR /app
 
 ARG APP_VERSION=unknown
