@@ -10,8 +10,8 @@
 
 mod app;
 mod db;
-mod svc;
 mod grc;
+mod handler;
 
 extern crate rmod as chrono;
 extern crate rmod as prost;
@@ -31,16 +31,17 @@ async fn main() {
     rmod::log!("🔥 app setup...");
     app::setup().await;
 
-    if let Err(e) = db::init_db().await {
-        eprintln!("[clog][WARN] Database initialization check: {}", e);
-    } else {
-        rmod::log!("🔥 database master table & partition ready.");
-    }
+    // if let Err(e) = db::init_db().await {
+    //     eprintln!("[clog][WARN] Database initialization check: {}", e);
+    // } else {
+    //     rmod::log!("🔥 database master table & partition ready.");
+    // }
 
     rmod::log!("🔥 grpc setup...");
     rmod::fuse::grpc(
         &format!("0.0.0.0:{}", port),
-        svc::service(),
+        handler::grc::service(),
+        // svc::service(),
         Some(|| {
             rmod::log!("🔥 {} running on port {}", app_name, port);
             lifecycle::before_graceful_shutdown(vec![before_graceful_shutdown]);

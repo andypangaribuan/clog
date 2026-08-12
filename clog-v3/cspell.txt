@@ -1,3 +1,4 @@
 rmod
+uids
 healthz
 timestamptz

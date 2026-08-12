@@ -5,14 +5,14 @@ package grc_clog;
 // service for push the log from app services using rmod.
 service LogService {
   // batch processing of log entries
-  rpc PushBatch (LogBatch) returns (LogResponse);
+  rpc PushBatch (LogBatchRequest) returns (LogResponse);
 }
 
-message LogBatch {
-  repeated LogEntry entries = 1;
+message LogBatchRequest {
+  repeated LogEntryRequest entries = 1;
 }
 
-message LogEntry {
+message LogEntryRequest {
   string uid               = 1;
   int64  timestamp_unix_ms = 2;
   string service_name      = 3;

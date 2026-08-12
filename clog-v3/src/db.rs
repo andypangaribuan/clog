@@ -9,10 +9,11 @@
  */
 
 use rmod::chrono::{DateTime, Utc};
-use rmod::clog::LogEntry;
+use crate::grc::grc_clog::{LogEntryRequest};
 use rmod::sqlx::{self, types::JsonValue};
 use rmod::store;
 
+#[allow(dead_code)]
 /// Initialize master table and partitions in PostgreSQL database.
 pub async fn init_db() -> Result<(), sqlx::Error> {
     let pool = store::db();
@@ -20,8 +21,8 @@ pub async fn init_db() -> Result<(), sqlx::Error> {
     sqlx::query(
         r#"
         CREATE TABLE IF NOT EXISTS app_logs (
-            uid VARCHAR(20) NOT NULL,
             created_at TIMESTAMPTZ(6) NOT NULL,
+            uid VARCHAR(20) NOT NULL,
             service_name VARCHAR(64) NOT NULL,
             trace_id VARCHAR(20) NOT NULL,
             parent_uid VARCHAR(20) NOT NULL DEFAULT '',
@@ -55,7 +56,7 @@ pub async fn init_db() -> Result<(), sqlx::Error> {
 }
 
 /// Bulk insert log entries into PostgreSQL using UNNEST array batching.
-pub async fn bulk_insert(entries: Vec<LogEntry>) -> Result<usize, sqlx::Error> {
+pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::Error> {
     if entries.is_empty() {
         return Ok(0);
     }
@@ -77,8 +78,8 @@ pub async fn bulk_insert(entries: Vec<LogEntry>) -> Result<usize, sqlx::Error> {
         let dt = DateTime::from_timestamp_millis(e.timestamp_unix_ms).unwrap_or_else(Utc::now);
         let payload_json: JsonValue = rmod::json::from_str(&e.payload_json).unwrap_or(rmod::json::json!({ "raw": e.payload_json }));
 
-        uids.push(e.uid);
         created_ats.push(dt);
+        uids.push(e.uid);
         service_names.push(e.service_name);
         trace_ids.push(e.trace_id);
         parent_uids.push(e.parent_uid);
@@ -92,17 +93,17 @@ pub async fn bulk_insert(entries: Vec<LogEntry>) -> Result<usize, sqlx::Error> {
     sqlx::query(
         r#"
         INSERT INTO app_logs (
-            uid, created_at, service_name, trace_id, parent_uid,
+            created_at, uid, service_name, trace_id, parent_uid,
             log_type, action_name, duration_ms, status_code, payload
         )
         SELECT * FROM UNNEST(
-            $1::varchar[], $2::timestamptz[], $3::varchar[], $4::varchar[], $5::varchar[],
+            $1::timestamptz[], $2::varchar[], $3::varchar[], $4::varchar[], $5::varchar[],
             $6::varchar[], $7::text[], $8::int[], $9::int[], $10::jsonb[]
         );
         "#,
     )
-    .bind(&uids)
     .bind(&created_ats)
+    .bind(&uids)
     .bind(&service_names)
     .bind(&trace_ids)
     .bind(&parent_uids)
