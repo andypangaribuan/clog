@@ -19,13 +19,13 @@ pub fn timezone() -> Option<String> {
 }
 
 pub(super) fn db() -> rmod::config::DbConfig {
-    return rmod::config::DbConfig {
+    rmod::config::DbConfig {
         host: env::string_or("DB_HOST", "127.0.0.1"),
         port: env::int_or("DB_PORT", 5432),
-        username: env::string_or("DB_USERNAME", "postgres"),
-        password: env::string_or("DB_PASSWORD", "postgres"),
         database: env::string_or("DB_NAME", "clog"),
         schema: env::string_opt("DB_SCHEMA"),
+        username: env::string_or("DB_USERNAME", "postgres"),
+        password: env::string_or("DB_PASSWORD", "postgres"),
         max_connections: env::int_or("DB_MAX_CONN", 20),
         min_connections: env::int_or("DB_MIN_CONN", 2),
         acquire_timeout: env::int_opt("DB_ACQUIRE_TIMEOUT"),

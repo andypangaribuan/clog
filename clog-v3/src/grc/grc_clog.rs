@@ -16,16 +16,18 @@ pub struct LogEntryRequest {
     pub trace_id: ::prost::alloc::string::String,
     #[prost(string, tag = "5")]
     pub parent_uid: ::prost::alloc::string::String,
-    /// 'API_INCOMING', 'DB_QUERY', 'GRPC_OUTGOING', 'GRPC_INCOMING'
     #[prost(string, tag = "6")]
-    pub log_type: ::prost::alloc::string::String,
+    pub user_uid: ::prost::alloc::string::String,
+    /// 'API_INCOMING', 'DB_QUERY', 'GRPC_OUTGOING', 'GRPC_INCOMING'
     #[prost(string, tag = "7")]
+    pub log_type: ::prost::alloc::string::String,
+    #[prost(string, tag = "8")]
     pub action_name: ::prost::alloc::string::String,
-    #[prost(int32, tag = "8")]
-    pub duration_ms: i32,
     #[prost(int32, tag = "9")]
+    pub duration_ms: i32,
+    #[prost(int32, tag = "10")]
     pub status_code: i32,
-    #[prost(string, tag = "10")]
+    #[prost(string, tag = "11")]
     pub payload_json: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]

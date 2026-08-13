@@ -1,8 +1,6 @@
 use crate::grc::grc_clog::{LogBatchRequest, LogResponse};
 
-pub async fn push_batch(
-    request: rmod::tonic::Request<LogBatchRequest>,
-) -> Result<rmod::tonic::Response<LogResponse>, rmod::tonic::Status> {
+pub async fn push_batch(request: rmod::tonic::Request<LogBatchRequest>) -> Result<rmod::tonic::Response<LogResponse>, rmod::tonic::Status> {
     let batch = request.into_inner();
     let count = batch.entries.len();
 
