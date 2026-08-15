@@ -2,3 +2,4 @@ rmod
 uids
 healthz
 timestamptz
+jetstream

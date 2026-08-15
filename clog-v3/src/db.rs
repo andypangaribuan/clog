@@ -20,23 +20,25 @@ pub async fn init_db() -> Result<(), sqlx::Error> {
 
     sqlx::query(
         r#"
-        CREATE TABLE IF NOT EXISTS app_logs (
-            created_at TIMESTAMPTZ(6) NOT NULL,
-            uid VARCHAR(20) NOT NULL,
-            service_name VARCHAR(64) NOT NULL,
-            trace_id VARCHAR(20) NOT NULL,
-            parent_uid VARCHAR(20) NOT NULL DEFAULT '',
-            user_uid VARCHAR(20) NOT NULL,
-            log_type VARCHAR(40) NOT NULL,
-            action_name TEXT NOT NULL,
-            duration_ms INT NOT NULL DEFAULT 0,
-            status_code INT NOT NULL DEFAULT 0,
-            payload JSONB,
-            PRIMARY KEY (created_at, uid)
-        ) PARTITION BY RANGE (created_at);
+CREATE TABLE IF NOT EXISTS app_logs
+(
+  created_at   TIMESTAMPTZ(6) NOT NULL,
+  uid          VARCHAR(20)    NOT NULL,
+  service_name VARCHAR(64)    NOT NULL,
+  trace_id     VARCHAR(20)    NOT NULL,            -- Root request UID
+  parent_uid   VARCHAR(20)    NOT NULL DEFAULT '', -- Parent action UID (empty for root)
+  user_uid     VARCHAR(20)    NOT NULL,
+  log_type     VARCHAR(40)    NOT NULL,
+  action_name  TEXT           NOT NULL,            -- Endpoint path or SQL query summary
+  duration_ms  INT            NOT NULL DEFAULT 0,  -- Execution duration
+  status_code  INT            NOT NULL DEFAULT 0,  -- HTTP/gRPC status or DB success (200, 500, etc.)
+  payload      JSONB,
+  PRIMARY KEY (created_at, uid)
+) PARTITION BY RANGE (created_at);
 
-        CREATE INDEX IF NOT EXISTS idx_app_logs_trace_id ON app_logs (trace_id);
-        "#,
+CREATE INDEX IF NOT EXISTS app_logs_x_trace_id ON app_logs (trace_id);
+CREATE INDEX IF NOT EXISTS app_logs_x_user_uid ON app_logs (user_uid);
+"#,
     )
     .execute(pool)
     .await?;

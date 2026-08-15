@@ -18,6 +18,22 @@ pub fn timezone() -> Option<String> {
     env::string_opt("APP_TIMEZONE")
 }
 
+pub fn db_enabled() -> bool {
+    env::bool_or("DB_ENABLED", true)
+}
+
+pub fn nats_enabled() -> bool {
+    env::bool_or("NATS_ENABLED", false)
+}
+
+pub fn nats() -> (String, String, String) {
+    let url = env::string_or("NATS_URL", "nats://127.0.0.1:4222");
+    let stream = env::string_or("NATS_STREAM", "CLOG_STREAM");
+    let subject = env::string_or("NATS_SUBJECT", "logs.clog");
+
+    (url, stream, subject)
+}
+
 pub(super) fn db() -> rmod::config::DbConfig {
     rmod::config::DbConfig {
         host: env::string_or("DB_HOST", "127.0.0.1"),

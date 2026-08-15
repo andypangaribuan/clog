@@ -12,6 +12,7 @@ mod app;
 mod db;
 mod grc;
 mod handler;
+mod nats;
 
 extern crate rmod as chrono;
 extern crate rmod as prost;
@@ -30,6 +31,14 @@ async fn main() {
 
     rmod::log!("🔥 app setup...");
     app::setup().await;
+
+    if env::db_enabled() {
+        if let Err(e) = db::init_db().await {
+            eprintln!("[clog][WARN] Database initialization check: {}", e);
+        } else {
+            rmod::log!("🔥 database master table & partition ready.");
+        }
+    }
 
     rmod::log!("🔥 grpc setup...");
     rmod::fuse::grpc(

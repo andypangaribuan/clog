@@ -18,3 +18,4 @@ debug = "full"
 
 [dependencies]
 rmod = { path = "/Users/apangaribuan/ark/repo/gh/rmod" }
+async-nats = "0.38"

@@ -14,7 +14,13 @@ pub async fn setup() {
         config::timezone(&timezone);
     }
 
-    config::db_setup("clog", env::db(), None, 0, "active", "").await.unwrap_or_else(|err| {
-        panic!("failed to setup clog db: {:#?}", err);
-    });
+    if env::db_enabled() {
+        config::db_setup("clog", env::db(), None, 0, "active", "").await.unwrap_or_else(|err| {
+            panic!("failed to setup clog db: {:#?}", err);
+        });
+    }
+
+    if env::nats_enabled() {
+        crate::nats::setup().await;
+    }
 }
