@@ -19,6 +19,7 @@ test-debug/*
 # Environment files
 res/envs/*.env
 !res/envs/template.env
+res/nats-jetstream/vol
 
 *.lock
 

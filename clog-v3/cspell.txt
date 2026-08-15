@@ -3,3 +3,4 @@ uids
 healthz
 timestamptz
 jetstream
+clickhouse

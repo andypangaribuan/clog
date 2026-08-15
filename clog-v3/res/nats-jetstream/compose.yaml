@@ -1,0 +1,39 @@
+networks:
+  xnet:
+    external: true
+
+
+x-general: &general
+  restart: always
+  security_opt:
+    - no-new-privileges:true
+  networks:
+    - xnet
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: 3
+
+
+services:
+  clog-nats-jetstream:
+    image: nats:2.14.5-alpine3.22
+    container_name: clog-nats-jetstream
+    <<: *general
+    command:
+      - "-c"
+      - "/etc/nats/nats.conf"
+    ports:
+      - 4001:4222 # Client connections (clog-v3, consumers)
+      - 4002:8222 # Monitoring / Health check endpoint
+      - 4003:6222 # Cluster routing (optional for HA)
+    volumes:
+      - ./vol:/data/jetstream
+      - ./files/nats.conf:/etc/nats/nats.conf:ro
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8222/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+

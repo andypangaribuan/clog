@@ -11,11 +11,27 @@
 use crate::app::env;
 use crate::grc::grc_clog::LogEntryRequest;
 use async_nats::jetstream::{self, Context};
-use rmod::serde::Serialize;
+use rmod::serde::{Deserialize, Serialize};
 use std::sync::OnceLock;
 
 static NATS_JS: OnceLock<Context> = OnceLock::new();
 static NATS_CONFIG: OnceLock<(String, String)> = OnceLock::new();
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(crate = "rmod::serde")]
+pub struct NatsLogPayloadOwned {
+    pub uid: String,
+    pub timestamp_unix_ms: i64,
+    pub service_name: String,
+    pub trace_id: String,
+    pub parent_uid: String,
+    pub user_uid: String,
+    pub log_type: String,
+    pub action_name: String,
+    pub duration_ms: i32,
+    pub status_code: i32,
+    pub payload_json: String,
+}
 
 #[derive(Serialize)]
 #[serde(crate = "rmod::serde")]

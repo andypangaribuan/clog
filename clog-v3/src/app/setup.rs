@@ -14,13 +14,24 @@ pub async fn setup() {
         config::timezone(&timezone);
     }
 
-    if env::db_enabled() {
-        config::db_setup("clog", env::db(), None, 0, "active", "").await.unwrap_or_else(|err| {
-            panic!("failed to setup clog db: {:#?}", err);
-        });
-    }
+    match env::service_mode() {
+        env::ServiceMode::Writer => {
+            rmod::log!("🔥 running service in WRITER mode.");
+            if env::db_enabled() {
+                config::db_setup("clog", env::db(), None, 0, "active", "").await.unwrap_or_else(|err| {
+                    panic!("failed to setup clog db: {:#?}", err);
+                });
+            }
 
-    if env::nats_enabled() {
-        crate::nats::setup().await;
+            if env::nats_enabled() {
+                crate::nats::setup().await;
+            }
+        }
+
+        env::ServiceMode::Sync => {
+            rmod::log!("🔥 running service in SYNC mode.");
+            crate::ch::setup().await;
+            crate::nats_sync::setup().await;
+        }
     }
 }

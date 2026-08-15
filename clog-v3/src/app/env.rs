@@ -18,6 +18,30 @@ pub fn timezone() -> Option<String> {
     env::string_opt("APP_TIMEZONE")
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ServiceMode {
+    Writer,
+    Sync,
+}
+
+pub fn service_mode() -> ServiceMode {
+    let val = env::string_or("SERVICE_MODE", "writer").to_lowercase();
+    match val.as_str() {
+        "sync" => ServiceMode::Sync,
+        _ => ServiceMode::Writer,
+    }
+}
+
+pub fn clickhouse() -> (String, String, String, String, String) {
+    let url = env::string_or("CLICKHOUSE_URL", "http://127.0.0.1:8123");
+    let database = env::string_or("CLICKHOUSE_DATABASE", "default");
+    let table = env::string_or("CLICKHOUSE_TABLE", "app_logs");
+    let username = env::string_or("CLICKHOUSE_USERNAME", "default");
+    let password = env::string_or("CLICKHOUSE_PASSWORD", "");
+
+    (url, database, table, username, password)
+}
+
 pub fn db_enabled() -> bool {
     env::bool_or("DB_ENABLED", true)
 }

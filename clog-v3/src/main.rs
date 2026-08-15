@@ -9,10 +9,12 @@
  */
 
 mod app;
+mod ch;
 mod db;
 mod grc;
 mod handler;
 mod nats;
+mod nats_sync;
 
 extern crate rmod as chrono;
 extern crate rmod as prost;
@@ -32,7 +34,7 @@ async fn main() {
     rmod::log!("🔥 app setup...");
     app::setup().await;
 
-    if env::db_enabled() {
+    if env::service_mode() == env::ServiceMode::Writer && env::db_enabled() {
         if let Err(e) = db::init_db().await {
             eprintln!("[clog][WARN] Database initialization check: {}", e);
         } else {
