@@ -104,8 +104,8 @@ function shell {
 #: build image
 function build {
   docker build \
-    -t clog:latest \
     -f res/Dockerfile \
+    -t ghcr.io/andypangaribuan/clog:3.0.0 \
     .
 }
 
