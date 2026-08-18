@@ -20,6 +20,7 @@ test-debug/*
 res/envs/*.env
 !res/envs/template.env
 res/compose/nats-jetstream/vol
+res/compose/clickhouse/vol
 
 *.lock
 
