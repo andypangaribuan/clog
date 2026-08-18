@@ -28,10 +28,11 @@ function restart {
 #: show information
 function show {
   local options=(
-    "logs    live logs"
-    "list    container list"
-    "health  check health"
-    "status  check jetstream engine status"
+    "logs     live logs"
+    "list     container list"
+    "health   check health"
+    "status   check jetstream engine status"
+    "message  check the ack and pending message"
   )
 
   local selected
@@ -43,6 +44,19 @@ function show {
     "list")   compose ps -a ;;
     "health") curl http://localhost:4002/healthz ;;
     "status") curl http://localhost:4002/jsz ;;
+    "message")
+        docker run --rm \
+        --network xnet \
+        natsio/nats-box \
+        nats --server nats://clog-nats-jetstream:4222 \
+        consumer list CLOG_STREAM
+
+        docker run --rm \
+        --network xnet \
+        natsio/nats-box \
+        nats --server nats://clog-nats-jetstream:4222 \
+        consumer info CLOG_STREAM clickhouse_inserter
+      ;;
   esac
 }
 
