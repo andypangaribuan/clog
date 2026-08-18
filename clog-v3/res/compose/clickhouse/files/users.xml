@@ -1,0 +1,83 @@
+<clickhouse>
+    <profiles>
+        <admin_profile>
+            <max_memory_usage>0</max_memory_usage>
+            <max_execution_time>0</max_execution_time>
+        </admin_profile>
+
+        <user_profile>
+            <!-- Per-query memory ceiling: 8 GB -->
+            <max_memory_usage>8589934592</max_memory_usage>
+            <!-- Protect against runaway queries -->
+            <max_execution_time>300</max_execution_time>
+            <!-- Number of CPU threads available to one query -->
+            <max_threads>8</max_threads>
+            <!-- Network compression -->
+            <enable_http_compression>1</enable_http_compression>
+            <!-- Prevent excessively large query results -->
+            <max_result_rows>10000000</max_result_rows>
+            <!-- Throw if max_result_rows is exceeded -->
+            <result_overflow_mode>throw</result_overflow_mode>
+        </user_profile>
+    </profiles>
+
+
+    <users>
+        <!--
+          Keep default available only inside the container.
+          Do NOT expose an unprotected default account.
+        -->
+        <default>
+            <networks>
+                <ip>127.0.0.1</ip>
+                <ip>::1</ip>
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+        </default>
+
+        <!-- Administrative account -->
+        <admin>
+            <password_sha256_hex from_env="CLICKHOUSE_ADMIN_PASSWORD_SHA256"/>
+            <networks>
+                <ip>0.0.0.0/0</ip>
+                <ip>::/0</ip>
+            </networks>
+            <profile>admin_profile</profile>
+            <quota>default</quota>
+
+            <!-- Allows SQL user/role/access management -->
+            <access_management>1</access_management>
+            <!-- <grants>
+                <query>GRANT ALL ON *.*</query>
+                <query>GRANT ALL ON *.* WITH GRANT OPTION</query>
+            </grants> -->
+        </admin>
+
+
+        <clog>
+            <password_sha256_hex from_env="CLICKHOUSE_CLOG_PASSWORD_SHA256"/>
+            <networks>
+                <ip>0.0.0.0/0</ip>
+                <ip>::/0</ip>
+            </networks>
+            <profile>user_profile</profile>
+            <quota>default</quota>
+            <access_management>0</access_management>
+        </clog>
+    </users>
+
+
+    <quotas>
+        <default>
+            <interval>
+                <duration>3600</duration>
+                <queries>0</queries>
+                <errors>0</errors>
+                <result_rows>0</result_rows>
+                <read_rows>0</read_rows>
+                <execution_time>0</execution_time>
+            </interval>
+        </default>
+    </quotas>
+</clickhouse>

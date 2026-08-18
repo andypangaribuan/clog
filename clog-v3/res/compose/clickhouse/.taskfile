@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+# Copyright (c) 2026.
+# Created by Andy Pangaribuan. All Rights Reserved.
+# This product is protected by copyright and distributed under
+# licenses restricting copying, distribution and decompilation.
+
+
+
+#: initialize the directory
+function init {
+  sudo rm -rf vol
+  mkdir -p vol
+  sudo chmod a+rwx vol
+}
+
+
+#: restart the container
+function restart {
+  if compose ps -q | grep -q .; then
+    compose down
+  fi
+  
+  compose up -d
+}
+
+
+#: go to container
+function exec {
+  compose exec clog-clickhouse \
+    clickhouse-client \
+    --user admin \
+    --password
+}
+
+
+#: show information
+function show {
+  local options=(
+    "logs     live logs"
+    "version  the database version"
+    "db       show database list"
+  )
+
+  local selected
+  selected=$(printf "%s\n" "${options[@]}" | gum choose --header "mode" | awk '{print $1}')
+  [[ -z "$selected" ]] && exit 0
+  
+  case $selected in
+    "logs") compose logs -tf ;;
+
+    "version")
+      compose exec clog-clickhouse \
+        clickhouse-client \
+        --query "SELECT version()"
+      ;;
+
+    "db")
+      compose exec clog-clickhouse \
+        clickhouse-client \
+        --query "SELECT name FROM system.databases WHERE name NOT IN ('system', 'INFORMATION_SCHEMA', 'information_schema')"
+      ;;
+  esac
+}
+
+
+
+#: space
+[ -z "$TASKFILE_EXECUTOR" ] && sq taskfile --execute "$@"

@@ -45,11 +45,23 @@ function spell {
 
 #: start the service locally
 function start {
+  local options=(
+    "writer  write to db or nats"
+    "sync    subscribe from nats and add to clickhouse"
+  )
+
+  local selected
+  selected=$(printf "%s\n" "${options[@]}" | gum choose --header "mode" | awk '{print $1}')
+  [[ -z "$selected" ]] && exit 0
+
   rm -rf ./target/release/clog
   cargo build --release
 
   set -a
-  source res/envs/stg.env
+  case $selected in
+    "writer") source res/envs/local-id-writer.env ;;
+    "sync")   source res/envs/local-id-sync.env ;;
+  esac
   set +a
 
   ./target/release/clog

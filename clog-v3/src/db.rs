@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS app_logs
   duration_ms  INT            NOT NULL DEFAULT 0,  -- Execution duration
   status_code  INT            NOT NULL DEFAULT 0,  -- HTTP/gRPC status or DB success (200, 500, etc.)
   payload      JSONB,
+  pod_name     VARCHAR(100)   NOT NULL DEFAULT '',
+  info         JSONB,
   PRIMARY KEY (created_at, uid)
 ) PARTITION BY RANGE (created_at);
 
@@ -68,6 +70,7 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
     let count = entries.len();
     let mut uids: Vec<String> = Vec::with_capacity(count);
     let mut created_ats: Vec<DateTime<Utc>> = Vec::with_capacity(count);
+    let mut env_names: Vec<String> = Vec::with_capacity(count);
     let mut service_names: Vec<String> = Vec::with_capacity(count);
     let mut trace_ids: Vec<String> = Vec::with_capacity(count);
     let mut parent_uids: Vec<String> = Vec::with_capacity(count);
@@ -77,13 +80,17 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
     let mut duration_ms: Vec<i32> = Vec::with_capacity(count);
     let mut status_codes: Vec<i32> = Vec::with_capacity(count);
     let mut payloads: Vec<JsonValue> = Vec::with_capacity(count);
+    let mut pod_names: Vec<String> = Vec::with_capacity(count);
+    let mut infos: Vec<JsonValue> = Vec::with_capacity(count);
 
     for e in entries {
         let dt = DateTime::from_timestamp_millis(e.timestamp_unix_ms).unwrap_or_else(Utc::now);
         let payload_json: JsonValue = rmod::json::from_str(&e.payload_json).unwrap_or(rmod::json::json!({ "raw": e.payload_json }));
+        let info_json: JsonValue = rmod::json::from_str(&e.info_json).unwrap_or(rmod::json::json!({ "raw": e.info_json }));
 
         created_ats.push(dt);
         uids.push(e.uid);
+        env_names.push(e.env_name);
         service_names.push(e.service_name);
         trace_ids.push(e.trace_id);
         parent_uids.push(e.parent_uid);
@@ -93,24 +100,27 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
         duration_ms.push(e.duration_ms);
         status_codes.push(e.status_code);
         payloads.push(payload_json);
+        pod_names.push(e.pod_name);
+        infos.push(info_json);
     }
 
     sqlx::query(
         r#"
         INSERT INTO app_logs (
-            created_at, uid, service_name, trace_id, parent_uid,
-            user_uid, log_type, action_name, duration_ms, status_code,
-            payload
+            created_at, uid, env_name, service_name, trace_id,
+            parent_uid, user_uid, log_type, action_name, duration_ms,
+            status_code, payload, pod_name, info
         )
         SELECT * FROM UNNEST(
-            $1::timestamptz[], $2::varchar[], $3::varchar[], $4::varchar[], $5::varchar[],
-            $6::varchar[], $7::varchar[], $8::text[], $9::int[], $10::int[],
-            $11::jsonb[]
+            $1::timestamptz[], $2::varchar[],  $3::varchar[], $4::varchar[], $5::varchar[],
+            $6::varchar[], $7::varchar[], $8::varchar[], $9::text[], $10::int[],
+            $11::int[], $12::jsonb[], $13::varchar[], $14::jsonb[]
         );
         "#,
     )
     .bind(&created_ats)
     .bind(&uids)
+    .bind(&env_names)
     .bind(&service_names)
     .bind(&trace_ids)
     .bind(&parent_uids)
@@ -120,6 +130,8 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
     .bind(&duration_ms)
     .bind(&status_codes)
     .bind(&payloads)
+    .bind(&pod_names)
+    .bind(&infos)
     .execute(pool)
     .await?;
 

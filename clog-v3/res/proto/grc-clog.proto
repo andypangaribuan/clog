@@ -15,15 +15,18 @@ message LogBatchRequest {
 message LogEntryRequest {
   string uid               = 1;
   int64  timestamp_unix_ms = 2;
-  string service_name      = 3;
-  string trace_id          = 4;
-  string parent_uid        = 5;
-  string user_uid          = 6;
-  string log_type          = 7;   // 'API_INCOMING', 'DB_QUERY', 'GRPC_OUTGOING', 'GRPC_INCOMING'
-  string action_name       = 8;
-  int32  duration_ms       = 9;
-  int32  status_code       = 10;
-  string payload_json      = 11;
+  string env_name          = 3;
+  string service_name      = 4;
+  string trace_id          = 5;
+  string parent_uid        = 6;
+  string user_uid          = 7;
+  string log_type          = 8;
+  string action_name       = 9;
+  int32  duration_ms       = 10;
+  int32  status_code       = 11;
+  string payload_json      = 12;
+  string pod_name          = 13;
+  string info_json         = 14;
 }
 
 message LogResponse {

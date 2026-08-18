@@ -34,13 +34,13 @@ async fn main() {
     rmod::log!("🔥 app setup...");
     app::setup().await;
 
-    if env::service_mode() == env::ServiceMode::Writer && env::db_enabled() {
-        if let Err(e) = db::init_db().await {
-            eprintln!("[clog][WARN] Database initialization check: {}", e);
-        } else {
-            rmod::log!("🔥 database master table & partition ready.");
-        }
-    }
+    // if env::service_mode() == env::ServiceMode::Writer && env::db_enabled() {
+    //     if let Err(e) = db::init_db().await {
+    //         eprintln!("[clog][WARN] Database initialization check: {}", e);
+    //     } else {
+    //         rmod::log!("🔥 database master table & partition ready.");
+    //     }
+    // }
 
     rmod::log!("🔥 grpc setup...");
     rmod::fuse::grpc(

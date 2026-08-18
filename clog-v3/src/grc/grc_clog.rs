@@ -11,24 +11,29 @@ pub struct LogEntryRequest {
     #[prost(int64, tag = "2")]
     pub timestamp_unix_ms: i64,
     #[prost(string, tag = "3")]
-    pub service_name: ::prost::alloc::string::String,
+    pub env_name: ::prost::alloc::string::String,
     #[prost(string, tag = "4")]
-    pub trace_id: ::prost::alloc::string::String,
+    pub service_name: ::prost::alloc::string::String,
     #[prost(string, tag = "5")]
-    pub parent_uid: ::prost::alloc::string::String,
+    pub trace_id: ::prost::alloc::string::String,
     #[prost(string, tag = "6")]
-    pub user_uid: ::prost::alloc::string::String,
-    /// 'API_INCOMING', 'DB_QUERY', 'GRPC_OUTGOING', 'GRPC_INCOMING'
+    pub parent_uid: ::prost::alloc::string::String,
     #[prost(string, tag = "7")]
-    pub log_type: ::prost::alloc::string::String,
+    pub user_uid: ::prost::alloc::string::String,
     #[prost(string, tag = "8")]
+    pub log_type: ::prost::alloc::string::String,
+    #[prost(string, tag = "9")]
     pub action_name: ::prost::alloc::string::String,
-    #[prost(int32, tag = "9")]
-    pub duration_ms: i32,
     #[prost(int32, tag = "10")]
+    pub duration_ms: i32,
+    #[prost(int32, tag = "11")]
     pub status_code: i32,
-    #[prost(string, tag = "11")]
+    #[prost(string, tag = "12")]
     pub payload_json: ::prost::alloc::string::String,
+    #[prost(string, tag = "13")]
+    pub pod_name: ::prost::alloc::string::String,
+    #[prost(string, tag = "14")]
+    pub info_json: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct LogResponse {

@@ -38,6 +38,7 @@ pub struct NatsLogPayloadOwned {
 pub struct NatsLogPayload<'a> {
     pub uid: &'a str,
     pub timestamp_unix_ms: i64,
+    pub env_name: &'a str,
     pub service_name: &'a str,
     pub trace_id: &'a str,
     pub parent_uid: &'a str,
@@ -47,6 +48,8 @@ pub struct NatsLogPayload<'a> {
     pub duration_ms: i32,
     pub status_code: i32,
     pub payload_json: &'a str,
+    pub pod_name: &'a str,
+    pub info: &'a str,
 }
 
 impl<'a> From<&'a LogEntryRequest> for NatsLogPayload<'a> {
@@ -54,6 +57,7 @@ impl<'a> From<&'a LogEntryRequest> for NatsLogPayload<'a> {
         Self {
             uid: &e.uid,
             timestamp_unix_ms: e.timestamp_unix_ms,
+            env_name: &e.env_name,
             service_name: &e.service_name,
             trace_id: &e.trace_id,
             parent_uid: &e.parent_uid,
@@ -63,6 +67,8 @@ impl<'a> From<&'a LogEntryRequest> for NatsLogPayload<'a> {
             duration_ms: e.duration_ms,
             status_code: e.status_code,
             payload_json: &e.payload_json,
+            pod_name: &e.pod_name,
+            info: &e.info_json,
         }
     }
 }

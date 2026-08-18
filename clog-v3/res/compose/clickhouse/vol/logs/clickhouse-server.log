@@ -1,0 +1,91 @@
+2026.08.17 13:38:17.025361 [ 1 ] {} <Information> Application: Starting ClickHouse 26.7.3.19 (revision: 54514, git hash: c3c4a420478c7e8fbbde863bba1b0dc4ae0eec6b, build id: 96D446DA2166A2DE53DB81AE5AE6550EAF46D341), PID 1
+2026.08.17 13:38:17.025491 [ 1 ] {} <Information> Application: starting up
+2026.08.17 13:38:17.025501 [ 1 ] {} <Information> Application: OS name: Linux, version: 7.0.14-orbstack-00380-ga7e0a2dc9535, architecture: aarch64
+2026.08.17 13:38:17.025773 [ 1 ] {} <Information> Application: Available RAM: 15.66 GiB; logical cores: 14; used cores: 14.
+2026.08.17 13:38:17.026370 [ 1 ] {} <Information> Application: It looks like the process has no CAP_IPC_LOCK capability, binary mlock will be disabled. It could happen due to incorrect ClickHouse package installation. You could resolve the problem manually with 'sudo setcap cap_ipc_lock=+ep /usr/bin/clickhouse'. Note that it will not work on 'nosuid' mounted filesystems.
+2026.08.17 13:38:17.040202 [ 1 ] {} <Information> CgroupsReader: Will create cgroup reader from '/sys/fs/cgroup/' (cgroups version: v2)
+2026.08.17 13:38:17.041943 [ 1 ] {} <Information> AsynchronousMetrics: Will use cgroup reader from '/sys/fs/cgroup/' (cgroups version: v2)
+2026.08.17 13:38:17.045400 [ 1 ] {} <Information> StatusFile: Writing pid 1 to /var/lib/clickhouse/status
+2026.08.17 13:38:17.233895 [ 1 ] {} <Information> Application: Integrity check of the executable successfully passed (checksum: F173EFDD9C4757B4A3F4C2F430D5A389)
+2026.08.17 13:38:17.233944 [ 1 ] {} <Information> MemoryWorker: Starting background memory thread with period of 50ms, using Cgroups as source, purging dirty pages enabled (total memory threshold ratio: 0.9, dirty pages threshold ratio: 0.2, page size: 65536)
+2026.08.17 13:38:17.234054 [ 1 ] {} <Information> Application: OOM canary is disabled
+2026.08.17 13:38:17.234072 [ 1 ] {} <Information> BackgroundSchedulePool/BgSchPool: Create BackgroundSchedulePool with 16 initial threads (grows lazily up to 512)
+2026.08.17 13:38:17.234184 [ 87 ] {} <Information> MemoryWorker: Default dirty pages decay period: 5000ms
+2026.08.17 13:38:17.235172 [ 1 ] {} <Information> UserDefinedSQLObjectsLoaderFromDisk: Loading user defined objects from /var/lib/clickhouse/user_defined/
+2026.08.17 13:38:17.237174 [ 1 ] {} <Information> Application: Lowered uncompressed cache size to 7.83 GiB because the system has limited RAM
+2026.08.17 13:38:17.237309 [ 1 ] {} <Information> DNSCacheUpdater: Update period 15 seconds
+2026.08.17 13:38:17.242614 [ 1 ] {} <Information> Application: Changed setting 'max_server_memory_usage' to 14.10 GiB (15.66 GiB available memory * 0.90 max_server_memory_usage_to_ram_ratio)
+2026.08.17 13:38:17.242624 [ 1 ] {} <Information> Application: Setting merges_mutations_memory_usage_soft_limit was set to 7.83 GiB (15.66 GiB available * 0.50 merges_mutations_memory_usage_to_ram_ratio)
+2026.08.17 13:38:17.242625 [ 1 ] {} <Information> Application: Merges and mutations memory limit is set to 7.83 GiB
+2026.08.17 13:38:17.242831 [ 1 ] {} <Information> Application: Setting max_remote_read_network_bandwidth_for_server was set to 0
+2026.08.17 13:38:17.242838 [ 1 ] {} <Information> Application: Setting max_remote_write_network_bandwidth_for_server was set to 0
+2026.08.17 13:38:17.242839 [ 1 ] {} <Information> Application: Setting max_local_read_bandwidth_for_server was set to 0
+2026.08.17 13:38:17.242840 [ 1 ] {} <Information> Application: Setting max_local_write_bandwidth_for_server was set to 0
+2026.08.17 13:38:17.242841 [ 1 ] {} <Information> Application: Setting max_remote_read_connections was set to 1000
+2026.08.17 13:38:17.242845 [ 1 ] {} <Information> Application: ConcurrencyControl limit is set to 28 CPU slots with 'max_min_fair' scheduler
+2026.08.17 13:38:17.242850 [ 1 ] {} <Information> BackgroundSchedulePool/BgBufSchPool: Create BackgroundSchedulePool with 16 initial threads (grows lazily up to 16)
+2026.08.17 13:38:17.243406 [ 1 ] {} <Information> BackgroundSchedulePool/BgMBSchPool: Create BackgroundSchedulePool with 16 initial threads (grows lazily up to 16)
+2026.08.17 13:38:17.244066 [ 1 ] {} <Information> BackgroundSchedulePool/BgDistSchPool: Create BackgroundSchedulePool with 16 initial threads (grows lazily up to 16)
+2026.08.17 13:38:17.244962 [ 1 ] {} <Information> BackgroundSchedulePool/BgStrmSchPool: Create BackgroundSchedulePool with 16 initial threads (grows lazily up to 16)
+2026.08.17 13:38:17.245648 [ 1 ] {} <Information> WorkloadEntityDiskStorage: Loading workload entities from /var/lib/clickhouse/workload/
+2026.08.17 13:38:17.245934 [ 1 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2026.08.17 13:38:17.245942 [ 1 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2026.08.17 13:38:17.245971 [ 1 ] {} <Information> Application: Listening for replica communication (interserver): http://0.0.0.0:9009
+2026.08.17 13:38:17.249615 [ 1 ] {} <Warning> Access(local_directory): File /var/lib/clickhouse/access/users.list doesn't exist
+2026.08.17 13:38:17.249633 [ 1 ] {} <Warning> Access(local_directory): Recovering lists in directory /var/lib/clickhouse/access/
+2026.08.17 13:38:17.250496 [ 1 ] {} <Information> CgroupsMemoryUsageObserver: Started cgroup current memory usage observer thread
+2026.08.17 13:38:17.250607 [ 174 ] {} <Information> CgroupsMemoryUsageObserver: Memory amount initially available to the process is 15.66 GiB
+2026.08.17 13:38:17.251366 [ 1 ] {} <Information> Context: Initialized background executor for merges and mutations with num_threads=16, num_tasks=32, scheduling_policy=round_robin
+2026.08.17 13:38:17.251650 [ 1 ] {} <Information> Context: Initialized background executor for move operations with num_threads=8, num_tasks=8
+2026.08.17 13:38:17.252148 [ 1 ] {} <Information> Context: Initialized background executor for fetches with num_threads=16, num_tasks=16
+2026.08.17 13:38:17.252383 [ 1 ] {} <Information> Context: Initialized background executor for common operations (e.g. clearing old parts) with num_threads=8, num_tasks=8
+2026.08.17 13:38:17.255224 [ 1 ] {} <Warning> Context: Delay accounting is not enabled, OSIOWaitMicroseconds will not be gathered. You can enable it using `sudo sh -c 'echo 1 > /proc/sys/kernel/task_delayacct'` or by using sysctl.
+2026.08.17 13:38:17.255532 [ 1 ] {} <Information> Application: Loading metadata from /var/lib/clickhouse/
+2026.08.17 13:38:17.255561 [ 1 ] {} <Information> Context: Database disk name: default
+2026.08.17 13:38:17.255568 [ 1 ] {} <Information> Context: Database disk name: default, path: /var/lib/clickhouse/
+2026.08.17 13:38:17.255765 [ 1 ] {} <Information> DatabaseAtomic (system): Metadata disk default, path /var/lib/clickhouse/
+2026.08.17 13:38:17.258137 [ 1 ] {} <Information> DatabaseAtomic (system): Metadata processed, database system has 0 tables, 0 dictionaries and 0 materialized views in total.
+2026.08.17 13:38:17.258156 [ 1 ] {} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 0.000 sec
+2026.08.17 13:38:17.283900 [ 1 ] {} <Information> DatabaseAtomic (default): Metadata disk default, path /var/lib/clickhouse/
+2026.08.17 13:38:17.284942 [ 1 ] {} <Information> DatabaseAtomic (default): Metadata processed, database default has 0 tables, 0 dictionaries and 0 materialized views in total.
+2026.08.17 13:38:17.284960 [ 1 ] {} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 0.000 sec
+2026.08.17 13:38:17.284980 [ 1 ] {} <Information> loadMetadata: Start asynchronous loading of databases
+2026.08.17 13:38:17.285370 [ 86 ] {} <Information> MemoryTracker: Correcting the value of global memory tracker from 125.80 MiB to 104.71 MiB
+2026.08.17 13:38:17.285608 [ 1 ] {} <Information> UserDefinedSQLObjectsLoaderFromDisk: Loading user defined objects from /var/lib/clickhouse/user_defined/
+2026.08.17 13:38:17.285660 [ 1 ] {} <Information> Application: Tasks stats provider: procfs
+2026.08.17 13:38:17.285664 [ 1 ] {} <Information> Application: It looks like the process has no CAP_SYS_NICE capability, the setting 'os_thread_priority' will have no effect. It could happen due to incorrect ClickHouse package installation. You could resolve the problem manually with 'sudo setcap cap_sys_nice=+ep /usr/bin/clickhouse'. Note that it will not work on 'nosuid' mounted filesystems.
+2026.08.17 13:38:17.371964 [ 1 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2026.08.17 13:38:17.372046 [ 1 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2026.08.17 13:38:17.375281 [ 1 ] {} <Information> Application: Listening for http://0.0.0.0:8123
+2026.08.17 13:38:17.375344 [ 1 ] {} <Information> Application: Listening for native protocol (tcp): 0.0.0.0:9000
+2026.08.17 13:38:17.375399 [ 1 ] {} <Information> Application: Listening for MySQL compatibility protocol: 0.0.0.0:9004
+2026.08.17 13:38:17.375451 [ 1 ] {} <Information> Application: Listening for PostgreSQL compatibility protocol: 0.0.0.0:9005
+2026.08.17 13:38:17.375516 [ 1 ] {} <Information> Application: Listening for Prometheus: http://0.0.0.0:9363
+2026.08.17 13:38:17.375534 [ 1 ] {} <Information> Application: Ready for connections.
+2026.08.17 13:38:24.286937 [ 249 ] {} <Information> system.asynchronous_metric_log (2a183d8f-3af8-4970-96a0-d8e300a5e9ae): Start to refresh statistics
+2026.08.17 13:38:24.796451 [ 252 ] {} <Information> system.processors_profile_log (80d51610-4609-4788-acf2-680778675989): Start to refresh statistics
+2026.08.17 13:38:24.798654 [ 240 ] {} <Information> system.text_log (194b8d07-c2d6-4598-b747-f9591da1ab84): Start to refresh statistics
+2026.08.17 13:38:24.803435 [ 244 ] {} <Information> system.trace_log (0cb3bdf0-b7dd-4daa-adbb-2bb383b248fe): Start to refresh statistics
+2026.08.17 13:38:24.806642 [ 242 ] {} <Information> system.part_log (5f6452e7-93d4-4da2-ab73-1d5d88d57a47): Start to refresh statistics
+2026.08.17 13:38:24.808297 [ 239 ] {} <Information> system.query_log (1848b123-0b74-4430-af32-5406b227cb55): Start to refresh statistics
+2026.08.17 13:38:24.833465 [ 246 ] {} <Information> system.metric_log (963e1731-a3b1-4528-9f96-8b32d652fa97): Start to refresh statistics
+2026.08.17 13:47:02.490116 [ 243 ] {} <Information> system.background_schedule_pool_log (8f1b12e7-4b9e-4df9-8a57-463ee42410a2): Start to refresh statistics
+2026.08.18 08:28:14.938150 [ 187 ] {} <Warning> MergeTreeBackgroundExecutor: Lock was held for 50937 ms in [auto DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::routine(TaskRuntimeDataPtr)::(anonymous class)::operator()(TaskRuntimeDataPtr &&) const [Queue = DB::DynamicRuntimeQueue]], Stack trace (when copying this message, always include the lines below):
+0. DB::LockGuardWithStopWatch::~LockGuardWithStopWatch() @ 0x0000000018e71608
+1. DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::threadFunction() @ 0x0000000018e79a98
+2. ThreadPoolImpl<ThreadFromGlobalPoolImpl<false, true>>::ThreadFromThreadPool::worker() @ 0x000000001396a708
+3. void std::__function::__policy_func<void ()>::__call_func[abi:fqe220101]<startThreadFromGlobalPool(std::shared_ptr<ThreadFromGlobalPoolState>, std::function<void ()>, unsigned long, unsigned long, bool, bool)::$_0>(std::__function::__policy_storage const*) @ 0x000000001397353c
+4. ThreadPoolImpl<std::thread>::ThreadFromThreadPool::worker() @ 0x00000000139684e4
+5. void* std::__thread_proxy[abi:fqe220101]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void (ThreadPoolImpl<std::thread>::ThreadFromThreadPool::*)(), ThreadPoolImpl<std::thread>::ThreadFromThreadPool*>>(void*) @ 0x000000001397099c
+6. ? @ 0x00000000000803c8
+7. ? @ 0x00000000000e9edc
+
+2026.08.18 08:28:15.126585 [ 183 ] {} <Warning> MergeTreeBackgroundExecutor: Execution of callback onCompleted took 50978 ms in [auto DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::routine(TaskRuntimeDataPtr)::(anonymous class)::operator()(TaskRuntimeDataPtr &&) const [Queue = DB::DynamicRuntimeQueue]], Stack trace (when copying this message, always include the lines below):
+0. DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::threadFunction() @ 0x0000000018e79b4c
+1. ThreadPoolImpl<ThreadFromGlobalPoolImpl<false, true>>::ThreadFromThreadPool::worker() @ 0x000000001396a708
+2. void std::__function::__policy_func<void ()>::__call_func[abi:fqe220101]<startThreadFromGlobalPool(std::shared_ptr<ThreadFromGlobalPoolState>, std::function<void ()>, unsigned long, unsigned long, bool, bool)::$_0>(std::__function::__policy_storage const*) @ 0x000000001397353c
+3. ThreadPoolImpl<std::thread>::ThreadFromThreadPool::worker() @ 0x00000000139684e4
+4. void* std::__thread_proxy[abi:fqe220101]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void (ThreadPoolImpl<std::thread>::ThreadFromThreadPool::*)(), ThreadPoolImpl<std::thread>::ThreadFromThreadPool*>>(void*) @ 0x000000001397099c
+5. ? @ 0x00000000000803c8
+6. ? @ 0x00000000000e9edc
+

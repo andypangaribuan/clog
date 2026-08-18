@@ -1,0 +1,22 @@
+2026.08.17 13:38:17.249615 [ 1 ] {} <Warning> Access(local_directory): File /var/lib/clickhouse/access/users.list doesn't exist
+2026.08.17 13:38:17.249633 [ 1 ] {} <Warning> Access(local_directory): Recovering lists in directory /var/lib/clickhouse/access/
+2026.08.17 13:38:17.255224 [ 1 ] {} <Warning> Context: Delay accounting is not enabled, OSIOWaitMicroseconds will not be gathered. You can enable it using `sudo sh -c 'echo 1 > /proc/sys/kernel/task_delayacct'` or by using sysctl.
+2026.08.18 08:28:14.938150 [ 187 ] {} <Warning> MergeTreeBackgroundExecutor: Lock was held for 50937 ms in [auto DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::routine(TaskRuntimeDataPtr)::(anonymous class)::operator()(TaskRuntimeDataPtr &&) const [Queue = DB::DynamicRuntimeQueue]], Stack trace (when copying this message, always include the lines below):
+0. DB::LockGuardWithStopWatch::~LockGuardWithStopWatch() @ 0x0000000018e71608
+1. DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::threadFunction() @ 0x0000000018e79a98
+2. ThreadPoolImpl<ThreadFromGlobalPoolImpl<false, true>>::ThreadFromThreadPool::worker() @ 0x000000001396a708
+3. void std::__function::__policy_func<void ()>::__call_func[abi:fqe220101]<startThreadFromGlobalPool(std::shared_ptr<ThreadFromGlobalPoolState>, std::function<void ()>, unsigned long, unsigned long, bool, bool)::$_0>(std::__function::__policy_storage const*) @ 0x000000001397353c
+4. ThreadPoolImpl<std::thread>::ThreadFromThreadPool::worker() @ 0x00000000139684e4
+5. void* std::__thread_proxy[abi:fqe220101]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void (ThreadPoolImpl<std::thread>::ThreadFromThreadPool::*)(), ThreadPoolImpl<std::thread>::ThreadFromThreadPool*>>(void*) @ 0x000000001397099c
+6. ? @ 0x00000000000803c8
+7. ? @ 0x00000000000e9edc
+
+2026.08.18 08:28:15.126585 [ 183 ] {} <Warning> MergeTreeBackgroundExecutor: Execution of callback onCompleted took 50978 ms in [auto DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::routine(TaskRuntimeDataPtr)::(anonymous class)::operator()(TaskRuntimeDataPtr &&) const [Queue = DB::DynamicRuntimeQueue]], Stack trace (when copying this message, always include the lines below):
+0. DB::MergeTreeBackgroundExecutor<DB::DynamicRuntimeQueue>::threadFunction() @ 0x0000000018e79b4c
+1. ThreadPoolImpl<ThreadFromGlobalPoolImpl<false, true>>::ThreadFromThreadPool::worker() @ 0x000000001396a708
+2. void std::__function::__policy_func<void ()>::__call_func[abi:fqe220101]<startThreadFromGlobalPool(std::shared_ptr<ThreadFromGlobalPoolState>, std::function<void ()>, unsigned long, unsigned long, bool, bool)::$_0>(std::__function::__policy_storage const*) @ 0x000000001397353c
+3. ThreadPoolImpl<std::thread>::ThreadFromThreadPool::worker() @ 0x00000000139684e4
+4. void* std::__thread_proxy[abi:fqe220101]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void (ThreadPoolImpl<std::thread>::ThreadFromThreadPool::*)(), ThreadPoolImpl<std::thread>::ThreadFromThreadPool*>>(void*) @ 0x000000001397099c
+5. ? @ 0x00000000000803c8
+6. ? @ 0x00000000000e9edc
+

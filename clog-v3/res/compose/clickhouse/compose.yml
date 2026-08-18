@@ -1,0 +1,65 @@
+networks:
+  xnet:
+    external: true
+
+
+x-general: &general
+  restart: always
+  security_opt:
+    - no-new-privileges:true
+  networks:
+    - xnet
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: 3
+
+
+services:
+  clog-clickhouse:
+    image: clickhouse/clickhouse-server:26.7.3
+    container_name: clog-clickhouse
+    hostname: clog-clickhouse
+    <<: *general
+    ports:
+      - 4011:8123 # web console
+      - 4012:9000 # tcp
+      - 4013:9005 # postgres wire protocol
+
+    environment:
+      TZ: Asia/Jakarta
+      CLICKHOUSE_ADMIN_PASSWORD_SHA256: ${CLICKHOUSE_ADMIN_PASSWORD_SHA256}
+      CLICKHOUSE_CLOG_PASSWORD_SHA256: ${CLICKHOUSE_CLOG_PASSWORD_SHA256}
+
+    volumes:
+      - ./vol/data:/var/lib/clickhouse
+      - ./vol/logs:/var/log/clickhouse-server
+      - ./files/production.xml:/etc/clickhouse-server/config.d/production.xml:ro
+      - ./files/users.xml:/etc/clickhouse-server/users.d/users.xml:ro
+      # - ./files/init:/docker-entrypoint-initdb.d:ro
+
+    # stop_grace_period: 60s
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "clickhouse-client",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "9000",
+          "--user",
+          "default",
+          "--query",
+          "SELECT 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144

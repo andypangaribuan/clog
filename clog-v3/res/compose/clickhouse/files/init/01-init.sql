@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS clog;
+
+-- GRANT SELECT, INSERT ON clog.* TO app;
+
+
