@@ -14,6 +14,7 @@ function init {
   sudo chmod a+rwx vol
 }
 
+
 #: restart the container
 function restart {
   if compose ps -q | grep -q .; then
@@ -24,15 +25,25 @@ function restart {
 }
 
 
-#: check health
-function health {
-  curl http://localhost:4002/healthz
-}
+#: show information
+function show {
+  local options=(
+    "logs    live logs"
+    "list    container list"
+    "health  check health"
+    "status  check jetstream engine status"
+  )
 
-
-#: check jetstream engine status
-function js {
-  curl http://localhost:4002/jsz
+  local selected
+  selected=$(printf "%s\n" "${options[@]}" | gum choose --header "mode" | awk '{print $1}')
+  [[ -z "$selected" ]] && exit 0
+  
+  case $selected in
+    "logs")   compose logs -tf ;;
+    "list")   compose ps -a ;;
+    "health") curl http://localhost:4002/healthz ;;
+    "status") curl http://localhost:4002/jsz ;;
+  esac
 }
 
 

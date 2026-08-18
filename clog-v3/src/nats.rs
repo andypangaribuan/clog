@@ -22,6 +22,7 @@ static NATS_CONFIG: OnceLock<(String, String)> = OnceLock::new();
 pub struct NatsLogPayloadOwned {
     pub uid: String,
     pub timestamp_unix_ms: i64,
+    pub env_name: String,
     pub service_name: String,
     pub trace_id: String,
     pub parent_uid: String,
@@ -31,6 +32,8 @@ pub struct NatsLogPayloadOwned {
     pub duration_ms: i32,
     pub status_code: i32,
     pub payload_json: String,
+    pub pod_name: String,
+    pub info: String,
 }
 
 #[derive(Serialize)]

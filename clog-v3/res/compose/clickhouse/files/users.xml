@@ -55,8 +55,8 @@
         </admin>
 
 
-        <clog>
-            <password_sha256_hex from_env="CLICKHOUSE_CLOG_PASSWORD_SHA256"/>
+        <!-- <clog_svc>
+            <password_sha256_hex from_env="CLICKHOUSE_CLOG_SVC_PASSWORD_SHA256"/>
             <networks>
                 <ip>0.0.0.0/0</ip>
                 <ip>::/0</ip>
@@ -64,7 +64,7 @@
             <profile>user_profile</profile>
             <quota>default</quota>
             <access_management>0</access_management>
-        </clog>
+        </clog_svc> -->
     </users>
 
 

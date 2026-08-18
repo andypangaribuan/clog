@@ -63,6 +63,7 @@ pub async fn setup() {
                                     row_buffer.push(AppLogRow {
                                         created_at: payload.timestamp_unix_ms * 1000,
                                         uid: payload.uid,
+                                        env_name: payload.env_name,
                                         service_name: payload.service_name,
                                         trace_id: payload.trace_id,
                                         parent_uid: payload.parent_uid,
@@ -72,6 +73,8 @@ pub async fn setup() {
                                         duration_ms: payload.duration_ms,
                                         status_code: payload.status_code as i16,
                                         payload: payload.payload_json,
+                                        pod_name: payload.pod_name,
+                                        info: payload.info,
                                     });
                                     msg_buffer.push(msg);
                                 }

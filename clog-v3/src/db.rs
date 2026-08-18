@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS app_logs
 (
   created_at   TIMESTAMPTZ(6) NOT NULL,
   uid          VARCHAR(20)    NOT NULL,
+  env_name     VARCHAR(32)    NOT NULL DEFAULT 'development',
   service_name VARCHAR(64)    NOT NULL,
   trace_id     VARCHAR(20)    NOT NULL,            -- Root request UID
   parent_uid   VARCHAR(20)    NOT NULL DEFAULT '', -- Parent action UID (empty for root)
@@ -40,22 +41,27 @@ CREATE TABLE IF NOT EXISTS app_logs
 
 CREATE INDEX IF NOT EXISTS app_logs_x_trace_id ON app_logs (trace_id);
 CREATE INDEX IF NOT EXISTS app_logs_x_user_uid ON app_logs (user_uid);
+
+CREATE TABLE IF NOT EXISTS app_logs_default PARTITION OF app_logs DEFAULT;
 "#,
     )
     .execute(pool)
     .await?;
 
-    // Create current day default partition if missing
-    let today = Utc::now().format("%Y_%m_%d").to_string();
-    let start_date = Utc::now().format("%Y-%m-%d 00:00:00+00").to_string();
-    let end_date = (Utc::now() + rmod::chrono::Duration::days(1)).format("%Y-%m-%d 00:00:00+00").to_string();
+    let now = Utc::now();
+    for day_offset in -1..=3 {
+        let date = now + rmod::chrono::Duration::days(day_offset);
+        let suffix = date.format("%Y_%m_%d").to_string();
+        let start_date = date.format("%Y-%m-%d 00:00:00+00").to_string();
+        let next_date = (date + rmod::chrono::Duration::days(1)).format("%Y-%m-%d 00:00:00+00").to_string();
 
-    let partition_sql = format!(
-        "CREATE TABLE IF NOT EXISTS app_logs_{} PARTITION OF app_logs FOR VALUES FROM ('{}') TO ('{}');",
-        today, start_date, end_date
-    );
+        let partition_sql = format!(
+            "CREATE TABLE IF NOT EXISTS app_logs_{} PARTITION OF app_logs FOR VALUES FROM ('{}') TO ('{}');",
+            suffix, start_date, next_date
+        );
 
-    let _ = sqlx::query(&partition_sql).execute(pool).await;
+        let _ = sqlx::query(&partition_sql).execute(pool).await;
+    }
 
     Ok(())
 }

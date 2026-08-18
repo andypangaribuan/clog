@@ -38,6 +38,7 @@ function exec {
 function show {
   local options=(
     "logs     live logs"
+    "list     container list"
     "version  the database version"
     "db       show database list"
   )
@@ -48,6 +49,7 @@ function show {
   
   case $selected in
     "logs") compose logs -tf ;;
+    "list") compose ps -a ;;
 
     "version")
       compose exec clog-clickhouse \

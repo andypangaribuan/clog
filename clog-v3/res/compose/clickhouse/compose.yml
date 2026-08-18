@@ -30,14 +30,14 @@ services:
     environment:
       TZ: Asia/Jakarta
       CLICKHOUSE_ADMIN_PASSWORD_SHA256: ${CLICKHOUSE_ADMIN_PASSWORD_SHA256}
-      CLICKHOUSE_CLOG_PASSWORD_SHA256: ${CLICKHOUSE_CLOG_PASSWORD_SHA256}
+      CLICKHOUSE_CLOG_SVC_PASSWORD_SHA256: ${CLICKHOUSE_CLOG_SVC_PASSWORD_SHA256}
 
     volumes:
       - ./vol/data:/var/lib/clickhouse
       - ./vol/logs:/var/log/clickhouse-server
       - ./files/production.xml:/etc/clickhouse-server/config.d/production.xml:ro
       - ./files/users.xml:/etc/clickhouse-server/users.d/users.xml:ro
-      # - ./files/init:/docker-entrypoint-initdb.d:ro
+      - ./files/init:/docker-entrypoint-initdb.d:ro
 
     # stop_grace_period: 60s
     healthcheck:

@@ -1,8 +1,11 @@
 /*
  * Copyright (c) 2026.
- * Created by Andy Pangaribuan. All Rights Reserved.
+ * Created by Andy Pangaribuan (iam.pangaribuan@gmail.com)
+ * https://github.com/apangaribuan
+ *
  * This product is protected by copyright and distributed under
  * licenses restricting copying, distribution and decompilation.
+ * All Rights Reserved.
  */
 
 use crate::app::env;
@@ -18,6 +21,7 @@ static CLICKHOUSE_TABLE: OnceLock<String> = OnceLock::new();
 pub struct AppLogRow {
     pub created_at: i64,
     pub uid: String,
+    pub env_name: String,
     pub service_name: String,
     pub trace_id: String,
     pub parent_uid: String,
@@ -27,6 +31,8 @@ pub struct AppLogRow {
     pub duration_ms: i32,
     pub status_code: i16,
     pub payload: String,
+    pub pod_name: String,
+    pub info: String,
 }
 
 pub async fn setup() {
@@ -35,9 +41,9 @@ pub async fn setup() {
 
     let client = create_client(&ch_url, &ch_db, &ch_user, &ch_pass);
 
-    if let Err(e) = init_table(&client, &ch_table).await {
-        panic!("failed to initialize ClickHouse table '{}': {}", ch_table, e);
-    }
+    // if let Err(e) = init_table(&client, &ch_table).await {
+    //     panic!("failed to initialize ClickHouse table '{}': {}", ch_table, e);
+    // }
 
     let _ = CLICKHOUSE_CLIENT.set(client);
     let _ = CLICKHOUSE_TABLE.set(ch_table.clone());
@@ -63,13 +69,15 @@ pub fn create_client(url: &str, db: &str, user: &str, pass: &str) -> Client {
     client
 }
 
+#[allow(dead_code)]
 pub async fn init_table(client: &Client, table_name: &str) -> Result<(), clickhouse::error::Error> {
     let ddl = format!(
         r#"
 CREATE TABLE IF NOT EXISTS {}
 (
-    created_at        DateTime64(6, 'UTC'),
+    created_at        DateTime64(6, 'Asia/Jakarta'),
     uid               String,
+    env_name          LowCardinality(String),
     service_name      LowCardinality(String),
     trace_id          String,
     parent_uid        String,
@@ -78,11 +86,15 @@ CREATE TABLE IF NOT EXISTS {}
     action_name       String,
     duration_ms       Int32,
     status_code       Int16,
-    payload           String
+    payload           String,
+    pod_name          LowCardinality(String),
+    info              String,
+    INDEX idx_trace_id trace_id TYPE bloom_filter(0.01) GRANULARITY 1
 )
-ENGINE = MergeTree()
-PARTITION BY toYYYYMM(created_at)
-ORDER BY (service_name, log_type, created_at, trace_id);
+ENGINE = ReplacingMergeTree()
+PARTITION BY toYYYYMMDD(created_at)
+ORDER BY (env_name, service_name, log_type, created_at, uid)
+TTL toDateTime(created_at) + INTERVAL 200 DAY;
 "#,
         table_name
     );
