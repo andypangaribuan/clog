@@ -20,13 +20,14 @@ message LogEntryRequest {
   string trace_id          = 5;
   string parent_uid        = 6;
   string user_uid          = 7;
-  string log_type          = 8;
-  string action_name       = 9;
-  int32  duration_ms       = 10;
-  int32  status_code       = 11;
-  string payload_json      = 12;
-  string pod_name          = 13;
-  string info_json         = 14;
+  string partner_uid       = 8;
+  string log_type          = 9;
+  string action_name       = 10;
+  int32  duration_ms       = 11;
+  int32  status_code       = 12;
+  string payload_json      = 13;
+  string pod_name          = 14;
+  string info_json         = 15;
 }
 
 message LogResponse {
