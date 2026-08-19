@@ -4,3 +4,4 @@ healthz
 timestamptz
 jetstream
 clickhouse
+healthcheck

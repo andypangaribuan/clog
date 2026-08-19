@@ -7,9 +7,9 @@
 
 use rmod::util::env;
 
-pub fn app() -> (String, u16) {
+pub fn app() -> (String, i16) {
     let app_name = env::string_or("APP_NAME", "clog");
-    let port: u16 = env::int_or("APP_PORT_GRPC", 50051);
+    let port: i16 = env::int_or("APP_PORT_GRPC", 10102);
 
     (app_name, port)
 }

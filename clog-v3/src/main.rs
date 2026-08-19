@@ -30,6 +30,8 @@ use rmod::util::lifecycle;
 async fn main() {
     rmod::log!("🔥 starting...");
     let (app_name, port) = env::app();
+    rmod::util::ext::grpc_healthcheck(port).await;
+    rmod::config::graceful_shutdown("30s");
 
     rmod::log!("🔥 app setup...");
     app::setup().await;
