@@ -5,12 +5,12 @@ edition = "2024"
 description = "Centralized gRPC Logging Service for rmod"
 
 [profile.release]
-debug = "line-directives-only"
+debug = 1
 opt-level = "z"
 lto = true
 codegen-units = 1
 panic = "abort"
-strip = "symbols"
+strip = "none"
 
 [profile.dev]
 opt-level = 0
