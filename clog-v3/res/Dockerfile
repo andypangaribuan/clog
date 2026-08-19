@@ -34,6 +34,7 @@ ARG APP_VERSION=unknown
 ENV APP_VERSION=${APP_VERSION}
 
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/clog /app/x
+COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/sleep_bin /app/sleep
 
 USER nonroot:nonroot
 

@@ -25,15 +25,6 @@ function restart {
 }
 
 
-#: go to container
-function exec {
-  compose exec clog-clickhouse \
-    clickhouse-client \
-    --user admin \
-    --password
-}
-
-
 #: show information
 function show {
   local options=(
@@ -41,6 +32,7 @@ function show {
     "list     container list"
     "version  the database version"
     "db       show database list"
+    "exec     go to container"
   )
 
   local selected
@@ -61,6 +53,13 @@ function show {
       compose exec clog-clickhouse \
         clickhouse-client \
         --query "SELECT name FROM system.databases WHERE name NOT IN ('system', 'INFORMATION_SCHEMA', 'information_schema')"
+      ;;
+
+    "exec")
+      compose exec clog-clickhouse \
+        clickhouse-client \
+        --user admin \
+        --password
       ;;
   esac
 }
