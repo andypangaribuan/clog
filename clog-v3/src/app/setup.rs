@@ -10,6 +10,8 @@ use rmod::config;
 
 pub async fn setup() {
     rmod::store::update_db_with_deleted_at(false);
+
+    config::graceful_shutdown();
     if let Some(timezone) = super::env::timezone() {
         config::timezone(&timezone);
     }

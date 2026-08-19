@@ -24,27 +24,21 @@ extern crate rmod as tokio;
 extern crate rmod as tonic;
 
 use crate::app::env;
-use rmod::util::lifecycle;
+use rmod::{
+    config,
+    util::{ext, lifecycle},
+};
 
 #[rmod::main]
 async fn main() {
-    rmod::handle_prestop();
+    ext::sleep();
+    config::healthcheck().await;
+
+    let (app_name, port) = env::app();
 
     rmod::log!("🔥 starting...");
-    let (app_name, port) = env::app();
-    rmod::util::ext::grpc_healthcheck(port).await;
-    rmod::config::graceful_shutdown("30s");
-
     rmod::log!("🔥 app setup...");
     app::setup().await;
-
-    // if env::service_mode() == env::ServiceMode::Writer && env::db_enabled() {
-    //     if let Err(e) = db::init_db().await {
-    //         eprintln!("[clog][WARN] Database initialization check: {}", e);
-    //     } else {
-    //         rmod::log!("🔥 database master table & partition ready.");
-    //     }
-    // }
 
     rmod::log!("🔥 grpc setup...");
     rmod::fuse::grpc(
