@@ -28,6 +28,8 @@ use rmod::util::lifecycle;
 
 #[rmod::main]
 async fn main() {
+    rmod::handle_prestop();
+
     rmod::log!("🔥 starting...");
     let (app_name, port) = env::app();
     rmod::util::ext::grpc_healthcheck(port).await;

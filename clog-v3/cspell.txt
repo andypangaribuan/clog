@@ -5,3 +5,4 @@ timestamptz
 jetstream
 clickhouse
 healthcheck
+prestop
