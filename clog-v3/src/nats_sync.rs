@@ -68,6 +68,7 @@ pub async fn setup() {
                                         trace_id: payload.trace_id,
                                         parent_uid: payload.parent_uid,
                                         user_uid: payload.user_uid,
+                                        partner_uid: payload.partner_uid,
                                         log_type: payload.log_type,
                                         action_name: payload.action_name,
                                         duration_ms: payload.duration_ms,

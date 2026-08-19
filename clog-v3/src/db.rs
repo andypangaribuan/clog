@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS app_logs
   trace_id     VARCHAR(20)    NOT NULL,            -- Root request UID
   parent_uid   VARCHAR(20)    NOT NULL DEFAULT '', -- Parent action UID (empty for root)
   user_uid     VARCHAR(20)    NOT NULL,
+  partner_uid     VARCHAR(20)    NOT NULL,
   log_type     VARCHAR(40)    NOT NULL,
   action_name  TEXT           NOT NULL,            -- Endpoint path or SQL query summary
   duration_ms  INT            NOT NULL DEFAULT 0,  -- Execution duration
@@ -81,6 +82,7 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
     let mut trace_ids: Vec<String> = Vec::with_capacity(count);
     let mut parent_uids: Vec<String> = Vec::with_capacity(count);
     let mut user_uids: Vec<String> = Vec::with_capacity(count);
+    let mut partner_uids: Vec<String> = Vec::with_capacity(count);
     let mut log_types: Vec<String> = Vec::with_capacity(count);
     let mut action_names: Vec<String> = Vec::with_capacity(count);
     let mut duration_ms: Vec<i32> = Vec::with_capacity(count);
@@ -101,6 +103,7 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
         trace_ids.push(e.trace_id);
         parent_uids.push(e.parent_uid);
         user_uids.push(e.user_uid);
+        partner_uids.push(e.partner_uid);
         log_types.push(e.log_type);
         action_names.push(e.action_name);
         duration_ms.push(e.duration_ms);
@@ -114,13 +117,13 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
         r#"
         INSERT INTO app_logs (
             created_at, uid, env_name, service_name, trace_id,
-            parent_uid, user_uid, log_type, action_name, duration_ms,
-            status_code, payload, pod_name, info
+            parent_uid, user_uid, partner_uid, log_type, action_name,
+            duration_ms, status_code, payload, pod_name, info
         )
         SELECT * FROM UNNEST(
             $1::timestamptz[], $2::varchar[],  $3::varchar[], $4::varchar[], $5::varchar[],
-            $6::varchar[], $7::varchar[], $8::varchar[], $9::text[], $10::int[],
-            $11::int[], $12::jsonb[], $13::varchar[], $14::jsonb[]
+            $6::varchar[], $7::varchar[], $8::varchar[], $9::varchar[], $10::text[],
+            $11::int[], $12::int[], $13::jsonb[], $14::varchar[], $15::jsonb[]
         );
         "#,
     )
@@ -131,6 +134,7 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
     .bind(&trace_ids)
     .bind(&parent_uids)
     .bind(&user_uids)
+    .bind(&partner_uids)
     .bind(&log_types)
     .bind(&action_names)
     .bind(&duration_ms)

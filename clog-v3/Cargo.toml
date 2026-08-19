@@ -18,7 +18,7 @@ debug = "full"
 
 [dependencies]
 # rmod = { path = "/Users/apangaribuan/ark/repo/gh/rmod" }
-rmod = { git = "https://github.com/andypangaribuan/rmod", tag = "v1.0.32" }
+rmod = { git = "https://github.com/andypangaribuan/rmod", tag = "v1.0.33" }
 async-nats = "0.38"
 clickhouse = { version = "0.13", features = ["chrono"] }
 futures-util = "0.3"
