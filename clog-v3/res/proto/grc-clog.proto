@@ -14,7 +14,7 @@ message LogBatchRequest {
 
 message LogEntryRequest {
   string uid               = 1;
-  int64  timestamp_unix_ms = 2;
+  int64  timestamp_unix_us = 2;
   string env_name          = 3;
   string service_name      = 4;
   string trace_id          = 5;

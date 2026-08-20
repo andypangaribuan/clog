@@ -21,7 +21,7 @@ static NATS_CONFIG: OnceLock<(String, String)> = OnceLock::new();
 #[serde(crate = "rmod::serde")]
 pub struct NatsLogPayloadOwned {
     pub uid: String,
-    pub timestamp_unix_ms: i64,
+    pub timestamp_unix_us: i64,
     pub env_name: String,
     pub service_name: String,
     pub trace_id: String,
@@ -41,7 +41,7 @@ pub struct NatsLogPayloadOwned {
 #[serde(crate = "rmod::serde")]
 pub struct NatsLogPayload<'a> {
     pub uid: &'a str,
-    pub timestamp_unix_ms: i64,
+    pub timestamp_unix_us: i64,
     pub env_name: &'a str,
     pub service_name: &'a str,
     pub trace_id: &'a str,
@@ -61,7 +61,7 @@ impl<'a> From<&'a LogEntryRequest> for NatsLogPayload<'a> {
     fn from(e: &'a LogEntryRequest) -> Self {
         Self {
             uid: &e.uid,
-            timestamp_unix_ms: e.timestamp_unix_ms,
+            timestamp_unix_us: e.timestamp_unix_us,
             env_name: &e.env_name,
             service_name: &e.service_name,
             trace_id: &e.trace_id,

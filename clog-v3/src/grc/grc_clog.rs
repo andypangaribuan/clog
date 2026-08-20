@@ -9,7 +9,7 @@ pub struct LogEntryRequest {
     #[prost(string, tag = "1")]
     pub uid: ::prost::alloc::string::String,
     #[prost(int64, tag = "2")]
-    pub timestamp_unix_ms: i64,
+    pub timestamp_unix_us: i64,
     #[prost(string, tag = "3")]
     pub env_name: ::prost::alloc::string::String,
     #[prost(string, tag = "4")]

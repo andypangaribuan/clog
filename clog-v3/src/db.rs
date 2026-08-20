@@ -92,7 +92,9 @@ pub async fn bulk_insert(entries: Vec<LogEntryRequest>) -> Result<usize, sqlx::E
     let mut infos: Vec<JsonValue> = Vec::with_capacity(count);
 
     for e in entries {
-        let dt = DateTime::from_timestamp_millis(e.timestamp_unix_ms).unwrap_or_else(Utc::now);
+        let secs = e.timestamp_unix_us / 1_000_000;
+        let nsecs = ((e.timestamp_unix_us % 1_000_000) * 1_000) as u32;
+        let dt = DateTime::from_timestamp(secs, nsecs).unwrap_or_else(Utc::now);
         let payload_json: JsonValue = rmod::json::from_str(&e.payload_json).unwrap_or(rmod::json::json!({ "raw": e.payload_json }));
         let info_json: JsonValue = rmod::json::from_str(&e.info_json).unwrap_or(rmod::json::json!({ "raw": e.info_json }));
 

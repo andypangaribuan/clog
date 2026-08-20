@@ -61,7 +61,7 @@ pub async fn setup() {
                             Ok(msg) => {
                                 if let Ok(payload) = rmod::json::from_slice::<NatsLogPayloadOwned>(&msg.payload) {
                                     row_buffer.push(AppLogRow {
-                                        created_at: payload.timestamp_unix_ms * 1000,
+                                        created_at: payload.timestamp_unix_us,
                                         uid: payload.uid,
                                         env_name: payload.env_name,
                                         service_name: payload.service_name,
