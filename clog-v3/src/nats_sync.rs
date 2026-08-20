@@ -17,7 +17,7 @@ pub async fn setup() {
     };
     let ch_table = ch::get_table();
 
-    let (nats_url, stream_name, _) = env::nats();
+    let (nats_url, stream_name, subject_prefix) = env::nats();
     rmod::log!("🔥 connecting to NATS JetStream at {} for sync...", nats_url);
 
     let client = async_nats::connect(&nats_url).await.unwrap_or_else(|e| {
@@ -26,9 +26,13 @@ pub async fn setup() {
 
     let js = jetstream::new(client);
 
-    let stream = js.get_stream(&stream_name).await.unwrap_or_else(|e| {
-        panic!("failed to get NATS JetStream stream '{}': {}", stream_name, e);
-    });
+    let stream_subject = format!("{}.>", subject_prefix);
+    let stream = js
+        .get_or_create_stream(jetstream::stream::Config { name: stream_name.clone(), subjects: vec![stream_subject], ..Default::default() })
+        .await
+        .unwrap_or_else(|e| {
+            panic!("failed to get or create NATS JetStream stream '{}': {}", stream_name, e);
+        });
 
     let consumer = stream
         .get_or_create_consumer(
