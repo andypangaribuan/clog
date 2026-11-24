@@ -93,11 +93,35 @@ function shell {
     return 0
   fi
 
-  if [[ $1 == "--fresh" ]]; then
-    rm -rf .cargo .rustup
+  if ! __is_nix_daemon_running; then
+    echo "🔄 Nix daemon is not running. Attempting to start Nix daemon..."
+
+    if ! __start_nix_daemon; then
+      echo "❌ Failed to start the Nix daemon."
+      exit 1
+    fi
+
+    local retries=25
+    while ! __is_nix_daemon_running && (( retries > 0 )); do
+      sleep 0.2
+      (( retries-- ))
+    done
+
+    if ! __is_nix_daemon_running; then
+      echo "❌ Failed to verify the Nix daemon is running. Please check /var/log/determinate-nix-daemon.log."
+      exit 1
+    fi
+
+    echo "✅ Verified Nix daemon is running."
   fi
 
-  DEVBOX_PROJECT_CWD="$PWD" devbox shell --config ~/.devbox/global/rust-1.100/devbox.json
+  if [[ $EUID -eq 0 && -n "${SUDO_USER:-}" ]]; then
+    local user_home
+    user_home=$(eval echo "~${SUDO_USER}")
+    sudo -u "$SUDO_USER" -H env DEVBOX_PROJECT_CWD="$PWD" devbox shell --config "${user_home}/.devbox/global/rust-1.100/devbox.json"
+  else
+    DEVBOX_PROJECT_CWD="$PWD" devbox shell --config ~/.devbox/global/rust-1.100/devbox.json
+  fi
 }
 
 
@@ -119,6 +143,65 @@ function udeps {
 #: remove unused directories
 function rmd {
   rm -rf .cargo .devbox .rustup debug target test-debug
+}
+
+
+
+
+
+function __is_nix_daemon_running {
+  [[ -S /nix/var/nix/daemon-socket/socket || -S /var/run/nix-daemon.socket ]] || return 1
+
+  if command -v launchctl >/dev/null 2>&1; then
+    launchctl print system/systems.determinate.nix-daemon >/dev/null 2>&1 \
+      || launchctl print system/org.nixos.nix-daemon >/dev/null 2>&1 \
+      || return 1
+  elif command -v systemctl >/dev/null 2>&1; then
+    systemctl is-active --quiet nix-daemon.service 2>/dev/null \
+      || systemctl is-active --quiet nix-daemon.socket 2>/dev/null \
+      || return 1
+  fi
+
+  return 0
+}
+
+
+function __start_nix_daemon {
+  local run_prefix=()
+  if [[ $EUID -ne 0 ]]; then
+    if ! sudo -n true >/dev/null 2>&1; then
+      echo "🔒 Root/sudo access is required to start the Nix daemon."
+      sudo -v || return 1
+    fi
+    run_prefix=(sudo)
+  fi
+
+  if command -v launchctl >/dev/null 2>&1; then
+    local plist=""
+    local service=""
+    if [[ -f /Library/LaunchDaemons/systems.determinate.nix-daemon.plist ]]; then
+      plist="/Library/LaunchDaemons/systems.determinate.nix-daemon.plist"
+      service="system/systems.determinate.nix-daemon"
+    elif [[ -f /Library/LaunchDaemons/org.nixos.nix-daemon.plist ]]; then
+      plist="/Library/LaunchDaemons/org.nixos.nix-daemon.plist"
+      service="system/org.nixos.nix-daemon"
+    fi
+
+    if [[ -n "$plist" ]]; then
+      "${run_prefix[@]}" launchctl bootstrap system "$plist" >/dev/null 2>&1 \
+        || "${run_prefix[@]}" launchctl load -w "$plist" >/dev/null 2>&1 \
+        || true
+      "${run_prefix[@]}" launchctl kickstart -k "$service" >/dev/null 2>&1 || return 1
+      return 0
+    fi
+  elif command -v systemctl >/dev/null 2>&1; then
+    "${run_prefix[@]}" systemctl start nix-daemon.socket nix-daemon.service >/dev/null 2>&1 \
+      || "${run_prefix[@]}" systemctl start nix-daemon >/dev/null 2>&1 \
+      || return 1
+    return 0
+  fi
+
+  return 1
 }
 
 
