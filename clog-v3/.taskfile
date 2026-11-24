@@ -97,7 +97,7 @@ function shell {
     rm -rf .cargo .rustup
   fi
 
-  DEVBOX_PROJECT_CWD="$PWD" devbox shell --config ~/.devbox/global/rust-1.96/devbox.json
+  DEVBOX_PROJECT_CWD="$PWD" devbox shell --config ~/.devbox/global/rust-1.100/devbox.json
 }
 
 
